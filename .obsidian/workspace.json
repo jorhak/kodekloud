@@ -27,16 +27,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/Kobekloud.md",
+                "file": "100daysdevops/Conexion a servidores.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Kobekloud"
+              "title": "Conexion a servidores"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -184,7 +183,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "25db9f911ed7f0ea",
+  "active": "208dfc2211bf67fc",
   "lastOpenFiles": [
     "100daysdevops/Conexion a servidores.md",
     "100daysdevops/Kobekloud.md",
