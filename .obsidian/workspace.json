@@ -1,0 +1,197 @@
+{
+  "main": {
+    "id": "608070465a8137b3",
+    "type": "split",
+    "children": [
+      {
+        "id": "704d5e14cc9bd66e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "208dfc2211bf67fc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysdevops/Kobekloud.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Kobekloud"
+            }
+          },
+          {
+            "id": "25db9f911ed7f0ea",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysdevops/Kobekloud.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Kobekloud"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6c5c7923040cea4b",
+    "type": "split",
+    "children": [
+      {
+        "id": "516da9c1523b1db9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "beb41c24ac7ac4b0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "850e3bb0cdd7f403",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "5f0818f1f7dc051c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 215.5
+  },
+  "right": {
+    "id": "95f693744e060715",
+    "type": "split",
+    "children": [
+      {
+        "id": "23f7328a8dd10add",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2ae032c78acc7b44",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Kubecloud/Kobekloud.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Kobekloud"
+            }
+          },
+          {
+            "id": "97b1f5d2f29cb7c0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Kubecloud/Kobekloud.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Kobekloud"
+            }
+          },
+          {
+            "id": "c7708973d699b2ad",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "fa923b654eb08bc9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Kubecloud/Kobekloud.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Kobekloud"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "25db9f911ed7f0ea",
+  "lastOpenFiles": [
+    "100daysdevops/Conexion a servidores.md",
+    "100daysdevops/Kobekloud.md",
+    "linux/learn linux with Kodekloud.md",
+    "kubernetes/learn k8s with Kodekloud.md",
+    "kubernetes",
+    "linux",
+    "100daysdevops"
+  ]
+}
