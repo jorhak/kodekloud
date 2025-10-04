@@ -711,3 +711,97 @@ docker buildx build --platform linux/amd64 -t busybox:local .
 ```
 docker images | grep busybox
 ```
+
+# Day 39: Create a Docker Image From Container
+```
+One of the Nautilus developer was working to test new changes on a container. He wants to keep a backup of his changes to the container. A new request has been raised for the DevOps team to create a new image from this container. Below are more details about it:
+
+  
+
+a. Create an image `demo:datacenter` on `Application Server 1` from a container `ubuntu_latest` that is running on same server.
+```
+
+## Ingresar al servidor
+```
+ssh tony@172.16.238.10
+```
+
+## Listar las containers
+```
+docker ps | grep ubuntu_latest
+```
+
+## Listar imagenes
+```
+docker images
+```
+## Crear imagen desde un contenedor
+```
+docker commit <ID_COMMIT> demo:datacenter
+docker commit b1388fb3d434 demo:datacenter
+```
+
+De esta forma hemos creado una imagen a partir de un contenedor.
+
+# Day 40: Docker EXEC Operations
+```
+One of the Nautilus DevOps team members was working to configure services on a kkloud container that is running on App Server 2 in Stratos Datacenter. Due to some personal work he is on PTO for the rest of the week, but we need to finish his pending work ASAP. Please complete the remaining work as per details given below:
+
+
+a. Install apache2 in kkloud container using apt that is running on App Server 2 in Stratos Datacenter.
+
+
+b. Configure Apache to listen on port 6000 instead of default http port. Do not bind it to listen on specific IP or hostname only, i.e it should listen on localhost, 127.0.0.1, container ip, etc.
+
+
+c. Make sure Apache service is up and running inside the container. Keep the container in running state at the end.
+```
+
+## Ingresar al servidor
+```
+ssh steve@172.16.238.11
+```
+
+## Listar containers
+```
+docker ps
+```
+
+## Ingresar al container
+```
+docker exec -it kkloud bash
+```
+
+### Instalar Apache2
+```
+apt install -y apache2 nano
+```
+
+### Configurar puerto
+```
+nano /etc/apache2/ports.conf
+```
+
+```
+LISTEN 6000
+```
+
+### Reiniciar servicio
+```
+service apache2 restart
+service apache2 status
+```
+
+### Verificar que apache este funcionando
+```
+curl localhost:6000
+curl 127.0.0.1:6000
+curl <IP>:6000
+```
+
+Para conocer la IP tenemos que salir del container y ejecutar:
+```
+docker inspect kkloud
+```
+
+Ahora podemos reemplar la IP.
