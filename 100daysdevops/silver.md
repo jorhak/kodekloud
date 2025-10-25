@@ -805,3 +805,584 @@ docker inspect kkloud
 ```
 
 Ahora podemos reemplar la IP.
+
+# Day 41: Write a Docker File
+```
+As per recent requirements shared by the Nautilus application development team, they need custom images created for one of their projects. Several of the initial testing requirements are already been shared with DevOps team. Therefore, create a docker file /opt/docker/Dockerfile (please keep D capital of Dockerfile) on App server 3 in Stratos DC and configure to build an image with the following requirements:
+
+
+
+a. Use ubuntu:24.04 as the base image.
+
+
+b. Install apache2 and configure it to work on 8088 port. (do not update any other Apache configuration settings like document root etc).
+```
+
+# Ingresar al servidor
+```
+ssh banner@172.16.238.12
+```
+
+## Editar Dockerfile
+```
+mkdir /opt/docker
+sudo vi /opt/docker/Dockerfile
+sudo chmod o+x /opt/docker/Dockerfile
+```
+
+
+```
+FROM ubuntu:24.04
+RUN apt update && \
+    DEBIAN_FRONTEND=noninteractive && \
+    apt install -y apache2 && \
+    rm -rf /var/lib/apt/lists/*
+RUN sed -i 's/Listen 80/Listen 8088/' /etc/apache2/ports.conf
+EXPOSE 8088
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+```
+
+Me costo crear esta imagen ya que tenia que utilizar explicitamente **DEBIAN_FRONTEND=noninteractive**, porque de lo contrario no podia hacer la instalacion de apache2.
+Previo a esto me cre un contenedor:
+```
+docker run -it --name hola ubuntu:24.04
+```
+
+Y ejecute los comandos que normalmente ejecuto para realizar la instalacion de **apache2**, y todo salia bien, cuando intentaba replicar el orden de la ejecucion de los comandos me salia error. Sin embargo cuando agrege **DEBIAN_FRONTEND** esto error se soluciono.
+## Construir imagen 
+```
+cd /opt/docker
+docker buildx build --platform linux/amd64 -t dia41 .
+```
+
+
+# Day 42: Create a Docker Network
+```
+The Nautilus DevOps team needs to set up several docker environments for different applications. One of the team members has been assigned a ticket where he has been asked to create some docker networks to be used later. Complete the task based on the following ticket description:
+
+  
+
+a. Create a docker network named as `ecommerce` on App Server `3` in `Stratos DC`.  
+  
+
+b. Configure it to use `bridge` drivers.  
+  
+
+c. Set it to use subnet `10.10.1.0/24` and iprange `10.10.1.0/24`.
+```
+
+## Ingresar al servidor
+```
+ssh banner@172.16.238.12
+```
+
+## Crear red
+```
+docker network create \
+  --driver=bridge \
+  --subnet=10.10.1.0/24 \
+  --ip-range=10.10.1.0/24 \
+  ecommerce
+```
+
+# Day 43: Docker Ports Mapping
+```
+The Nautilus DevOps team is planning to host an application on a nginx-based container. There are number of tickets already been created for similar tasks. One of the tickets has been assigned to set up a nginx container on Application Server 3 in Stratos Datacenter. Please perform the task as per details mentioned below:
+
+
+a. Pull nginx:alpine docker image on Application Server 3.
+
+
+b. Create a container named media using the image you pulled.
+
+
+c. Map host port 6100 to container port 80. Please keep the container in running state.
+```
+
+## Ingresar al servidor
+```
+ssh banner@172.16.238.12
+```
+
+## Descargar imagen
+```
+docker pull nginx:alpine
+```
+
+## Crear con el container con nombre **media** y puerto **6100**.
+```
+docker run -d -p 6100:80 --name media nginx:alpine
+```
+
+# Day 44: Write a Docker Compose File
+```
+The Nautilus application development team shared static website content that needs to be hosted on the httpd web server using a containerised platform. The team has shared details with the DevOps team, and we need to set up an environment according to those guidelines. Below are the details:
+
+
+
+a. On App Server 3 in Stratos DC create a container named httpd using a docker compose file /opt/docker/docker-compose.yml (please use the exact name for file).
+
+
+b. Use httpd (preferably latest tag) image for container and make sure container is named as httpd; you can use any name for service.
+
+
+c. Map 80 number port of container with port 6100 of docker host.
+
+
+d. Map container's /usr/local/apache2/htdocs volume with /opt/finance volume of docker host which is already there. (please do not modify any data within these locations).
+```
+
+# Ingresar al servidor
+```
+ssh banner@172.16.238.12
+```
+
+## Create docker compose
+```
+sudo touch /opt/docker/docker-compose.yml
+```
+
+## Modificar docker-compose.yml utiliznado la imagen httpd, nombrando el container httpd y el servicio con cualquier nombre
+```
+services:
+  prueba:
+    image: httpd:latest
+    container_name: httpd
+```
+
+## Modificar docker-compose.yml para el puerto 8085
+```
+services:
+  prueba:
+    image: httpd:latest
+    container_name: httpd
+    ports:
+      - "8080:80"
+```
+
+## Modificar docker-compose.yml para el volumen
+Este es el docker-compose.yml final.
+
+```
+sudo vi /opt/docker/docker-compose.yml
+```
+
+```
+services:
+  prueba:
+    image: httpd:latest
+    container_name: httpd
+    ports:
+      - "6100:80"
+    volumes:
+      - /opt/finance:/usr/local/apache2/htdocs
+    
+```
+
+# Day 45: Resolve Dockerfile Issues
+```
+The Nautilus DevOps team is working to create new images per requirements shared by the development team. One of the team members is working to create a `Dockerfile` on `App Server 2` in `Stratos DC`. While working on it she ran into issues in which the docker build is failing and displaying errors. Look into the issue and fix it to build an image as per details mentioned below:
+
+  
+
+a. The `Dockerfile` is placed on `App Server 2` under `/opt/docker` directory.  
+  
+
+b. Fix the issues with this file and make sure it is able to build the image.  
+  
+
+c. Do not change base image, any other valid configuration within Dockerfile, or any of the data been used — for example, index.html.  
+  
+
+`Note:` Please note that once you click on `FINISH` button all the existing containers will be destroyed and new image will be built from your `Dockerfile`.
+```
+
+## Ingresar al servidor
+```
+ssh steve@172.16.238.11
+```
+
+## Ejecutar el Dockerfile para ver el error
+```
+cd /opt/docker
+docker buildx build --platform linux/amd64 -t issue .
+```
+
+```
+Dockerfile:1
+--------------------
+   1 | >>> IMAGE httpd:2.4.43
+   2 |     
+   3 |     ADD sed -i "s/Listen 80/Listen 8080/g" /usr/local/apache2/conf/httpd.conf
+--------------------
+ERROR: failed to build: failed to solve: dockerfile parse error on line 1: unknown instruction: IMAGE
+```
+
+Vamos a modificar **IMAGE** por **FROM**.
+```
+sudo vi Dockerfile
+```
+
+Finalmente el Dockerfile quedo
+```
+FROM httpd:2.4.43
+
+RUN sed -i 's/Listen 80/Listen 8080/g' /usr/local/apache2/conf/httpd.conf
+
+RUN sed -i '/LoadModule\ ssl_module modules\/mod_ssl.so/s/^#//g' conf/httpd.conf
+
+RUN sed -i '/LoadModule\ socache_shmcb_module modules\/mod_socache_shmcb.so/s/^#//g' conf/httpd.conf
+
+RUN sed -i '/Include\ conf\/extra\/httpd-ssl.conf/s/^#//g' conf/httpd.conf
+
+COPY certs/server.crt /usr/local/apache2/conf/server.crt
+
+COPY certs/server.key /usr/local/apache2/conf/server.key
+
+COPY html/index.html /usr/local/apache2/htdocs/
+```
+
+# Day 46: Deploy an App on Docker Containers
+```
+The Nautilus Application development team recently finished development of one of the apps that they want to deploy on a containerized platform. The Nautilus Application development and DevOps teams met to discuss some of the basic pre-requisites and requirements to complete the deployment. The team wants to test the deployment on one of the app servers before going live and set up a complete containerized stack using a docker compose fie. Below are the details of the task:  
+  
+
+  
+
+1. On `App Server 2` in `Stratos Datacenter` create a docker compose file `/opt/itadmin/docker-compose.yml` (should be named exactly).  
+      
+    
+2. The compose should deploy two services (web and DB), and each service should deploy a container as per details below:  
+      
+    
+
+`For web service:`  
+  
+
+a. Container name must be `php_web`.  
+  
+
+b. Use image `php` with any `apache` tag. Check [here](https://hub.docker.com/_/php?tab=tags/) for more details.  
+  
+
+c. Map `php_web` container's port `80` with host port `5000`  
+  
+
+d. Map `php_web` container's `/var/www/html` volume with host volume `/var/www/html`.  
+  
+
+`For DB service:`  
+  
+
+a. Container name must be `mysql_web`.  
+  
+
+b. Use image `mariadb` with any tag (preferably `latest`). Check [here](https://hub.docker.com/_/mariadb?tab=tags/) for more details.  
+  
+
+c. Map `mysql_web` container's port `3306` with host port `3306`  
+  
+
+d. Map `mysql_web` container's `/var/lib/mysql` volume with host volume `/var/lib/mysql`.  
+  
+
+e. Set MYSQL_DATABASE=`database_web` and use any custom user ( except root ) with some complex password for DB connections.  
+  
+
+3. After running docker-compose up you can access the app with curl command `curl <server-ip or hostname>:5000/`  
+      
+    
+
+For more details check [here](https://hub.docker.com/_/mariadb?tab=description/).  
+  
+
+`Note:` Once you click on `FINISH` button, all currently running/stopped containers will be destroyed and stack will be deployed again using your compose file.
+```
+
+## Ingresar al servidor
+```
+ssh steve@172.16.238.11
+```
+
+## Crear fichero
+```
+sudo touch /opt/itadmin/docker-compose.yml
+```
+
+### Configurar primer servicio
+```
+services:
+  web:
+    image: php:8.1-apache
+    container_name: php_web
+    ports:
+      - 5000:80
+    volumens:
+      - /var/www/html:/var/www/html
+```
+
+### Configurar segundo servicio
+```
+  db:
+    image: mariadb:latest
+    container_name: mysql_web
+    ports:
+      - 3306:3306
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    environment:
+      - MARIADB_DATABASE:database_web
+      - MARIADB_USER:simon
+      - MARIADB_PASSWORD:D4n3r15_T4rg3r14n
+```
+
+### docker-compose.yml
+
+```
+sudo vi /opt/itadmin/docker-compose.yml
+cd /opt/itadmin
+```
+	
+```
+services:
+  web:
+    image: php:8.1-apache
+    container_name: php_web
+    ports:
+      - "5000:80"
+    volumes:
+      - /var/www/html:/var/www/html
+    depends_on:
+      - db
+        
+  db:
+    image: mariadb:latest
+    container_name: mysql_web
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: hola_123
+      MARIADB_DATABASE: database_web
+      MARIADB_USER: simon
+      MARIADB_PASSWORD: D4n3r15_T4rg3r14n
+
+```
+
+### Iniciar servicios
+```
+sudo docker compose up -d
+```
+
+# Day 47: Docker Python App
+```
+A python app needed to be Dockerized, and then it needs to be deployed on `App Server 3`. We have already copied a `requirements.txt` file (having the app dependencies) under `/python_app/src/` directory on `App Server 3`. Further complete this task as per details mentioned below:  
+  
+
+  
+
+1. Create a `Dockerfile` under `/python_app` directory:
+    
+    - Use any `python` image as the base image.
+    - Install the dependencies using `requirements.txt` file.
+    - Expose the port `5002`.
+    - Run the `server.py` script using `CMD`.  
+          
+        
+2. Build an image named `nautilus/python-app` using this Dockerfile.  
+      
+    
+3. Once image is built, create a container named `pythonapp_nautilus`:
+    
+    - Map port `5002` of the container to the host port `8096`.  
+          
+        
+4. Once deployed, you can test the app using `curl` command on `App Server 3`.  
+      
+    
+
+```sh
+curl http://localhost:8096/
+```
+
+## Ingresar al servidor
+```
+ssh banner@172.16.238.12
+```
+
+## Ir al directorio
+```
+cd /python_app
+```
+
+## Dockerfile
+```
+sudo vi Dockerfile
+```
+
+```
+FROM python:3.10
+WORKDIR /app
+COPY . .
+RUN cd src && \
+    pip install --no-cache-dir -r requirements.txt
+EXPOSE 5002
+CMD ["python", "./src/server.py"]
+```
+
+## Construir imagen
+```
+docker buildx build --platform linux/amd64 -t nautilus/python-app .
+```
+
+## Construir container
+```
+docker run -d -p 8096:5002 --name pythonapp_nautilus nautilus/python-app
+```
+
+## Verificar 
+```
+curl http://localhost:8096
+```
+
+# Day 48: Deploy Pods in Kubernetes Cluster
+```
+The Nautilus DevOps team is diving into Kubernetes for application management. One team member has a task to create a pod according to the details below:
+
+  
+
+1. Create a pod named `pod-httpd` using the `httpd` image with the `latest` tag. Ensure to specify the tag as `httpd:latest`.
+    
+2. Set the `app` label to `httpd_app`, and name the container as `httpd-container`.
+    
+
+`Note`: The `kubectl` utility on `jump_host` is configured to operate with the Kubernetes cluster.
+```
+
+## Crear file pod.yml
+```
+vi pod.yml
+```
+
+## Crear pod
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-httpd
+  labels:
+    app: httpd_app
+spec:
+  containers:
+   - name: httpd-container
+     image: httpd:latest
+```
+
+## Inicializar pod
+```
+kubectl apply -f pod.yml
+```
+
+## Verificar la cracion del POD
+```
+kubectl get pod
+```
+
+# Day 49: Deploy Applications with Kubernetes Deployments
+```
+The Nautilus DevOps team is delving into Kubernetes for app management. One team member needs to create a deployment following these details:
+
+
+Create a deployment named nginx to deploy the application nginx using the image nginx:latest (ensure to specify the tag)
+
+Note: The kubectl utility on jump_host is set up to interact with the Kubernetes cluster.
+```
+
+## Crear file deploy.yml
+```
+vi deploy.yml
+```
+
+## Agregar las especificaciones
+```
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:   
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+```
+
+## Inicializar deployment
+```
+kubectl apply -f deploy.yml
+```
+
+
+# Day 50: Set Resource Limits in Kubernetes Pods
+```
+The Nautilus DevOps team has noticed performance issues in some Kubernetes-hosted applications due to resource constraints. To address this, they plan to set limits on resource utilization. Here are the details:
+
+
+Create a pod named httpd-pod with a container named httpd-container. Use the httpd image with the latest tag (specify as httpd:latest). Set the following resource limits:
+
+Requests: Memory: 15Mi, CPU: 100m
+
+Limits: Memory: 20Mi, CPU: 100m
+
+Note: The kubectl utility on jump_host is configured to operate with the Kubernetes cluster.
+```
+
+## Crear file pod.yml
+```
+vi pod.yml
+```
+
+## Asignando recursos
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: httpd-pod
+  labels:
+    app: httpd_app
+spec:
+  containers:
+   - name: httpd-container
+     image: httpd:latest
+     resources:
+      requests:
+        memory: "15Mi"
+        cpu: "100m"
+      limits:
+        memory: "20Mi"
+        cpu: "100m"
+```
+
+## Inicializar pod
+```
+kubectl apply -f pod.yml
+```
+
+## Verificar
+```
+kubectl get pod
+kubectl describe pod httpd-pod
+```
+
+
+

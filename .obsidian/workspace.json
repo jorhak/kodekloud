@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/silver.md",
+                "file": "100daysdevops/gold.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "silver"
+              "title": "gold"
             }
           },
           {
@@ -185,9 +185,10 @@
   },
   "active": "208dfc2211bf67fc",
   "lastOpenFiles": [
-    "100daysdevops/Conexion a servidores.md",
-    "100daysdevops/silver.md",
     "linux/learn linux with Kodekloud.md",
+    "100daysdevops/Conexion a servidores.md",
+    "100daysdevops/gold.md",
+    "100daysdevops/silver.md",
     "100daysdevops/bronce.md",
     "100daysdevops/silver",
     "kubernetes/learn k8s with Kodekloud.md",
