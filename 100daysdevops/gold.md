@@ -877,3 +877,275 @@ kubectl apply -f deploy-init.yml
 kubectl get pod
 kubectl logs <nombre_del_pod> -c ic-main-nautilus
 ```
+
+# Day 70: Configure Jenkins User Access
+```
+The Nautilus team is integrating Jenkins into their CI/CD pipelines. After setting up a new Jenkins server, they're now configuring user access for the development team, Follow these steps:  
+  
+1. Click on the `Jenkins` button on the top bar to access the Jenkins UI. Login with username `admin` and password `Adm!n321`.
+
+2. Create a jenkins user named `kareem` with the password`LQfKeWWxWD`. Their full name should match `Kareem`.  
+  
+3. Utilize the `Project-based Matrix Authorization Strategy` to assign `overall read` permission to the `kareem` user.  
+  
+4. Remove all permissions for `Anonymous` users (if any) ensuring that the `admin` user retains overall `Administer` permissions.  
+  
+5. For the existing job, grant `kareem` user only `read` permissions, disregarding other permissions such as Agent, SCM etc.  
+  
+`Note:`  
+  
+6. You may need to install plugins and restart Jenkins service. After plugins installation, select `Restart Jenkins when installation is complete and no jobs are running` on plugin installation/update page.  
+
+  
+7. After restarting the Jenkins service, wait for the Jenkins login page to reappear before proceeding. Avoid clicking `Finish` immediately after restarting the service.  
+  
+  
+8. Capture screenshots of your configuration for review purposes. Consider using screen recording software like `loom.com` for documentation and sharing.
+```
+
+# Crear usuario
+Despues de haber ingresado damos click en **Manage Jenkins**>**Users**>**Create User**, luego rellenamos el formulario con los datos provistos. Y pulsamos el boton **Create User**.
+
+Luego actualizamos los _pluigns_ que estan desactualizados y reiniciamos **Jenkins**. 
+
+Ahora debemos instalar el _plugin_ necesario para los permisos. Estamos en **Dashboard**, damos click en **Manage Jenkins**>**Plugins**>**Available plugins** y en la barra de busqueda escribimos **Matrix Authorization**, marcamos esta opcion y damos click en el boton **Install**. Al igual que en la actualizacion de los _plugins_ vamos a marcar el check de reinicio una ves se termine la instalacion del _plugin_.
+
+Con el plugin instalado procedemos con los siguientes pasos, vamos a configurar al usuario **kareen** con los permisos que son requeridos. Para ellos nos ubicamos en **Dashboard**, damos click en **Manage Jenkins**>**Security**, buscamos el apartado **Authorization** y desplegamos la opciones y seleccionamos **Project-based Matrix Authorization Strategy**, agregamos al usuario _kareem_, damos click en el boton **Add user...** y luego introducimos el **User ID** que seria _kareem_ y damos click en el boton **OK**. Finalmente damos click en **Save**.
+
+Siguiendo con el siguiente paso vamos a configurar el proyecto para que el usuario **siva** solo tenga permiso: **READ**.
+Nos ubicamos en **Dashboard** luego damos click en **Helloworld**>**Configure** marcamos **Enable project-based security**, al igual que en el paso previo vamos a agregar a nuestro usuario **kareem**. Y marcamos en el area **Job**>**Read**
+
+# Day 71: Configure Jenkins Job for Package Installation
+```
+Some new requirements have come up to install and configure some packages on the Nautilus infrastructure under Stratos Datacenter. The Nautilus DevOps team installed and configured a new Jenkins server so they wanted to create a Jenkins job to automate this task. Find below more details and complete the task accordingly:  
+  
+
+  
+
+1. Access the Jenkins UI by clicking on the `Jenkins` button in the top bar. Log in using the credentials: username `admin` and password `Adm!n321`.  
+  
+
+2. Create a new Jenkins job named `install-packages` and configure it with the following specifications:  
+  
+
+- Add a string parameter named `PACKAGE`.
+- Configure the job to install a package specified in the `$PACKAGE` parameter on the `storage server` within the `Stratos Datacenter`.  
+      
+    
+
+`Note`:  
+  
+
+1. Ensure to install any required plugins and restart the Jenkins service if necessary. Opt for `Restart Jenkins when installation is complete and no jobs are running` on the plugin installation/update page. Refresh the UI page if needed after restarting the service.  
+  
+
+2. Verify that the Jenkins job runs successfully on repeated executions to ensure reliability.  
+  
+
+3. Capture screenshots of your configuration for documentation and review purposes. Alternatively, use screen recording software like `loom.com` for comprehensive documentation and sharing.
+```
+
+Luego de ingresar a **Jenkins** con la credenciales proporcionadas damos click en **Create a job** y colocamos el nombre que nos asignaron _install-packages_ y seleccionamos **Freestyle project**, luego damos click en el boton **OK**.
+
+Actualizamos los _plugins_ que necesitan ser actualizados y reiniciamos **Jenkins**.
+Instalamos los _plugins_ **SSH y 1Password Secrets** y reiniciamos **Jenkins**.
+
+Debemos agregar los credenciales del servidor donde vamos a ejecutar los comandos. Nos encontramos en **Dashboard** damos click en **Manage Jenkins** nos dirigimos en el apartado de **Security** y damos click en **Credentials**>**global**, luego damos click en el boton **Add Credentials**.
+En _Kind_ lo dejamos en **Username with password** agregamos el usuario que tenemos para ingresar **storage server** rellenamos el formulario y damos click en el boton **Create**.
+
+Vamos a realizar lo mismo solo que vamos a cambiar _Kind_: Secret text, y rellemanos el formulario, el secreto debe ser la contrasena del usuario en donde vamos a ejecutar los comandos.
+
+Agregamos el servidor en donde vamos a ejecutar el comando. Estamos en **Dashboard**>**Manage Jenkins**>**System** nos  dirigimos al apartado _SSH remote hosts_ y damos click en **Add**, en **hostname** agregamos la **IP**: 172.16.238.15 el **puerto**: 22 y los credenciales que va usar en nuestro caso es **natasha (storage server)**, y finalmente damos click en **Save**.
+De igual modo nos vamos al partado de _1Password secret_ y agregamos la **IP**.
+
+Nos ubicamos en **Dashboard** damos click en **install-package**>**Configure** marcamos **This project is parameterized**>**Add Parameter**>**String Parameter** y rellenamos el formulario con los parametros asignados.
+
+Luego nos dirigimos a **Build Steps** damos click en **Add build step**>**Execute shell script on remote host using ssh**
+
+Despues nos dirigimos al apartado de **Environment** y marcamos _Use secret text(s) or file(s)_ rellenamos el formulario, de igual modo marcamos _Execute shell script on remote host using ssh_ y rellenamos el formulario.
+!image[image](hola)
+
+
+# Day 72: Jenkins Parameterized Builds
+```
+A new DevOps Engineer has joined the team and he will be assigned some Jenkins related tasks. Before that, the team wanted to test a simple parameterized job to understand basic functionality of parameterized builds. He is given a simple parameterized job to build in Jenkins. Please find more details below:
+
+
+
+Click on the Jenkins button on the top bar to access the Jenkins UI. Login using username admin and password Adm!n321.
+
+
+1. Create a parameterized job which should be named as parameterized-job
+
+
+2. Add a string parameter named Stage; its default value should be Build.
+
+
+3. Add a choice parameter named env; its choices should be Development, Staging and Production.
+
+
+4. Configure job to execute a shell command, which should echo both parameter values (you are passing in the job).
+
+
+5. Build the Jenkins job at least once with choice parameter value Development to make sure it passes.
+
+
+Note:
+
+1. You might need to install some plugins and restart Jenkins service. So, we recommend clicking on Restart Jenkins when installation is complete and no jobs are running on plugin installation/update page i.e update centre. Also, Jenkins UI sometimes gets stuck when Jenkins service restarts in the back end. In this case, please make sure to refresh the UI page.
+
+
+2. For these kind of scenarios requiring changes to be done in a web UI, please take screenshots so that you can share it with us for review in case your task is marked incomplete. You may also consider using a screen recording software such as loom.com to record and share your work.
+```
+
+Despues de ingresar a **Jenkins** damos click en **Create job** y colocamos el nombre _parameterized-job_ y seleccionamos **Freestyle**.
+
+Luego marcamos _This project is parameterized_ y damos click en **Add Parameter** luego seleccionamos _String Parameter_ y rellenamos el formulario.
+Ahi mismo damos click en **Add Parameter** y seleccionamos _Choice Parameter_ y rellenamos el formulario
+
+Nos dirigimos al apartado **Build Steps** y damos click en **Add build step** y seleccionamos _Execute shell_.
+
+Finalmente damos click en **Save**.
+
+Para ejecutarlo nos vamos a **Dashboard>parameterized job** y damos click en _Build with Parameters_, vamos a tener los parametros **Stage y env** en donde vamos a poder moficar y seleccionar una opcion respectivamente. Luego damos click sobre el boton **Build**.
+
+# Day 73: Jenkins Scheduled Jobs
+```
+The devops team of xFusionCorp Industries is working on to setup centralised logging management system to maintain and analyse server logs easily. Since it will take some time to implement, they wanted to gather some server logs on a regular basis. At least one of the app servers is having issues with the Apache server. The team needs Apache logs so that they can identify and troubleshoot the issues easily if they arise. So they decided to create a Jenkins job to collect logs from the server. Please create/configure a Jenkins job as per details mentioned below:
+
+
+
+Click on the Jenkins button on the top bar to access the Jenkins UI. Login using username admin and password Adm!n321
+
+1. Create a Jenkins jobs named copy-logs.
+
+2. Configure it to periodically build every 5 minutes to copy the Apache logs (both access_log and error_logs) from App Server 3 (from default logs location) to location /usr/src/finance on Storage Server.
+
+Note:
+
+1. You might need to install some plugins and restart Jenkins service. So, we recommend clicking on Restart Jenkins when installation is complete and no jobs are running on plugin installation/update page i.e update centre. Also, Jenkins UI sometimes gets stuck when Jenkins service restarts in the back end. In this case please make sure to refresh the UI page.
+
+2. Please make sure to define you cron expression like this */10 * * * * (this is just an example to run job every 10 minutes).
+
+3. For these kind of scenarios requiring changes to be done in a web UI, please take screenshots so that you can share it with us for review in case your task is marked incomplete. You may also consider using a screen recording software such as loom.com to record and share your work.
+```
+
+Luego de ingresar a **Jenkins** damos click en **Create job** y le asignamos el nombre provisto y seleccionar **Freestyle project**.
+
+
+Despues nos vamos a actualizar los _plugins_, seguido de eso vamos a instalar los _plugins_: **SSH y 1Password Secret** nos dirigimos a **Dashboard>Manage Jenkins>Plugins** damos click en _Available plugins_.
+
+Seguimos con el siguiente paso que va ser el de crear las credenciales de los servidores: _App Server 3 y Storage Server_. Para ello debemos estar ubicamdos en **Dashboard>Manage Jenkins>Credentials** y damos click sobre **global** luego damos click sobre el boton **Add Credentials**. En _Kind_ lo dejamos en **Username with password**, luego rellenamos el formulario con el usuario y contrasena del servidor App 3 y por ultimo damos click en el boton **Create**. Del mismo modo para el servidor de Almacenamiento.
+
+Despues de todo esto vamos a crear **Secret text** para ambos servidores que en este caso van a ser las contrasenas. En _Kind_ vamos a seleccionar **Secret text**, en **Secret** debemos introducir nuestro secreto que va ser la contrasena del servidor, luego damos click en el boton **Create**.
+
+Ahora nos dirigimos a **Dashboard>Manage Jenkins>System** en el apartado _SSH remote hots_ damos click en **Add**. En _Hostname_ colocamos la **IP** del servidor App 1 y en **Port** ingresamos 22 y en Credentials selecionamos el credencial previo que creamos en este caso es _banner (servidor apache)_ damos click sobre el boton **Save**.
+Lo mismo vamos hacer para el servidor de almacenamiento.
+
+Seguimos con el siguiente paso que va ser ir a **Dashboard** y damos click sobre _copy-logs_ y luego damos click sobre **Configure**, luego nos dirigimos al apartado **Triggers** y marcamos _Build periodically_ y colocamos:
+```
+H/5 * * * *
+```
+
+Luego nos vamos al apartado **Environment** y marcamos _Use secret text(s) or file(s)_, para ambos servidores: App 3 y Storage Server, damos click sobre **Add** y selecionamos **Secret text**, en _Variable_ le vamos a colocar PASS_APP y en _Credentials_ le vamos asignar **servidor apache**. Y para el otro servidor hacemos lo mismo solo que cambiamos _Variable_ con PASS_STORAGE y _Credentials_ con **servidor de almacenamiento**.
+
+En el apartado de **Environment** marcamos tambien _Execute shell script on remote host using ssh_ y en **SSH site** seleccionamos _natasha@IP_. En _Pre build script_ colocamos:
+```
+echo $PASS_APP | sudo -S yum install sshpass
+ls /var/log/httpd/
+sshpass -p $PASS_STORAGE scp -o StrictHostKeyChecking=no /var/log/httpd/access_log natasha@172.16.238.15:/usr/src/finance/
+sshpass -p $PASS_STORAGE scp -o StrictHostKeyChecking=no /var/log/httpd/error_log natasha@172.16.238.15:/usr/src/finance/
+```
+
+
+
+Ahora nos dirigimos al apartado **Build Steps**, damos click sobre _Add build step_ y seleccionamos **Execute shell script on remote host using ssh**, en _SSH site_ seleccionamos natasha@IP y colocamos los comandos:
+```
+ls -la /usr/src/finance
+```
+
+Finalmente damos click sobre el boton **Save**.
+
+
+
+echo $PASS_APP | sudo -S yum install sshpass -y
+ls /var/log/httpd/
+sshpass -p $PASS_STORAGE scp -o StrictHostKeyChecking=no /var/log/httpd/access_log natasha@172.16.238.15:/usr/src/finance/
+
+
+echo $PASS_STORAGE | sudo -S chmod -R 777 /usr/src/finance
+
+ls -la /usr/src/finance
+
+# Day 74: Jenkins Database Backup Job
+```
+There is a requirement to create a Jenkins job to automate the database backup. Below you can find more details to accomplish this task:
+
+
+
+Click on the Jenkins button on the top bar to access the Jenkins UI. Login using username admin and password Adm!n321.
+
+
+Create a Jenkins job named database-backup.
+
+
+Configure it to take a database dump of the kodekloud_db01 database present on the Database server in Stratos Datacenter, the database user is kodekloud_roy and password is asdfgdsd.
+
+
+The dump should be named in db_$(date +%F).sql format, where date +%F is the current date.
+
+Copy the db_$(date +%F).sql dump to the Backup Server under location /home/clint/db_backups.
+
+
+Further, schedule this job to run periodically at */10 * * * * (please use this exact schedule format).
+
+
+Note:
+
+
+You might need to install some plugins and restart Jenkins service. So, we recommend clicking on Restart Jenkins when installation is complete and no jobs are running on plugin installation/update page i.e update centre. Also, Jenkins UI sometimes gets stuck when Jenkins service restarts in the back end. In this case please make sure to refresh the UI page.
+
+
+Please make sure to define you cron expression like this */10 * * * * (this is just an example to run job every 10 minutes).
+
+
+For these kind of scenarios requiring changes to be done in a web UI, please take screenshots so that you can share it with us for review in case your task is marked incomplete. You may also consider using a screen recording software such as loom.com to record and share your work.
+```
+
+Luego de ingresar a **Jenkins** lo que hacemos es dar click sobre **Create a job**, despues ingresamos el nombre propuesto y seleccionamos **Freestyle project** y presionamos **OK**.
+
+Seguido de eso vamos a actulizar los _plugins_ y a instalar los plugins **SSH y 1Password Secrets**.
+Por lo cual debemos estar en **Dashboard>Manage Jenkins>Plugins** y en _Updates_ actualizamos los plugins. Luego vamos a instalar los plugins ya mencionados y para ello nos vamos a _Available plugins_ y buscamos en la barra de busqueda.
+
+El siguiente paso sera crear _secret text_ de: Database server, Backup server y MariaDB password.
+Por lo cual nos dirigimos a **Dashboard>Manage Jenkins>Credentials** damos click sobre _global_, seguido damos click en **Add Credentials** y vamos seleccionar en _Kind_:Secret text y rellenamos el formulario. Los secretos van a ser las contrasenas de los usuarios y la contrasena para acceder a la base de datos. 
+
+Ahora vamos a configurar el **job**, debemos estar ubicados en **Dashboard** y dar click sobre _database-backup_ y luego damos click en **Configure**.
+Nos dirigimos al apartado de _Triggers_ y marcamos _Build periodically_ en donde debemos ingresar:
+```
+*/10 * * * *
+```
+
+Vamos a utilizar los secrets text como variables nos dirigimos al apartado de **Environment** y marcamos _Use secret text(s) or file(s)_ luego damos click en **Add** y seleccionamos _Secret text_ y rellenamos el formulario tanto para **db (PASS_DB), backup (PASS_BACKUP) y mariadb (PASS_MARIADB)**.
+
+Luego nos vamos al apartado **Build Steps** y damos click sobre _Add build step_ y seleccionamos _Execute shell_, lo primero que vamos hacer es crear una variable para utilizarla como nombre del backup de nuestra DB, luego vamos a ejecutar el comando que se va ejecutar en el servidor **DB** que nos va generar el backup, finalmente vamos a copiarlo en el servidor **Backup**. Para no tener el fichero .sql en nuestro _WORKSPACE_ lo vamos a eliminar ya que lo vamos a copiar en otro servidor, el ultimo comando verifica que se copio el fichero en el servidor **Backup**:
+```
+DB_FILE="db_$(date +%F).sql"
+
+sshpass -p "$PASS_DB" ssh -o StrictHostKeyChecking=no peter@172.16.239.10 "mariadb-dump -u kodekloud_roy --password='$PASS_MARIADB' kodekloud_db01" > "$DB_FILE"
+ls -la
+
+sshpass -p "$PASS_BACKUP" scp -o StrictHostKeyChecking=no "$DB_FILE" clint@172.16.238.16:/home/clint/db_backups
+
+rm "$DB_FILE"
+
+sshpass -p "$PASS_BACKUP" ssh -o StrictHostKeyChecking=no clint@172.16.238.16 "ls -la /home/clint/db_backups"
+```
+
+Finalmente damos click en **Save**
+Verificamos la ejecucion presionando **Build Now**
+
+# Day 75: Jenkins Slave Nodes
+```
+
+```

@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/gold.md",
+                "file": "100daysofcloudAWS/100 days of cloud AWS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "gold"
+              "title": "100 days of cloud AWS"
+            }
+          },
+          {
+            "id": "113d59285782b646",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAZURE/100 days of cloud AZURE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "100 days of cloud AZURE"
             }
           },
           {
@@ -185,13 +199,19 @@
   },
   "active": "208dfc2211bf67fc",
   "lastOpenFiles": [
-    "linux/learn linux with Kodekloud.md",
-    "100daysdevops/Conexion a servidores.md",
     "100daysdevops/gold.md",
-    "100daysdevops/silver.md",
+    "100daysofcloudAZURE/100 days of cloud AZURE.md",
+    "100daysofcloudAWS/100 days of cloud AWS.md",
+    "100daysofcloudAWS/datacenter-kp.pem",
+    "100daysofcloudAWS/Unconfirmed 46917.crdownload",
     "100daysdevops/bronce.md",
-    "100daysdevops/silver",
+    "100daysofcloudAZURE",
+    "100daysofcloudAWS",
     "kubernetes/learn k8s with Kodekloud.md",
+    "100daysdevops/silver.md",
+    "100daysdevops/Conexion a servidores.md",
+    "linux/learn linux with Kodekloud.md",
+    "100daysdevops/silver",
     "kubernetes",
     "linux",
     "100daysdevops"

@@ -251,3 +251,9 @@ Nos vamos a la terminal que abrimos anteriormente
 ```
 ls -la /home/nfsshare
 ```
+
+# 13 Restrict Cron Access
+```
+
+```
+
