@@ -78,6 +78,14 @@ Primero vamos a listar el _resource group_:
 az group list
 ```
 
+```
+RESOURCE_GROUP=kml_rg_main-2425f67e659d4fc1
+NSG_NAME=primerNSG
+LOCATION=westus
+IMAGE=Canonical:0001-com-ubuntu-minimal-jammy:minimal-22_04-lts-gen2:latest
+VM_NAME=datacenter-vm
+```
+
 Segundo vamos a listar el _Network Security Group_
 ```
 az network nsg list --output table
@@ -86,16 +94,16 @@ az network nsg list --output table
 Como no hay un **NSG** lo vamos a crear:
 ```
 az network nsg create \
-  --name primerNSG \
-  --resource-group kml_rg_main-edeb2a0e59b94e02 \
-  --location westus
+  --name $NSG_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --location $LOCATION
 ```
 
 Y le anadimos reglas:
 ```
 az network nsg rule create \
-  --nsg-name primerNSG \
-  --resource-group kml_rg_main-edeb2a0e59b94e02 \
+  --nsg-name $NSG_NAME \
+  --resource-group $RESOURCE_GROUP \
   --name "AllowHTTP" \
   --protocol tcp \
   --direction Inbound \
@@ -109,15 +117,15 @@ az network nsg rule create \
 
 Obtener el id de **NSG**:
 ```
-NSG_ID=$(az network nsg show --resource-group kml_rg_main-edeb2a0e59b94e02 --name primerNSG --query id -o tsv)
+NSG_ID=$(az network nsg show --resource-group $RESOURCE_GROUP --name $NSG_NAME --query id -o tsv)
 ```
 
 Tercero como ya tenemos lo necesario procedemos a crear la VM:
 ```
 az vm create \
-    --resource-group kml_rg_main-edeb2a0e59b94e02 \
-    --name nautilus-vm \
-    --image "Canonical:0001-com-ubuntu-minimal-jammy:minimal-22_04-lts-gen2:latest" \
+    --resource-group $RESOURCE_GROUP \
+    --name $VM_NAME \
+    --image $IMAGE \
     --size Standard_B1s \
     --nsg $NSG_ID \
     --data-disk-sizes-gb 30 \
@@ -129,7 +137,11 @@ az vm create \
 
 Obtener la **IP**:
 ```
-IP_ADDRESS=$(az vm show --show-details --resource-group kml_rg_main-edeb2a0e59b94e02 --name nautilus-vm --query publicIps --output tsv)
+IP_ADDRESS=$(az vm show --show-details --resource-group $RESOURCE_GROUP --name $VM_NAME --query publicIps --output tsv)
+```
+
+```
+ssh jorhak@$IP_ADDRESS
 ```
 
 SSH key files '/root/.ssh/id_rsa' and '/root/.ssh/id_rsa.pub' have been generated under ~/.ssh to allow SSH access to the VM. If using machines without permanent storage, back up your keys to a safe location.
