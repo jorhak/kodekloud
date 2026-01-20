@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/100 days of cloud AZURE.md",
+                "file": "100daysdevops/gold.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "100 days of cloud AZURE"
+              "title": "gold"
             }
           },
           {
@@ -185,8 +185,8 @@
   },
   "active": "208dfc2211bf67fc",
   "lastOpenFiles": [
-    "100daysofcloudAWS/100 days of cloud AWS.md",
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
+    "100daysofcloudAWS/100 days of cloud AWS.md",
     "kubernetes/learn k8s with Kodekloud.md",
     "linux/learn linux with Kodekloud.md",
     "100daysdevops/Conexion a servidores.md",
