@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/gold.md",
+                "file": "100daysofcloudAWS/100 days of cloud AWS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "gold"
+              "title": "100 days of cloud AWS"
             }
           },
           {
@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/100 days of cloud AWS.md",
+                "file": "100daysofcloudAZURE/100 days of cloud AZURE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "100 days of cloud AWS"
+              "title": "100 days of cloud AZURE"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,16 +184,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "208dfc2211bf67fc",
+  "active": "8755861f60b33e10",
   "lastOpenFiles": [
-    "100daysofcloudAZURE/100 days of cloud AZURE.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
+    "100daysofcloudAZURE/100 days of cloud AZURE.md",
+    "100daysdevops/gold.md",
     "kubernetes/learn k8s with Kodekloud.md",
     "linux/learn linux with Kodekloud.md",
     "100daysdevops/Conexion a servidores.md",
     "100daysdevops/silver.md",
     "100daysdevops/bronce.md",
-    "100daysdevops/gold.md",
     "100daysofcloudAWS/datacenter-kp.pem",
     "100daysofcloudAWS/Unconfirmed 46917.crdownload",
     "100daysofcloudAZURE",
