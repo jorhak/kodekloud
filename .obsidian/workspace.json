@@ -49,8 +49,7 @@
               "title": "diamond"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,10 +197,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "8755861f60b33e10",
+  "active": "208dfc2211bf67fc",
   "lastOpenFiles": [
-    "100daysofcloudAWS/100 days of cloud AWS.md",
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
+    "100daysofcloudAWS/100 days of cloud AWS.md",
     "100daysdevops/diamond.md",
     "100daysdevops/gold.md",
     "kubernetes/learn k8s with Kodekloud.md",
