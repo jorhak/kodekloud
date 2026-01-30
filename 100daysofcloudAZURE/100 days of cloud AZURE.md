@@ -638,3 +638,374 @@ Verificar que **VM** ya tiene asignada la **IP Publica**:
 ```
 az vm list -d --resource-group $RG_NAME 
 ```
+
+# Day 11: Change Azure Virtual Machine Size Using Console
+```
+The Nautilus Devops team is migrating a portion of their infrastructure to Azure. During the migration, they have created several virtual machines (VMs) in different regions. The team has identified one VM that is underutilized and has decided to change its size to optimize resource usage.
+
+1) Change the VM size from `Standard_B1s` to `Standard_B2s` for the virtual machine named `devops-vm`.
+
+2) Ensure the VM is in the `running` state after the size change is complete.  
+  
+
+  
+
+Use the below given **Azure Credentials:** (You can run the `showcreds` command on the `azure-client` host to retrieve these credentials)
+
+|Portal URL|[https://portal.azure.com](https://portal.azure.com/)|
+|---|---|
+|Username|[kk_lab_user_main@azureprod.onmicrosoft.com](mailto:kk_lab_user_main-8bbad711d43b4000@azurefreekmlprod.onmicrosoft.com)|
+|Password|contra|
+|Start Time|Thu Jan 29 19:27:00 UTC 2026|
+|End Time|Thu Jan 29 20:27:00 UTC 2026|
+
+  
+`Notes:`
+
+- Create the resources only in `eastus` region.
+- Make sure the VM is in the `Running` state after resizing.
+```
+
+Lo primero que vamos hacer sera listar **Resource Groups**:
+```
+az group list
+```
+
+Capturamos su _name_:
+```
+RG_NAME=$(az group list --query [0].name --output tsv)
+```
+Una vez tengamos el **Resource Groups** vamos a saber donde esta la **VM** a la que le vamos a cambiar el tamano.
+
+Mostrar los detalles de la **VM** y ver su _size_ que tiene:
+```
+az vm show -d --resource-group $RG_NAME --name datacenter-vm
+```
+En _hardwareProfile_>_vmSize_, vemos el **size** que tiene.
+
+Capturar el _id_ y _name_ de **VM** a la que se le va cambiar el tamano:
+```
+VM_ID=$(az vm list --resource-group $RG_NAME --query [0].id --output tsv)
+VM_NAME=$(az vm list --resource-group $RG_NAME --query [0].name --output tsv)
+```
+
+Detener **VM**:
+```
+az vm stop --ids $VM_ID
+```
+
+Cambiar tamano de **VM**:
+```
+az vm resize --size Standard_B2s --ids $VM_ID
+```
+
+Reiniciar **VM**:
+```
+az vm start --ids $VM_ID
+```
+
+Verificar el cambio:
+```
+az vm show -d --resource-group $RG_NAME --name $VM_NAME
+```
+
+# Day 12: Add and Manage Tags for Azure Virtual Machines
+```
+The Nautilus DevOps team is migrating a portion of their infrastructure to Azure. During the migration, they have created several virtual machines (VMs) in different regions. The team has identified one VM that is not tagged properly so they decided to tag it as needed.
+
+Add the tag Environment=dev to the virtual machine named nautilus-vm.
+
+
+
+Use the below given Azure Credentials: (You can run the showcreds command on the azure-client host to retrieve these credentials)
+
+Portal URL	https://portal.azure.com
+Username	kk_lab_user_main@azureprod.onmicrosoft.com
+Password	contra
+Start Time	Fri Jan 30 13:09:11 UTC 2026
+End Time	Fri Jan 30 14:09:11 UTC 2026
+```
+
+Lo primero que vamos hacer sera obtener **Resource Groups**:
+```
+az group list
+```
+
+Capturar _name_ de **Resource Groups**:
+```
+RG_NAME=$(az group list --query [0].name --output tsv)
+```
+
+Listar las **VM**:
+```
+az vm list --resource-group $RG_NAME
+```
+
+Capturar _id_ y _name_ de la **VM**:
+```
+VM_ID=$(az vm list --query [0].id --output tsv)
+VM_NAME=$(az vm list --query [0].name --output tsv)
+```
+
+Ver detalladamente **VM**:
+```
+az vm show -d --resource-group $RG_NAME --name $VM_NAME
+```
+Podemos ver que en _tags_ no tenemos nada.
+
+Detener **VM**:
+```
+az vm stop --ids $VM_ID
+```
+
+Agregar **tag**:
+```
+az vm update -g $RG_NAME -n $VM_NAME --set tags.Environment=dev
+```
+
+Reiniciar **VM**:
+```
+az vm start --ids $VM_ID
+```
+
+Verificar **VM** con el nuevo _tag_:
+```
+az vm show -d -g $RG_NAME -n $VM_NAME
+```
+Ahora si vemos que _tag_ tiene lo que acabamos de agregar.
+
+# Day 13: SSH into an Azure Virtual Machine
+```
+The Nautilus DevOps team is working on setting up secure SSH access for their virtual machines in Azure. One of the requirements is to add the SSH public key of the root user from the Azure client host (landing host) to the `datacenter-vm` Azure VM's `authorized_keys` file. This ensures secure and password-less SSH access to the VM.
+
+### Task Details:
+
+1) **VM Details**:
+
+- The VM is named `datacenter-vm` and is running in the `eastus` region. The default SSH user is `azureuser` — use this user to connect to the VM.
+- You need to add the root user's SSH public key from the Azure client host to the `authorized_keys` file of the VM's root user.
+- The SSH public key of the root user on the Azure client host is located at `/root/.ssh/id_rsa.pub`.
+
+2) **Public Key Addition**:
+
+- Copy the public key located at `/root/.ssh/id_rsa.pub` on the Azure client host to the `authorized_keys` file of the root user on `datacenter-vm`.
+- Ensure that the proper permissions for the `.ssh` folder and `authorized_keys` file are set on the VM.
+
+3) **Verification**:
+
+- After adding the public key, make sure that you are able to SSH into the `datacenter-vm` VM as the `root` user from the Azure client host without needing a password.
+
+### Important Notes:
+
+- Ensure that the VM is up and running before attempting to SSH.
+- You may need to adjust the firewall or security group rules for the VM to allow SSH access.
+
+  
+
+Use the following Azure credentials to access the Azure portal:
+
+|Portal URL|[https://portal.azure.com](https://portal.azure.com/)|
+|---|---|
+|Username|[kk_lab_user_main-588f5b17ccbf4cd7@azurefreekmlprod.onmicrosoft.com](mailto:kk_lab_user_main-588f5b17ccbf4cd7@azurefreekmlprod.onmicrosoft.com)|
+|Password|+J%9QCF6|
+|Start Time|Fri Jan 30 13:44:47 UTC 2026|
+|End Time|Fri Jan 30 14:44:47 UTC 2026|
+```
+
+Listar **Resource Groups**:
+```
+az group list
+```
+
+Capturar _name_ de **Resource Groups**:
+```
+RG_NAME=$(az group list --query [0].name --output tsv)
+```
+
+Listar **VM** que se encuentran en **Resource Groups**:
+```
+az vm list -g $RG_NAME
+```
+
+Capturar _id_ y _name_ de **VM**:
+```
+VM_ID=$(az vm list -g $RG_NAME --query [0].id --output tsv)
+VM_NAME=$(az vm list -g $RG_NAME --query [0].name --output tsv)
+```
+
+Ver datalladamente **VM**:
+```
+az vm show -d --ids $VM_ID
+```
+
+Capturar _ip publica_ de **VM**:
+```
+IP_PUBLICA=$(az vm show -d --ids $VM_ID --query publicIps --output tsv)
+```
+
+Ingresar a **VM**:
+```
+ssh azureuser@$IP_PUBLICA 
+```
+Ingresa sin inconvenientes
+
+Ingresar a **VM** con usuario _root_:
+```
+ssh root@$IP_PUBLICA
+```
+Y nos da este error:
+```
+Please login as the user "azureuser" rather than the user "root".
+
+Connection to 172.212.187.200 closed.
+```
+
+Lo que debemos hacer es ingresar con _azureuser_ y luego cambiar a usuario _root_, y modificar el fichero _/root/.ssh/authorized_keys_ que por defecto tiene un comportamiento de seguridad estandar que bloquea explicitamente el acceso a _root_ y te obliga a entrar como _azureuser_.
+
+```
+ssh azureuser@$IP_PUBLICA
+sudo -i
+```
+
+Editamos el fichero _/root/.ssh/authorized_keys_ 
+```
+vi /root/.ssh/authorized_keys
+```
+Borramos todo lo que haiga antes de **ssh-rsa**, por decir: no-port-forwarding,no-agent-forwarding...
+
+```
+no-port-forwarding,no-agent-forwarding,no-X11-forwarding,command="echo 'Please login as the user \"azureuser\" rather than the user \"root\".';echo;sleep 10;exit 142"
+```
+
+Ahora ingresamos con _root_:
+```
+ssh root@$IP_PUBLICA
+```
+
+NOTA: La configuracion del **host** ya esta configurada:
+```
+sudo vi /etc/ssh/sshd_config
+```
+
+```
+PermitRootLogin yes
+```
+
+# Day 14: Create and Attach Managed Disks in Azure
+```
+The Nautilus DevOps team is strategizing the migration of a portion of their infrastructure to the Azure cloud. Recognizing the scale of this undertaking, they have opted to approach the migration in incremental steps rather than as a single massive transition. To achieve this, they have segmented large tasks into smaller, more manageable units. This granular approach enables the team to execute the migration in gradual phases, ensuring smoother implementation and minimizing disruption to ongoing operations. By breaking down the migration into smaller tasks, the Nautilus DevOps team can systematically progress through each stage, allowing for better control, risk mitigation, and optimization of resources throughout the migration process.
+
+Create a managed disk with the following requirements:
+
+Name of the disk should be datacenter-disk.
+
+Disk type must be Standard_LRS.
+
+Disk size must be 2 GiB.
+
+
+
+Use below given Azure Credentials: (You can run the showcreds command on the azure-client host to retrieve credentials)
+
+Portal URL	https://portal.azure.com
+Username	kk_lab_user_main@azureprod.onmicrosoft.com
+Password	contra
+Start Time	Fri Jan 30 18:10:25 UTC 2026
+End Time	Fri Jan 30 19:10:25 UTC 2026
+```
+
+Listar **Resource Groups**:
+```
+az group list
+```
+
+Capturar _name_ de **Resource Groups**:
+```
+RG_NAME=$(az group list --query [0].name --output tsv)
+```
+
+Crear **disk**:
+```
+az disk create -g $RG_NAME -n datacenter-disk --sku Standard_LRS --size-gb 2
+```
+
+Listar **disk**:
+```
+az disk list -g $RG_NAME
+```
+
+# Day 15: Create and Configure Network Security Group (NSG) in Azure
+```
+The Nautilus DevOps team is strategizing the migration of a portion of their infrastructure to the Azure cloud. Recognizing the scale of this undertaking, they have opted to approach the migration in incremental steps rather than as a single massive transition. To achieve this, they have segmented large tasks into smaller, more manageable units. This granular approach enables the team to execute the migration in gradual phases, ensuring smoother implementation and minimizing disruption to ongoing operations. By breaking down the migration into smaller tasks, the Nautilus DevOps team can systematically progress through each stage, allowing for better control, risk mitigation, and optimization of resources throughout the migration process.
+
+For this task, create a network security group (NSG) with the following requirements:
+
+Name of the NSG should be xfusion-nsg.
+
+Add an inbound security rule named Allow-HTTP for HTTP service on port 80, with the source CIDR range of 0.0.0.0/0.
+
+Add another inbound security rule named Allow-SSH for SSH service on port 22, with the source CIDR range of 0.0.0.0/0.
+
+
+
+Use below given Azure Credentials: (You can run the showcreds command on the azure-client host to retrieve credentials)
+
+Portal URL	https://portal.azure.com
+Username	kk_lab_user_main-2ef5711edbc748a7@azurefreekmlprod.onmicrosoft.com
+Password	qj5^sdf9
+Start Time	Fri Jan 30 18:34:58 UTC 2026
+End Time	Fri Jan 30 19:34:58 UTC 2026
+```
+
+Listar **Resource Groups**:
+```
+az group list
+```
+
+Capturar _name_ de **Resource Groups**:
+```
+RG_NAME=$(az group list --query [0].name --output tsv)
+```
+
+Crear **Network Security Group** (NSG):
+```
+az network nsg create \
+   --name xfusion-nsg \
+   --resource-group $RG_NAME 
+```
+
+Crear **security rule**:
+```
+az network nsg rule create \
+--name 'Allow-HTTP' \
+--nsg-name xfusion-nsg \
+--priority 100 \
+--resource-group $RG_NAME \
+--direction Inbound \
+--access Allow \
+--protocol Tcp \
+--source-address-prefixes '0.0.0.0/0' \
+--source-port-ranges '*' \
+--destination-port-ranges 80 \
+--description "Permitir trafico http entrante por el puerto 80"
+```
+
+```
+az network nsg rule create \
+--name 'Allow-SSH' \
+--nsg-name xfusion-nsg \
+--priority 101 \
+--resource-group $RG_NAME \
+--direction Inbound \
+--access Allow \
+--protocol Tcp \
+--source-address-prefixes '0.0.0.0/0' \
+--source-port-ranges '*' \
+--destination-port-ranges 22 \
+--description "Permitir conexion ssh por el puerto 22"
+```
+
+Verificar que se agregaron las reglas:
+```
+az network nsg show -g $RG_NAME -n xfusion-nsg
+```
