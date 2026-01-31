@@ -1,3 +1,4 @@
+# Crear persistencia
 Lo primero que vamos a crear seran los volumenes (persistencia de datos):
 ```
 nano pvc.yml
@@ -51,6 +52,10 @@ spec:
         env:
         - name: POSTGRES_PASSWORD
           value: "postgres"
+        - name: POSTGRES_USER
+          value: "idempiere"
+        - name: POSTGRES_DB
+          value: "idempiere"
         - name: TZ
           value: "America/La_Paz"
         ports:
@@ -135,3 +140,24 @@ spec:
       targetPort: 8443
 ```
 
+# Crear namespace
+```
+kubectl create namespace idempiere
+```
+
+## Asignar como namespace por defecto
+```
+kubectl config set-context --current --namespace=idempiere
+```
+
+# Desplegar servicio
+```
+kubectl apply -f pvc.yml
+kubectl apply -f deploy_postgres.yml
+kubectl apply -f deploy_idempiere.yml
+```
+
+# Verificar que se crearon los objetos
+```
+kubectl get pod,deploy,svc
+```
