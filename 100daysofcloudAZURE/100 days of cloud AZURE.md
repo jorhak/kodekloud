@@ -2017,14 +2017,13 @@ Create the resources only in the East US region.
 Variables de entorno:
 ```
 LOCATION=eastus
-VNET_NAME=devops-pub-vnet
-SUBNET_NAME=devops-pub-subnet
-VM_NAME=devops-pub-vm
-NSG_NAME=devops-nsg
+VNET_NAME=nautilus-pub-vnet
+SUBNET_NAME=nautilus-pub-subnet
+VM_NAME=nautilus-pub-vm
+NSG_NAME=nautilus-nsg
 IMAGE="Canonical:ubuntu-24_04-lts:server:latest"
 SIZE=Standard_B1s
 SKU=Standard_LRS
-PORT_NAME=devops-port
 USERNAME=azureuser
 ```
 
@@ -2036,9 +2035,9 @@ RG_NAME=$(az group list --query [0].name --output tsv)
 2. Crear **NSG** (Network Security Group)
 ```
 az network nsg create \
-   --name \
+   --name $NSG_NAME \
    --resource-group $RG_NAME \
-   --location $LOCATION \
+   --location $LOCATION
 ```
 
 3. Crear **Vnet** (Virtual Network):
@@ -2048,7 +2047,7 @@ az network vnet create \
    --resource-group $RG_NAME \
    --location $LOCATION \
    --nsg $NSG_NAME \
-   --address-prefixes "10.20.30.0/16" \
+   --address-prefixes "10.20.0.0/16"
 ```
 
 3. Crear **Subnet**:
@@ -2058,7 +2057,7 @@ az network vnet subnet create \
    --resource-group $RG_NAME \
    --vnet-name $VNET_NAME \
    --nsg $NSG_NAME \
-   --address-prefixes "10.40.50.0/24"
+   --address-prefixes "10.20.0.0/24"
 ```
 
 4. Crear **VM**:
@@ -2084,7 +2083,7 @@ az vm create \
 ```
 az vm open-port \
    --port 22 \
-   --name $PORT_NAME \
+   --name $VM_NAME \
    --nsg-name $NSG_NAME \
    --priority 100 \
    --resource-group $RG_NAME
@@ -2105,3 +2104,5 @@ IP_ADDRESS=$(az vm show \
 ```
 ssh -i ~/.ssh/id_rsa $USERNAME@$IP_ADDRESS
 ```
+
+# 
