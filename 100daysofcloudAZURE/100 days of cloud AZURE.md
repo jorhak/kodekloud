@@ -2050,7 +2050,7 @@ az network vnet create \
    --address-prefixes "10.20.0.0/16"
 ```
 
-3. Crear **Subnet**:
+4. Crear **Subnet**:
 ```
 az network vnet subnet create \
    --name $SUBNET_NAME \
@@ -2060,7 +2060,7 @@ az network vnet subnet create \
    --address-prefixes "10.20.0.0/24"
 ```
 
-4. Crear **VM**:
+5. Crear **VM**:
 - Crear llaves
 ```
 ssh-keygen -t rsa -b 4096
@@ -2079,7 +2079,7 @@ az vm create \
    --ssh-key-values /root/.ssh/id_rsa.pub
 ```
 
-5. Abrir puerto
+6. Abrir puerto
 ```
 az vm open-port \
    --port 22 \
@@ -2089,7 +2089,7 @@ az vm open-port \
    --resource-group $RG_NAME
 ```
 
-6. Ingresar por **SSH**
+7. Ingresar por **SSH**
 - Obtener **IP Publica**
 ```
 IP_ADDRESS=$(az vm show \
@@ -2105,4 +2105,217 @@ IP_ADDRESS=$(az vm show \
 ssh -i ~/.ssh/id_rsa $USERNAME@$IP_ADDRESS
 ```
 
-# 
+# Day 27: Deploying Virtual Machines in a Private Virtual Network
+```
+The Nautilus DevOps team is expanding their Azure infrastructure and requires the setup of a private Virtual Network (VNet) along with a subnet. This VNet and subnet configuration will ensure that resources deployed within them remain isolated from external networks and can only communicate within the VNet. Additionally, the team needs to provision a Virtual Machine (VM) under the newly created private VNet. This VM should be accessible over SSH from within the VNet only, allowing for secure communication and resource management within the Azure environment.
+
+The name of the VNet must be `datacenter-priv-vnet`, create a subnet named `datacenter-priv-subnet` under the same. Further, create a Virtual Machine named `datacenter-priv-vm` under this VNet. Additionally, create a Network Security Group (NSG) named `datacenter-priv-nsg`, and ensure that the NSG rules for the VM allow access only from within the VNet's CIDR block. Ensure all resources are created in the `Central US` region.
+
+  
+
+Use below given Azure Credentials: (You can run the `showcreds` command on the `azure-client` host to retrieve these credentials)
+
+|Portal URL|[https://portal.azure.com](https://portal.azure.com/)|
+|---|---|
+|Username|[kk_lab_user_main@azureprod.onmicrosoft.com]|
+|Password|contra|
+|Start Time|Sat Mar 07 01:52:06 UTC 2026|
+|End Time|Sat Mar 07 02:52:06 UTC 2026|
+
+`Notes:`
+
+- Create the resources **only** in the `Central US` region.
+```
+
+Variables de entorno:
+```code
+LOCATION=centralus
+VNET_NAME=datacenter-priv-vnet
+SUBNET_NAME=datacenter-priv-subnet
+VM_NAME=datacenter-priv-vm
+NSG_NAME=datacenter-priv-nsg
+IMAGE="Canonical:ubuntu-24_04-lts:server:latest"
+SIZE=Standard_B1s
+SKU=Standard_LRS
+USERNAME=azureuser
+```
+
+1. Obtener _name_ de **Resource Groups**:
+```code
+RG_NAME=$(az group list --query [0].name --output tsv)
+```
+
+2. Crear **NSG** (Network Security Group)
+```code
+az network nsg create \
+   --name $NSG_NAME \
+   --resource-group $RG_NAME \
+   --location $LOCATION
+```
+
+- Agregar reglas
+```code
+az network nsg rule create \
+  --name "AllowSSH" \
+  --nsg-name $NSG_NAME \
+  --priority 100 \
+  --resource-group $RG_NAME \
+  --direction Inbound \
+  --access Allow \
+  --protocol Tcp \
+  --source-address-prefixes "10.20.0.0/16" \
+  --source-port-ranges "*" \
+  --destination-port-ranges 22 \
+  --description "Permitir trafico ssh entrante por el puerto 22"
+```
+
+```code
+az network nsg rule create \
+    --name "DenyInternetInBound" \
+    --nsg-name $NSG_NAME \
+    --direction Inbound \
+    --priority 200 \
+    --resource-group $RG_NAME \
+    --access Deny \
+    --protocol "*" \
+    --source-address-prefixes INTERNET \
+    --destination-port-ranges "*" \
+    --description "Niega el trafico entrante en todos los puertos y protocolos."
+    
+```
+
+3. Crear **VNet** (Virtual Network)
+```code
+az network vnet create \
+   --name $VNET_NAME \
+   --resource-group $RG_NAME \
+   --location $LOCATION \
+   --nsg $NSG_NAME \
+   --address-prefixes "10.20.0.0/16"
+```
+
+4. Crear **Subnet**:
+```code
+az network vnet subnet create \
+   --name $SUBNET_NAME \
+   --resource-group $RG_NAME \
+   --vnet-name $VNET_NAME \
+   --nsg $NSG_NAME \
+   --address-prefixes "10.20.0.0/24"
+```
+
+5. Crear **VM**:
+- Crear llaves
+```code
+ssh-keygen -t rsa -b 4096
+```
+
+- Crear **VM**
+```code
+az vm create \
+   --name $VM_NAME \
+   --resource-group $RG_NAME \
+   --image $IMAGE \
+   --nsg $NSG_NAME \
+   --location $LOCATION \
+   --size $SIZE \
+   --storage-sku $SKU \
+   --ssh-key-values /root/.ssh/id_rsa.pub \
+   --public-ip-address ""
+```
+
+6. Verificar estado de **VM**:
+```code
+az vm show \
+   --resource-group $RG_NAME \
+   --name $VM_NAME \
+   -d \
+   --query "{NAME:name,STATE:powerState,IP_Private:privateIps,IP_Public:publicIps}" \
+   --output table
+```
+
+- Obtener IP Privada:
+```
+IP_PRIVADA_VM=$(az vm show \
+   --resource-group $RG_NAME \
+   --name $VM_NAME \
+   -d \
+   --query "publicIps" \
+   --output tsv)
+```
+
+7. Crear un **JUMPBOX**
+8. Crear un **NSG**:
+```
+az network nsg create \
+   --name $NSG_JUMPBOX \
+   --resource-group $RG_NAME \
+   --location $LOCATION
+```
+
+- Agregar reglas
+```code
+az network nsg rule create \
+  --name "AllowSSH" \
+  --nsg-name $NSG_JUMPBOX \
+  --priority 100 \
+  --resource-group $RG_NAME \
+  --direction Inbound \
+  --access Allow \
+  --protocol Tcp \
+  --source-address-prefixes "0.0.0.0/0" \
+  --source-port-ranges "*" \
+  --destination-port-ranges 22 \
+  --description "Permitir trafico ssh entrante por el puerto 22"
+```
+
+9. Crear **VM** JumpBox:
+```
+az vm create \
+   --name $VM_JUMPBOX \
+   --resource-group $RG_NAME \
+   --image $IMAGE \
+   --nsg $NSG_JUMPBOX \
+   --location $LOCATION \
+   --size $SIZE \
+   --storage-sku $SKU \
+   --ssh-key-values /root/.ssh/id_rsa.pub \
+   --vnet-name $VNET_NAME\
+   --subnet $SUBNET_NAME
+```
+
+10. Verificar estado de **VM** JUMPBOX:
+```code
+az vm show \
+   --resource-group $RG_NAME \
+   --name $VM_JUMPBOX \
+   -d \
+   --query "{NAME:name,STATE:powerState,IP_Private:privateIps,IP_Public:publicIps}" \
+   --output table
+```
+
+- Obtener IP Privada:
+```
+IP_JUMPBOX_VM=$(az vm show \
+   --resource-group $RG_NAME \
+   --name $VM_JUMPBOX \
+   -d \
+   --query "publicIps" \
+   --output tsv)
+```
+
+11. SSH Agent Forwarding
+```
+eval "$(ssh-agent -s)"
+ssh-add /root/.ssh/id_rsa
+```
+
+12. Conectar por SSH a JUMPBOX
+```
+ssh -A $USERNAME$IP_JUMPBOX_VM
+```
+
+13. Saltar de JUMPBOX A VM aislada
+```
+ssh $USERNAME$IP_PRIVADA_VM
+```
