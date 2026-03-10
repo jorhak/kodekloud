@@ -472,3 +472,38 @@ El error se encuentra en la imagen nginx:latests debemos cambiar por nginx:lates
 ```
 kubectl edit pod/webserver
 ```
+
+# 12 Update Deployment and Service in Kubernetes
+```
+An application deployed on the Kubernetes cluster requires an update with new features developed by the Nautilus application development team. The existing setup includes a deployment named nginx-deployment and a service named nginx-service. Below are the necessary changes to be implemented without deleting the deployment and service:
+
+
+1.) Modify the service nodeport from 30008 to 32165
+
+2.) Change the replicas count from 1 to 5
+
+3.) Update the image from nginx:1.18 to nginx:latest
+
+Note: The kubectl utility on the jump-host has been configured to work with the Kubernetes cluster.
+```
+
+1. Verificar **deploy** e **ingress**:
+```
+kubectl get deploy,svc
+```
+
+2. Describir **deploy** e **ingress**:
+```
+kubectl describe deploy/nginx-deployment
+kubectl describe svc/nginx-service
+```
+
+3. Editar **deploy**:
+```
+kubectl edit deploy/nginx-deployment
+```
+
+4. Editar **service**:
+```
+kubectl edit svc/nginx-service
+```
