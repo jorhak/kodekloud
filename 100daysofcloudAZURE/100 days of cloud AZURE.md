@@ -2130,12 +2130,12 @@ Use below given Azure Credentials: (You can run the `showcreds` command on the
 Variables de entorno:
 ```code
 LOCATION=centralus
-VNET_NAME=xfusion-priv-vnet
+VNET_NAME=nautilus-priv-vnet
 VNET_PREFIX=10.0.0.0/16
-SUBNET_NAME=xfusion-priv-subnet
+SUBNET_NAME=nautilus-priv-subnet
 SUBNET_PREFIX=10.0.1.0/24
-VM_NAME=xfusion-priv-vm
-NSG_NAME=xfusion-priv-nsg
+VM_NAME=nautilus-priv-vm
+NSG_NAME=nautilus-priv-nsg
 IMAGE="Canonical:ubuntu-24_04-lts:server:latest"
 SIZE=Standard_B1s
 SKU=Standard_LRS
@@ -2156,12 +2156,6 @@ az network vnet create \
    --address-prefixes $VNET_PREFIX
 ```
 
-- Verificar **VNet**:
-```
-az network vnet list \
-   -g $RG_NAME
-```
-
 3. Crear **Subnet**:
 ```code
 az network vnet subnet create \
@@ -2169,6 +2163,20 @@ az network vnet subnet create \
    --resource-group $RG_NAME \
    --vnet-name $VNET_NAME \
    --address-prefixes $SUBNET_PREFIX
+```
+
+- Verificar **VNet**:
+```
+az network vnet subnet wait \
+   -g $RG_NAME \
+   -n $SUBNET_NAME \
+   --vnet-name $VNET_NAME \
+   --created
+```
+
+```
+az network vnet list \
+   -g $RG_NAME
 ```
 
 4. Crear **NSG** (Network Security Group)
@@ -2182,7 +2190,7 @@ az network nsg create \
 - Agregar reglas
 ```code
 az network nsg rule create \
-  --name "AllowInternalOnly" \
+  --name "AllowSSHVNet" \
   --nsg-name $NSG_NAME \
   --priority 100 \
   --resource-group $RG_NAME \
@@ -2190,10 +2198,9 @@ az network nsg rule create \
   --access Allow \
   --protocol '*' \
   --source-address-prefixes $VNET_PREFIX \
-  --source-port-ranges '*' \
-  --destination-port-ranges '*' \
-  --destination-address-prefix '*' \
-  --description "Permitir trafico Interno Vnet CIDR pos SSH"
+  --destination-port-ranges 22 \
+  --destination-address-prefix $VNET_PREFIX \
+  --description "Permitir trafico Interno Vnet CIDR por SSH"
 ```
 
 - Verificar reglas
@@ -2235,6 +2242,14 @@ az vm create \
 ```
 
 7. Verificar estado de **VM**:
+
+```
+az vm wait \
+   -g $RG_NAME \
+   -n $VM_NAME \
+   --created
+```
+
 ```code
 az vm show \
    --resource-group $RG_NAME \
@@ -2271,18 +2286,28 @@ az vm create \
   --image $IMAGE \
   --vnet-name $VNET_NAME \
   --subnet $SUBNET_NAME \
+  --nsg $NSG_NAME \
   --ssh-key-values /root/.ssh/id_jump.pub \
   --size $SIZE \
   --storage-sku $SKU \
   --public-ip-address "xfusion-jump-ip"
-
 ```
 
+- Verificar JUMP SERVER
+```
+az vm wait \
+   -g $RG_NAME \
+   -n $JUMP_VM \
+   --created
+```
+
+- Borrar **Jump Server**
+	Solo si es necesario
 ```
 az vm delete -g $RG_NAME -n $JUMP_VM --force-deletion 1 --yes
 ```
 
-9. SSH para JumpServer
+9. Agregar regla SSH para JumpServer
 ```
 az network nsg rule create \
   --resource-group $RG_NAME \
@@ -2297,16 +2322,7 @@ az network nsg rule create \
   --description "Acceso SSH al JumpServer desde Internet"
 ```
 
-10. Asociar **NSG** a **SubNet**:
-```
-az network vnet subnet update \
-  --resource-group $RG_NAME \
-  --vnet-name $VNET_NAME \
-  --name $SUBNET_NAME \
-  --network-security-group $NSG_NAME
-```
-
-11. Capturar **IP Publica** de Jump Server
+10. Capturar **IP Publica** de Jump Server
 ```
 JUMP_IP=$(az vm show \
    --resource-group $RG_NAME \
@@ -2316,7 +2332,7 @@ JUMP_IP=$(az vm show \
    --output tsv)
 ```
 
-12. SSS Agent Forwarding
+11. SSS Agent Forwarding
 ```
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
@@ -2324,7 +2340,7 @@ ssh-add ~/.ssh/id_jump
 ssh -A $USERNAME@$JUMP_IP
 ```
 
-13. Saltar de JUMP SERVER a VM aislada
+12. Saltar de JUMP SERVER a VM aislada
 - Verificar llaves
 ```
 ssh-add -l
@@ -2333,13 +2349,3 @@ ssh-add -l
 ```
 ssh azureuser@10.0.1.4
 ```
-
-14. 
-
-NSG 'devops-priv-nsg' does not allow access from the VNet's CIDR block '10.0.0.0/16'
-
-NSG 'nautilus-priv-nsg' does not allow access from the VNet's CIDR block '10.0.0.0/16'
-
-VNet 'datacenter-priv-vnet' in resource group 'kml_rg_main-0a1ad452053d489d' does not exist.
-
-NSG 'xfusion-priv-nsg' does not allow access from the VNet's CIDR block '10.0.0.0/16'
