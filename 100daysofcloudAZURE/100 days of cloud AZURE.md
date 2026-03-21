@@ -2349,3 +2349,163 @@ ssh-add -l
 ```
 ssh azureuser@10.0.1.4
 ```
+
+# Day 28: Troubleshooting Public Virtual Network Configurations
+```
+The Nautilus DevOps Team deployed an Nginx server on an Azure VM in a public VNet named nautilus-vnet. However, the server is still inaccessible from the internet.
+
+As a DevOps team member, complete the following tasks:
+
+Verify VNet Configuration: Ensure nautilus-vnet allows internet access.
+Attach Public IP: A public IP named nautilus-pip already exists. Attach this public IP to the VM nautilus-vm to make it accessible from the internet.
+Ensure Accessibility: Confirm the VM nautilus-vm is accessible on port 80.
+Use the provided Azure credentials to troubleshoot and resolve the issue.
+
+
+Use the following Azure Credentials: (Run showcreds on azure-client to retrieve credentials)
+
+Portal URL	https://portal.azure.com
+Username	kk_lab_user_main@azureprod.onmicrosoft.com
+Password	contra
+Start Time	Fri Mar 20 20:34:18 UTC 2026
+End Time	Fri Mar 20 21:34:18 UTC 2026
+
+Notes:
+
+Create resources only in the East US region.
+Ensure the Network Security Group (NSG) is attached to the VM's NIC or subnet and configured to allow HTTP traffic on port 80.
+```
+
+Variables de entorno:
+```
+VNET_NAME=devops-vnet
+PIP_NAME=devops-pip
+VM_NAME=devops-vm
+LOCATION=eastus
+```
+
+1. Obtener **name** de **Resource Group**
+```
+RG_NAME=$(az group list --query [].name --output tsv)
+```
+
+2. Verificar **VM**
+```
+az vm show -d -g $RG_NAME -n $VM_NAME
+```
+
+- Obtner _id_ de _Network Interfaces_
+```
+NIC_ID=$(az vm show -d -g $RG_NAME -n $VM_NAME \
+--query "networkProfile.networkInterfaces[0].id" \
+--output tsv)
+```
+
+- Obtener _name_ de _Network Interfaces_
+```
+NIC_NAME=$(az network nic list \
+   --query [0].name \
+   --output tsv)
+```
+
+- Obtener _id_ de _Network Security Group_
+```
+NSG_ID=$(az network nic show --ids $NIC_ID \
+--query networkSecurityGroup.id \
+--output tsv)
+```
+
+- Obtener _name_ de _Network Security Group_
+```
+NSG_NAME=$(az network nsg list \
+--query [].name --output tsv)
+```
+
+- Listar permisos de **Network Security Group**
+``` 
+az network nsg rule list \
+   --resource-group $RG_NAME \
+   --nsg-name $NSG_NAME
+```
+
+- Agregar regla
+```
+az network nsg rule create \
+  --nsg-name $NSG_NAME \
+  --resource-group $RG_NAME \
+  --name "AllowHTTP" \
+  --protocol tcp \
+  --direction Inbound \
+  --source-address-prefixes "*" \
+  --source-port-ranges "*" \
+  --destination-address-prefixes "*" \
+  --destination-port-ranges 80 \
+  --access Allow \
+  --priority 100
+```
+3. Verificar **VNET**
+```
+az network vnet show -g $RG_NAME -n $VNET_NAME
+```
+
+- Obtener _name_ de _SUBNET_
+```
+SUBNET_NAME=$(az network vnet show \
+   -g $RG_NAME \
+   -n $VNET_NAME \
+   --query subnets[0].name \
+   --output tsv)
+```
+
+4. Verificar **Public IP**
+```
+az network public-ip show -g $RG_NAME -n $PIP_NAME
+```
+
+5. Adjuntar **IP Publica** a **NIC**
+- Obtener IP Configuration
+```
+IP_CONFIG_NAME=$(az network nic ip-config list \
+   --nic-name $NIC_NAME \
+   --resource-group $RG_NAME \
+   --query [].name \
+   --output tsv)
+```
+
+```
+az network nic ip-config update \
+   -n $IP_CONFIG_NAME \
+   -g $RG_NAME \
+   --nic-name $NIC_NAME \
+   --public-ip-address $PIP_NAME
+```
+
+6. Verificar **VM**
+```
+az vm show \
+   --resource-group $RG_NAME \
+   --name $VM_NAME \
+   -d \
+   --query "{NAME:name,STATE:powerState,IP_Private:privateIps,IP_Public:publicIps}" \
+   --output table
+```
+
+7. Asociar 
+```
+az network vnet subnet update \
+  --resource-group $RG_NAME \
+  --vnet-name $VNET_NAME \
+  --name $SUBNET_NAME \
+  --network-security-group $NSG_NAME
+```
+
+```
+az network route-table route list -g MyResourceGroup --route-table-name MyRouteTable
+```
+
+Route table 'devops-rtb' does not have a route to the internet.
+opcional
+```
+az vm user update --resource-group $RG_NAME --name $VM_NAME --username azureuser --ssh-key-value ~/.ssh/id_rsa.pub
+```
+
