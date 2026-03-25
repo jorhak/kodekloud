@@ -2378,9 +2378,9 @@ Ensure the Network Security Group (NSG) is attached to the VM's NIC or subnet an
 
 Variables de entorno:
 ```
-VNET_NAME=devops-vnet
-PIP_NAME=devops-pip
-VM_NAME=devops-vm
+VNET_NAME=datacenter-vnet
+PIP_NAME=datacenter-pip
+VM_NAME=datacenter-vm
 LOCATION=eastus
 ```
 
@@ -2443,9 +2443,33 @@ az network nsg rule create \
   --access Allow \
   --priority 100
 ```
-3. Verificar **VNET**
+
+3. Verificar **VNET** y ROUTE TABLE
 ```
 az network vnet show -g $RG_NAME -n $VNET_NAME
+```
+
+- Obtener _id_ de **routeTable**:
+```
+RT_ID=$(az network vnet show \
+-g $RG_NAME \
+-n $VNET_NAME \
+--query subnets[0].routeTable.id \
+--output tsv)
+```
+
+- Verificar route table
+```
+az network route-table show \
+--ids $RT_ID
+```
+
+- Obtener _name_ de **route-table**
+```
+RT_NAME=$(az network route-table show \
+--ids $RT_ID \
+--query name \
+--output tsv)
 ```
 
 - Obtener _name_ de _SUBNET_
@@ -2490,7 +2514,17 @@ az vm show \
    --output table
 ```
 
-7. Asociar 
+7. Verificar que **NSG** esta asociado a **Subnet**
+```
+az network vnet subnet show \
+   -g "$RG_NAME" \
+   -n "$SUBNET_NAME" \
+   --vnet-name "$VNET_NAME" \
+   --query networkSecurityGroup.id \
+   -o tsv
+```
+
+8. Asociar **NSG** a **Subnet**
 ```
 az network vnet subnet update \
   --resource-group $RG_NAME \
@@ -2499,13 +2533,48 @@ az network vnet subnet update \
   --network-security-group $NSG_NAME
 ```
 
+9. Configurar route-table
+```
+az network route-table route update \
+    --resource-group "$RG_NAME" \
+    --route-table-name "$RT_NAME" \
+    --name "Block-Internet" \
+    --next-hop-type Internet
+```
+
+9. Ingresar a **VM**
+```
+ssh azureuser@IP_PUBLICA
+```
+
+10. Instalar **Nginx**
+```
+sudo apt -y install nginx
+```
+
+11. Verificar estado de Nginx
+```
+curl -I IP_PUBLICA
+sudo systemctl status nginx
+ps aux | grep nginx
+ss -nltp
+```
+
+
+
+
 ```
 az network route-table route list -g MyResourceGroup --route-table-name MyRouteTable
 ```
 
 Route table 'devops-rtb' does not have a route to the internet.
+
+Nginx server is not reachable at http://20.237.177.114.
 opcional
 ```
 az vm user update --resource-group $RG_NAME --name $VM_NAME --username azureuser --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
+```
+az network route-table route show --ids $ID_ROUTE_TABLE
+```
