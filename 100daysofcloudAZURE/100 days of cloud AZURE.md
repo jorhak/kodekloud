@@ -2378,10 +2378,11 @@ Ensure the Network Security Group (NSG) is attached to the VM's NIC or subnet an
 
 Variables de entorno:
 ```
-VNET_NAME=datacenter-vnet
-PIP_NAME=datacenter-pip
-VM_NAME=datacenter-vm
+VNET_NAME=xfusion-vnet
+PIP_NAME=xfusion-pip
+VM_NAME=xfusion-vm
 LOCATION=eastus
+USER=azureuser
 ```
 
 1. Obtener **name** de **Resource Group**
@@ -2394,28 +2395,16 @@ RG_NAME=$(az group list --query [].name --output tsv)
 az vm show -d -g $RG_NAME -n $VM_NAME
 ```
 
-- Obtner _id_ de _Network Interfaces_
-```
-NIC_ID=$(az vm show -d -g $RG_NAME -n $VM_NAME \
---query "networkProfile.networkInterfaces[0].id" \
---output tsv)
-```
-
-- Obtener _name_ de _Network Interfaces_
+3. Obtener _name_ de _Network Interfaces_ de **VM**
+	En la salida del codigo anterior vimos que la _VM_ tiene asociada una _NIC_ la que nos permite conectarnos.
 ```
 NIC_NAME=$(az network nic list \
    --query [0].name \
    --output tsv)
 ```
 
-- Obtener _id_ de _Network Security Group_
-```
-NSG_ID=$(az network nic show --ids $NIC_ID \
---query networkSecurityGroup.id \
---output tsv)
-```
-
-- Obtener _name_ de _Network Security Group_
+4. Obtener _name_ de _Network Security Group_
+	La _NIC_ tambien tiene asociada un _NSG_, que funciona como firewall para el trafico de red.
 ```
 NSG_NAME=$(az network nsg list \
 --query [].name --output tsv)
@@ -2444,7 +2433,10 @@ az network nsg rule create \
   --priority 100
 ```
 
-3. Verificar **VNET** y ROUTE TABLE
+Ejeuctamos el comando previo para ver que se haya agregado la regla
+
+5. Verificar **VNET** y **ROUTE TABLE**
+	De la salida del comando vamos a ver que la _VNET_ esta asociada a un _route table_ de la cual debemos ver su configuracion
 ```
 az network vnet show -g $RG_NAME -n $VNET_NAME
 ```
@@ -2458,7 +2450,8 @@ RT_ID=$(az network vnet show \
 --output tsv)
 ```
 
-- Verificar route table
+- Verificar **route table**
+	Aqui podemos ver que nuestro _route table_ no nos esta permitiendo tener salida a internet por la propiedad _nextHopType_.
 ```
 az network route-table show \
 --ids $RT_ID
@@ -2472,22 +2465,26 @@ RT_NAME=$(az network route-table show \
 --output tsv)
 ```
 
-- Obtener _name_ de _SUBNET_
+- Configurar route-table
+	Con esta configuracion vamos a tener salida a internet
 ```
-SUBNET_NAME=$(az network vnet show \
-   -g $RG_NAME \
-   -n $VNET_NAME \
-   --query subnets[0].name \
-   --output tsv)
+az network route-table route update \
+    --resource-group "$RG_NAME" \
+    --route-table-name "$RT_NAME" \
+    --name "Block-Internet" \
+    --next-hop-type Internet
 ```
 
-4. Verificar **Public IP**
+Para verificar vamos a la propiedad _nextHopType_ a cambiado de _None_ a _Internet_.
+
+6. Verificar **Public IP**
 ```
 az network public-ip show -g $RG_NAME -n $PIP_NAME
 ```
 
-5. Adjuntar **IP Publica** a **NIC**
+7. Adjuntar **IP Publica** a **NIC**
 - Obtener IP Configuration
+	El _IP Configuration_ nos va permitir asociar la _IP Publica_ con _NIC_.
 ```
 IP_CONFIG_NAME=$(az network nic ip-config list \
    --nic-name $NIC_NAME \
@@ -2496,6 +2493,7 @@ IP_CONFIG_NAME=$(az network nic ip-config list \
    --output tsv)
 ```
 
+- Asociar _IP Publica_ con _NIC_
 ```
 az network nic ip-config update \
    -n $IP_CONFIG_NAME \
@@ -2504,7 +2502,8 @@ az network nic ip-config update \
    --public-ip-address $PIP_NAME
 ```
 
-6. Verificar **VM**
+8. Verificar **VM**
+	Verificamos que la _VM_ tene la _IP Publica_.
 ```
 az vm show \
    --resource-group $RG_NAME \
@@ -2514,7 +2513,29 @@ az vm show \
    --output table
 ```
 
-7. Verificar que **NSG** esta asociado a **Subnet**
+- Obtener _IP PUBLICA_
+```
+IP_PUBLIC=$(az vm show \
+   --resource-group $RG_NAME \
+   --name $VM_NAME \
+   -d \
+   --query publicIps \
+   --output tsv)
+```
+
+9. Verificar que **NSG** esta asociado a **Subnet**
+- Obtener _name_ de _SUBNET_
+	Previamente debemos conseguir el _name_ de la _Subnet_
+```
+SUBNET_NAME=$(az network vnet show \
+   -g $RG_NAME \
+   -n $VNET_NAME \
+   --query subnets[0].name \
+   --output tsv)
+```
+
+- Verificar si la _SUBNET_ esta asociada a un _NSG_
+	Si no esta asociada al _NSG_ debemos asociarla como indica el **paso 10**
 ```
 az network vnet subnet show \
    -g "$RG_NAME" \
@@ -2524,7 +2545,7 @@ az network vnet subnet show \
    -o tsv
 ```
 
-8. Asociar **NSG** a **Subnet**
+10. Asociar **NSG** a **Subnet**
 ```
 az network vnet subnet update \
   --resource-group $RG_NAME \
@@ -2533,48 +2554,32 @@ az network vnet subnet update \
   --network-security-group $NSG_NAME
 ```
 
-9. Configurar route-table
+Para verificar que estan asociadas debemos ejecutar el comando previo.
+
+11. Ingresar a **VM**
 ```
-az network route-table route update \
-    --resource-group "$RG_NAME" \
-    --route-table-name "$RT_NAME" \
-    --name "Block-Internet" \
-    --next-hop-type Internet
+ssh $USER@$IP_PUBLIC
 ```
 
-9. Ingresar a **VM**
-```
-ssh azureuser@IP_PUBLICA
-```
-
-10. Instalar **Nginx**
+12. Instalar **Nginx**
 ```
 sudo apt -y install nginx
 ```
 
-11. Verificar estado de Nginx
+13. Verificar estado de Nginx
 ```
-curl -I IP_PUBLICA
 sudo systemctl status nginx
 ps aux | grep nginx
 ss -nltp
 ```
 
-
-
-
+14. Verificar la conexion
 ```
-az network route-table route list -g MyResourceGroup --route-table-name MyRouteTable
+curl -I $IP_PUBLIC
 ```
 
 Route table 'devops-rtb' does not have a route to the internet.
 
 Nginx server is not reachable at http://20.237.177.114.
 opcional
-```
-az vm user update --resource-group $RG_NAME --name $VM_NAME --username azureuser --ssh-key-value ~/.ssh/id_rsa.pub
-```
 
-```
-az network route-table route show --ids $ID_ROUTE_TABLE
-```
