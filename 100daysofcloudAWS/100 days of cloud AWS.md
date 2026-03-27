@@ -1690,10 +1690,10 @@ Use below given **AWS Credentials:** (You can run the `showcreds` command on
 
 Variables de entorno:
 ```
-ALB_NAME=xfusion-alb
-ALB_TG_NAME=xfusion-tg
-ALB_SG_NAME=xfusion-sg
-INSTANCE_NAME=xfusion-ec2
+ALB_NAME=nautilus-alb
+ALB_TG_NAME=nautilus-tg
+ALB_SG_NAME=nautilus-sg
+INSTANCE_NAME=nautilus-ec2
 REGION=us-east-1
 ```
 
@@ -1764,7 +1764,7 @@ INSTANCE_ID=$(aws ec2 describe-instances \
     --output text)
 ```
 
-- Registrar instancia en el target group
+- Registrar _instancia_ en el _target group_
 ```
 aws elbv2 register-targets \
     --target-group-arn $TG_ARN \
@@ -1774,7 +1774,7 @@ aws elbv2 register-targets \
 
 4. Crear _load balancer_
 	Se deben agregar al menos dos subnets en zonas de disponibilidad diferentes
-	**SUBNET_ID_1** y **SUBNET_ID_2** lo obtenemos ejecutando el comando de anexos **Obtener subnets**.
+	**SUBNET_ID_1** y **SUBNET_ID_2**.
 	
 - Listar las subnets
 ```
@@ -1792,14 +1792,20 @@ SUBNETS_IDS=$(aws ec2 describe-subnets \
     --output text)
 ```
 
-- Obtener AZ y SUBNET de la instancia
+- Obtener **AZ** y **SUBNET** de la _instancia_
+	Debemos agregar la subnet donde se encuentra la instancia
+```
+INSTANCE_AZ=$(aws ec2 describe-instances \
+--instance-ids $INSTANCE_ID \
+--query "Reservations[0].Instances[0].Placement.AvailabilityZone" \
+--output text)
+```
 
 ```
-INSTANCE_AZ=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[0].Instances[0].Placement.AvailabilityZone" --output text)
-```
-
-```
-NUEVA_SUBNET_ID=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$INSTANCE_AZ" "Name=vpc-id,Values=$VPC_ID" --query "Subnets[0].SubnetId" --output text)
+NUEVA_SUBNET_ID=$(aws ec2 describe-subnets \
+--filters "Name=availability-zone,Values=$INSTANCE_AZ" "Name=vpc-id,Values=$VPC_ID" \
+--query "Subnets[0].SubnetId" \
+--output text)
 ```
 
 - Crear load balancer
@@ -1813,6 +1819,11 @@ ALB_ARN=$(aws elbv2 create-load-balancer \
     --scheme internet-facing \
     --query LoadBalancers[].LoadBalancerArn \
     --output text)
+```
+
+```
+aws elbv2 wait load-balancer-exists \
+    --load-balancer-arn $ALB_ARN
 ```
 
 5. Crear listener para redirigir el trafico del puerto 80 al Target Group
@@ -1831,109 +1842,25 @@ aws elbv2 describe-load-balancers \
     --query 'LoadBalancers[0].DNSName' --output text
 ```
 
-7. Permitir trafico en la instancia
 ```
-aws ec2 authorize-security-group-ingress \
-    --group-id $INSTANCE_SG_ID \
-    --protocol tcp \
-    --port 80 \
-    --cidr 0.0.0.0/0
+aws elbv2 describe-load-balancers \
+    --load-balancer-arns $ALB_ARN \
+    --query "LoadBalancers[0].{DNS:DNSName,Nombre:LoadBalancerName,Estado:State.Code}" \
+    --output table
 ```
+En el estado debe pasar de _provisioning_ a _active_
+Hay que esperar unos 2 a 5 minutos.
 
-```
-aws ec2 authorize-security-group-ingress \
-    --group-id $INSTANCE_SG_ID \
-    --protocol tcp \
-    --port 22 \
-    --cidr 0.0.0.0/0
-```
-
-8. Eliminar load balancer
+7. Eliminar load balancer (OPCIONAL)
 ```
 aws elbv2 delete-load-balancer \
     --load-balancer-arn $ALB_ARN
 ```
 
-9. Verificar load balancer
-```
-aws elbv2 describe-load-balancers
-```
-
-
-10. Estado de la _instance_
+8. Estado de la _instance_
 ```
 aws ec2 describe-instances \
     --filters "Name=tag:Name,Values=$INSTANCE_NAME" \
     --query "Reservations[].Instances[].{IPPublica:PublicIpAddress,IPPrivada:PrivateIpAddress,Estado:State.Name,Nombre:Tags[].Value,SG:SecurityGroups[].GroupId,NIC:NetworkInterfaces[].NetworkInterfaceId}" \
     --output table
-```
-
-
-
-
-
-
-
-
-
-
-ANEXO
-
-1. Agregar **NSG** a **Instance**
-- Obtener _id_ de **Instance**
-```
-INSTANCE_ID=$(aws ec2 describe-instances \
-    --filters "Name=tag:Name,Values=$INSTANCE_NAME" \
-    --query "Reservations[].Instances[].InstanceId" \
-    --output text)
-```
-
-- Agregar _NSG_ a _Instance_
-```
-aws ec2 modify-instance-attribute \
-    --instance-id $INSTANCE_ID \
-    --groups $SG_ID $CURRENT_SG_ID
-```
-
-
-
-2. Listar _Availability Zones_
-```
-aws ec2 describe-availability-zones \
-    --query "AvailabilityZones[].{Nombre:ZoneName,ID:ZoneId}" \
-    --output table
-```
-
-De la salida del comando anterior colocamos los --zone-name
-```
-aws ec2 describe-availability-zones \
-    --zone-names us-east-1a us-east-1b
-```
-
-3. Obtener la _subnet_ de la _instance_
-```
-SUBNET_ID=$(aws ec2 describe-instances \
-    --filters "Name=tag:Name,Values=$INSTANCE_NAME" \
-    --query "Reservations[].Instances[].NetworkInterfaces[].SubnetId" \
-    --output text)
-```
-
-- Describir _subnet_
-```
-aws ec2 describe-subnets \
-    --subnet-ids $SUBNET_ID \
-    --query "Subnets[*].{AZ:AvailabilityZone,AZId:AvailabilityZoneId}" \
-    --output table
-```
-
-- Obtener _subnets_
-```
-aws ec2 describe-subnets \
-    --query "Subnets[*].{ID:SubnetId,AZ:AvailabilityZone,AZId:AvailabilityZoneId}"
-```
-
-Seleccionamos una de las _subnets_ que nos da como salida del comando previo
-```
-SUBNET_ID_1="subnet-0994a23bd77b17c6f"
-SUBNET_ID_2="subnet-0efbfb71483172b84"
 ```
