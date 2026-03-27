@@ -1654,3 +1654,286 @@ aws s3 sync s3://$S3_SOURCE_NAME s3://$S3_NAME
 ```
 aws s3 ls s3://$S3_NAME
 ```
+
+# Day 24: Setting Up an Application Load Balancer for an EC2 Instance
+```
+The Nautilus DevOps team is currently working on setting up a simple application on the AWS cloud. They aim to establish an Application Load Balancer (ALB) in front of an EC2 instance where an Nginx server is currently running. While the Nginx server currently serves a sample page, the team plans to deploy the actual application later.
+
+1. Set up an Application Load Balancer named `xfusion-alb`.
+2. Create a target group named `xfusion-tg`.
+3. Create a security group named `xfusion-sg` to open port `80` for the public.
+4. Attach this security group to the ALB.
+5. The ALB should route traffic on port `80` to port `80` of the `xfusion-ec2` instance.
+6. Make appropriate changes in the default security group attached to the EC2 instance if necessary.  
+      
+    
+
+  
+
+Use below given **AWS Credentials:** (You can run the `showcreds` command on `aws-client` host to retrieve these credentials)
+
+|Console URL|[https://453274592256.signin.aws.amazon.com/console?region=us-east-1]|
+|---|---|
+|Username|kk_labs_user|
+|Password|contra|
+|Start Time|Thu Mar 26 13:59:09 UTC 2026|
+|End Time|Thu Mar 26 14:59:09 UTC 2026|
+
+  
+`Notes:`
+
+- Create the resources only in `us-east-1` region.
+    
+- To `display` or `hide` the terminal of the AWS client machine, you can use the expand toggle button as shown below:  
+    ![toggle button](https://res.cloudinary.com/dezmljkdo/image/upload/v1678742174/AWS%20Lambda/expand_panel_hjgfkl.png)
+```
+
+Variables de entorno:
+```
+ALB_NAME=xfusion-alb
+ALB_TG_NAME=xfusion-tg
+ALB_SG_NAME=xfusion-sg
+INSTANCE_NAME=xfusion-ec2
+REGION=us-east-1
+```
+
+1. Obtener _id_ de **VPC**
+```
+VPC_ID=$(aws ec2 describe-vpcs --query "Vpcs[0].VpcId" --output text)
+```
+
+2. Crear _security group_ de **ALB**
+```
+ALB_SG_ID=$(aws ec2 create-security-group \
+    --description "Security Group para ALB"\
+    --group-name $ALB_SG_NAME \
+    --vpc-id $VPC_ID \
+    --region $REGION \
+    --query GroupId \
+    --output text)
+```
+
+```
+aws ec2 wait security-group-exists --group-ids "$ALB_SG_ID"
+```
+
+- Una ves creado el **Security Group** debemos darle las reglas de entrada:
+```
+aws ec2 authorize-security-group-ingress \
+    --group-id $ALB_SG_ID \
+    --protocol tcp \
+    --port 80 \
+    --cidr 0.0.0.0/0
+```
+
+- Obtener _id_ de **Security Group** de la instancia
+```
+INSTANCE_SG_ID=$(aws ec2 describe-instances \
+    --filters "Name=tag:Name,Values=$INSTANCE_NAME" \
+    --query "Reservations[].Instances[].SecurityGroups[].GroupId" \
+    --output text)
+```
+
+3. Permitir trafico entre **ALB** y la **INSTANCE**
+```
+aws ec2 authorize-security-group-ingress \
+    --group-id $INSTANCE_SG_ID \
+    --protocol tcp \
+    --port 80 \
+    --source-group $ALB_SG_ID
+```
+
+4. Crear _target group_
+```
+TG_ARN=$(aws elbv2 create-target-group \
+    --name $ALB_TG_NAME \
+    --protocol HTTP \
+    --port 80 \
+    --vpc-id $VPC_ID \
+    --target-type instance \
+    --region $REGION \
+    --query TargetGroups[].TargetGroupArn \
+    --output text)
+```
+
+- Obtener _id_ de _instance_
+```
+INSTANCE_ID=$(aws ec2 describe-instances \
+    --filters "Name=tag:Name,Values=$INSTANCE_NAME" \
+    --query Reservations[0].Instances[0].InstanceId \
+    --output text)
+```
+
+- Registrar instancia en el target group
+```
+aws elbv2 register-targets \
+    --target-group-arn $TG_ARN \
+    --targets Id=$INSTANCE_ID,Port=80 \
+    --region $REGION
+```
+
+4. Crear _load balancer_
+	Se deben agregar al menos dos subnets en zonas de disponibilidad diferentes
+	**SUBNET_ID_1** y **SUBNET_ID_2** lo obtenemos ejecutando el comando de anexos **Obtener subnets**.
+	
+- Listar las subnets
+```
+aws ec2 describe-subnets \
+    --filters "Name=vpc-id,Values=$VPC_ID" \
+    --query "Subnets[*].{ID:SubnetId,AZ:AvailabilityZone,CIDR:CidrBlock}" \
+    --output table
+```
+
+- Obtener una subnet
+```
+SUBNETS_IDS=$(aws ec2 describe-subnets \
+    --filters "Name=vpc-id,Values=$VPC_ID" \
+    --query "Subnets[0:1].SubnetId" \
+    --output text)
+```
+
+- Obtener AZ y SUBNET de la instancia
+
+```
+INSTANCE_AZ=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[0].Instances[0].Placement.AvailabilityZone" --output text)
+```
+
+```
+NUEVA_SUBNET_ID=$(aws ec2 describe-subnets --filters "Name=availability-zone,Values=$INSTANCE_AZ" "Name=vpc-id,Values=$VPC_ID" --query "Subnets[0].SubnetId" --output text)
+```
+
+- Crear load balancer
+```
+ALB_ARN=$(aws elbv2 create-load-balancer \
+    --name $ALB_NAME \
+    --subnets $SUBNETS_IDS $NUEVA_SUBNET_ID\
+    --security-groups $ALB_SG_ID \
+    --region $REGION \
+    --type application \
+    --scheme internet-facing \
+    --query LoadBalancers[].LoadBalancerArn \
+    --output text)
+```
+
+5. Crear listener para redirigir el trafico del puerto 80 al Target Group
+```
+aws elbv2 create-listener \
+    --load-balancer-arn $ALB_ARN \
+    --protocol HTTP \
+    --port 80 \
+    --default-actions Type=forward,TargetGroupArn=$TG_ARN
+```
+
+6. Verificar
+```
+aws elbv2 describe-load-balancers \
+    --names $ALB_NAME \
+    --query 'LoadBalancers[0].DNSName' --output text
+```
+
+7. Permitir trafico en la instancia
+```
+aws ec2 authorize-security-group-ingress \
+    --group-id $INSTANCE_SG_ID \
+    --protocol tcp \
+    --port 80 \
+    --cidr 0.0.0.0/0
+```
+
+```
+aws ec2 authorize-security-group-ingress \
+    --group-id $INSTANCE_SG_ID \
+    --protocol tcp \
+    --port 22 \
+    --cidr 0.0.0.0/0
+```
+
+8. Eliminar load balancer
+```
+aws elbv2 delete-load-balancer \
+    --load-balancer-arn $ALB_ARN
+```
+
+9. Verificar load balancer
+```
+aws elbv2 describe-load-balancers
+```
+
+
+10. Estado de la _instance_
+```
+aws ec2 describe-instances \
+    --filters "Name=tag:Name,Values=$INSTANCE_NAME" \
+    --query "Reservations[].Instances[].{IPPublica:PublicIpAddress,IPPrivada:PrivateIpAddress,Estado:State.Name,Nombre:Tags[].Value,SG:SecurityGroups[].GroupId,NIC:NetworkInterfaces[].NetworkInterfaceId}" \
+    --output table
+```
+
+
+
+
+
+
+
+
+
+
+ANEXO
+
+1. Agregar **NSG** a **Instance**
+- Obtener _id_ de **Instance**
+```
+INSTANCE_ID=$(aws ec2 describe-instances \
+    --filters "Name=tag:Name,Values=$INSTANCE_NAME" \
+    --query "Reservations[].Instances[].InstanceId" \
+    --output text)
+```
+
+- Agregar _NSG_ a _Instance_
+```
+aws ec2 modify-instance-attribute \
+    --instance-id $INSTANCE_ID \
+    --groups $SG_ID $CURRENT_SG_ID
+```
+
+
+
+2. Listar _Availability Zones_
+```
+aws ec2 describe-availability-zones \
+    --query "AvailabilityZones[].{Nombre:ZoneName,ID:ZoneId}" \
+    --output table
+```
+
+De la salida del comando anterior colocamos los --zone-name
+```
+aws ec2 describe-availability-zones \
+    --zone-names us-east-1a us-east-1b
+```
+
+3. Obtener la _subnet_ de la _instance_
+```
+SUBNET_ID=$(aws ec2 describe-instances \
+    --filters "Name=tag:Name,Values=$INSTANCE_NAME" \
+    --query "Reservations[].Instances[].NetworkInterfaces[].SubnetId" \
+    --output text)
+```
+
+- Describir _subnet_
+```
+aws ec2 describe-subnets \
+    --subnet-ids $SUBNET_ID \
+    --query "Subnets[*].{AZ:AvailabilityZone,AZId:AvailabilityZoneId}" \
+    --output table
+```
+
+- Obtener _subnets_
+```
+aws ec2 describe-subnets \
+    --query "Subnets[*].{ID:SubnetId,AZ:AvailabilityZone,AZId:AvailabilityZoneId}"
+```
+
+Seleccionamos una de las _subnets_ que nos da como salida del comando previo
+```
+SUBNET_ID_1="subnet-0994a23bd77b17c6f"
+SUBNET_ID_2="subnet-0efbfb71483172b84"
+```
