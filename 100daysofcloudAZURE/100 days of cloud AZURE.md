@@ -29,3 +29,4 @@ VAMOS A REALIZAR LOS RETOS DE LA NUVE DE AZURE
 # [[Day 27 - Deploying Virtual Machines in a Private Virtual Network]]
 # [[Day 28 - Troubleshooting Public Virtual Network Configurations]]
 # [[Day 29 - Working with Azure Container Registry (ACR)]]
+# [[Day 30 - Create Azure SQL Database]]
