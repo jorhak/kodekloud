@@ -1,0 +1,42 @@
+```
+The Nautilus DevOps team is delving into Kubernetes for app management. One team member needs to create a deployment following these details:
+
+
+Create a deployment named nginx to deploy the application nginx using the image nginx:latest (ensure to specify the tag)
+
+Note: The kubectl utility on jump_host is set up to interact with the Kubernetes cluster.
+```
+
+## Crear file deploy.yml
+```
+vi deploy.yml
+```
+
+## Agregar las especificaciones
+```
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:   
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+```
+
+## Inicializar deployment
+```
+kubectl apply -f deploy.yml
+```
+
