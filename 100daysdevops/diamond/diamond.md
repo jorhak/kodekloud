@@ -16,3 +16,5 @@
 # [[Day 84 - Copy Data to App Servers using Ansible]]
 
 # [[Day 85 - Create Files on App Servers using Ansible]]
+
+# [[Day 86 - Ansible Ping Module Usage]]
