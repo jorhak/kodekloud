@@ -15,5 +15,32 @@ docker exec -it sql2025 bash
 
 3. Conectar
 ```
-./opt/mssql-tools18/bin/sqlcmd -S datacenter-server-27228.database.windows.net,1433 -U datacenter-admin -P "#Mm1C#-bashnNtTrR4sS3nNaA1211" -No
+/opt/mssql-tools18/bin/sqlcmd \
+  -S datacenter-server-28788.database.windows.net \
+  -U datacenter-admin \
+  -P "" \
+  -d datacenter-sqldb \
+  -C
+```
+
+Debemos ejecutar linea por linea:
+```
+CREATE TABLE Inventario1 (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    NombreAsset VARCHAR(50) NOT NULL,
+    Estado VARCHAR(20),
+    FechaRegistro DATETIME DEFAULT GETDATE()
+);
+go
+```
+
+```
+INSERT INTO Inventario1 (NombreAsset, Estado)
+VALUES ('Servidor-XFusion-01', 'Online');
+go
+```
+
+```
+SELECT * FROM Inventario1;
+go
 ```

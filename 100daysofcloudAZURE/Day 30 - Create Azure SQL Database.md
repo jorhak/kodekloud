@@ -33,12 +33,15 @@ Use below given **Azure Credentials:** (You can run the `showcreds` command 
 Variabales de entorno:
 ```
 DB_NAME=datacenter-sqldb
-SERVER_NAME=datacenter-server-27228
+SERVER_NAME=datacenter-server-28788
 LOCATION=southcentralus
 USERNAME=datacenter-admin
-PASSWORD=""
 SIZE=2GB
 BSR=Local
+```
+
+```
+PASSWORD="AC0.3,JCK26a@dS0r##L1n0="
 ```
 
 1. Obtener _name_ de **Resource Group**:
@@ -103,3 +106,4 @@ az sql db show-connection-string \
 ```
 
 [[Conectar desde contenedor]]
+
