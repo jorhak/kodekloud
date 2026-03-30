@@ -11,13 +11,46 @@
             "id": "9b6b6340541594d4",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "100daysdevops/silver/Day 40 - Docker EXEC Operations.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Day 40 - Docker EXEC Operations"
+            }
+          },
+          {
+            "id": "2c0bc25407d0b716",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAZURE/Conectar desde contenedor.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Conectar desde contenedor"
+            }
+          },
+          {
+            "id": "b3a1e26f4e739b03",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 30 - Create Azure SQL Database"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -100,6 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +143,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Day 30 - Create Azure SQL Database"
             }
           },
           {
@@ -118,11 +152,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from Day 30 - Create Azure SQL Database"
             }
           },
           {
@@ -146,19 +181,22 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Day 30 - Create Azure SQL Database"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 632.5
+    "width": 328.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -171,16 +209,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "a9e292399f78f164",
+  "active": "b3a1e26f4e739b03",
   "lastOpenFiles": [
+    "100daysdevops/silver/Day 40 - Docker EXEC Operations.md",
+    "100daysofcloudAZURE/Conectar desde contenedor.md",
+    "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
+    "100daysofcloudAZURE/Day 29 - Working with Azure Container Registry (ACR).md",
     "100daysdevops/silver/silver.md",
+    "100daysdevops/bronce/bronce.md",
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
     "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
     "100daysofcloudAZURE/Day 6 - Create a Subnet in Azure Virtual Network.md",
     "100daysofcloudAZURE/Day 9 - Attach Network Interface Card (NIC) to Azure Virtual Machine.md",
     "100daysofcloudAZURE/Day 3 - Create VM using Azure CLI.md",
-    "100daysofcloudAZURE/Day 29 - Working with Azure Container Registry (ACR).md",
     "100daysofcloudAZURE/Day 28 - Troubleshooting Public Virtual Network Configurations.md",
     "100daysofcloudAZURE/Day 27 - Deploying Virtual Machines in a Private Virtual Network.md",
     "100daysofcloudAZURE/Day 26 - Deploying Virtual Machines in a Public Virtual Network.md",
@@ -195,10 +237,6 @@
     "100daysofcloudAZURE/Day 16 - Create a Private Azure Blob Storage Container.md",
     "100daysofcloudAZURE/Day 15 - Create and Configure Network Security Group (NSG) in Azure.md",
     "100daysofcloudAZURE/Day 14 - Create and Attach Managed Disks in Azure.md",
-    "100daysofcloudAZURE/Day 13 - SSH into an Azure Virtual Machine.md",
-    "100daysofcloudAZURE/Day 12 - Add and Manage Tags for Azure Virtual Machines.md",
-    "100daysofcloudAZURE/Day 11 - Change Azure Virtual Machine Size Using Console.md",
-    "100daysofcloudAZURE/Day 10 - Attach Public IP to Azure Virtual Machine.md",
     "100daysdevops/diamond",
     "100daysdevops/gold",
     "100daysdevops/silver",
