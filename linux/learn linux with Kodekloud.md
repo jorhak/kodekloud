@@ -466,3 +466,5 @@ sudo vi /etc/selinux/config
 ```
 SELINUX=disabled
 ```
+
+[[Bootear USB]]
