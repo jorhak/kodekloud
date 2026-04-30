@@ -8,8 +8,8 @@ An instance named devops-ec2 and a volume named devops-volume already exists in 
 Use below given AWS Credentials: (You can run the showcreds command on aws-client host to retrieve these credentials)
 
 Console URL	https://644306594621.signin.aws.amazon.com/console?region=us-east-1
-Username	kk_labs_user_264113
-Password	ygL64s!rdaNp
+Username	kk_labs_user
+Password	contra
 Start Time	Thu Feb 26 17:48:58 UTC 2026
 End Time	Thu Feb 26 18:48:58 UTC 2026
 Notes:

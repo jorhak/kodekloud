@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
+                "file": "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 21 - Assigning Public IP to Virtual Machines"
+              "title": "Day 6 - Launch EC2 Instance"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/Day 86 - Ansible Ping Module Usage.md",
+                "file": "100daysdevops/diamond/diamond.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 86 - Ansible Ping Module Usage"
+              "title": "diamond"
             }
           },
           {
@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/bronce/Day 7 - Linux SSH Authentication.md",
+                "file": "100daysofcloudAWS/Day 22 - Configuring Secure SSH Access to an EC2 Instance.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 7 - Linux SSH Authentication"
+              "title": "Day 22 - Configuring Secure SSH Access to an EC2 Instance"
             }
           }
         ],
@@ -107,7 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 316.5
   },
   "right": {
     "id": "95f693744e060715",
@@ -211,32 +211,32 @@
   },
   "active": "2c0bc25407d0b716",
   "lastOpenFiles": [
-    "100daysdevops/diamond/diamond.md",
-    "100daysdevops/diamond/Day 86 - Ansible Ping Module Usage.md",
-    "100daysdevops/diamond/Day 82 - Create Ansible Inventory for App Server Testing.md",
-    "100daysdevops/bronce/Day 7 - Linux SSH Authentication.md",
-    "100daysdevops/bronce/bronce.md",
-    "100daysdevops/bronce/Day 3 - Secure Root SSH Access.md",
+    "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
+    "linux/Terminal CPU, RAM, MOTHERBOARD.md",
+    "linux/Bootear USB.md",
     "linux/learn linux with Kodekloud.md",
+    "100daysofcloudAZURE/Conectar desde contenedor.md",
+    "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
+    "100daysofcloudAWS/Day 22 - Configuring Secure SSH Access to an EC2 Instance.md",
+    "100daysofcloudAWS/Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting.md",
+    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
     "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
-    "100daysofcloudAZURE/Day 20 - Deploy Azure Resources Using ARM Template.md",
-    "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
-    "100daysofcloudAZURE/Day 18 - Copy Data to an Azure Blob Storage Container.md",
-    "100daysofcloudAZURE/Day 17 - Create a Public Azure Blob Storage Container.md",
-    "100daysofcloudAZURE/Day 16 - Create a Private Azure Blob Storage Container.md",
-    "100daysofcloudAZURE/Day 15 - Create and Configure Network Security Group (NSG) in Azure.md",
-    "100daysofcloudAZURE/Day 14 - Create and Attach Managed Disks in Azure.md",
-    "100daysofcloudAZURE/Day 13 - SSH into an Azure Virtual Machine.md",
-    "100daysofcloudAZURE/Day 12 - Add and Manage Tags for Azure Virtual Machines.md",
-    "100daysofcloudAZURE/Day 11 - Change Azure Virtual Machine Size Using Console.md",
-    "100daysofcloudAZURE/Day 10 - Attach Public IP to Azure Virtual Machine.md",
-    "100daysofcloudAZURE/Day 9 - Attach Network Interface Card (NIC) to Azure Virtual Machine.md",
-    "100daysofcloudAZURE/Day 8 - Attach Managed Disk to Azure Virtual Machine.md",
-    "100daysofcloudAZURE/Day 7 - Create a Public IP Address for Azure VM.md",
-    "100daysofcloudAZURE/Day 6 - Create a Subnet in Azure Virtual Network.md",
-    "100daysofcloudAZURE/Day 4 - Create a Virtual Network (VNet) in Azure.md",
-    "100daysofcloudAZURE/Day 3 - Create VM using Azure CLI.md",
-    "100daysofcloudAZURE/100 days of cloud AZURE.md",
+    "100daysofcloudAWS/Day 20 - Create IAM Role for EC2 with Policy Attachment.md",
+    "100daysofcloudAWS/Day 19 - Attach IAM Policy to IAM User.md",
+    "100daysofcloudAWS/Day 18 - Create Read-Only IAM Policy for EC2 Console Access.md",
+    "100daysofcloudAWS/Day 17 - Create IAM Group.md",
+    "100daysofcloudAWS/Day 16 - Create IAM User.md",
+    "100daysofcloudAWS/Day 15 - Create Volume Snapshot.md",
+    "100daysofcloudAWS/Day 14 - Terminate EC2 Instance.md",
+    "100daysofcloudAWS/Day 13 - Create AMI from EC2 Instance.md",
+    "100daysofcloudAWS/Day 12 - Attach Volume to EC2 Instance.md",
+    "100daysofcloudAWS/Day 11 - Attach Elastic Network Interface to EC2 Instance.md",
+    "100daysofcloudAWS/Day 10 - Attach Elastic IP to EC2 Instance.md",
+    "100daysofcloudAWS/Day 9 - Enable Termination Protection for EC2 Instance.md",
+    "100daysofcloudAWS/Day 8 - Enable Stop Protection for EC2 Instance.md",
+    "100daysofcloudAWS/Day 7 - Change EC2 Instance Type.md",
+    "100daysofcloudAWS/Day 5 - Create GP3 Volume.md",
+    "100daysofcloudAWS/Day 4 - Enable Versioning for S3 Bucket.md",
     "100daysdevops/diamond",
     "100daysdevops/gold",
     "100daysdevops/silver",
