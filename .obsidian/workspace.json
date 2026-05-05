@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/diamond.md",
+                "file": "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "diamond"
+              "title": "Day 26 - Configuring an EC2 Instance as a Web Server with Nginx"
             }
           },
           {
@@ -41,12 +41,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 22 - Configuring Secure SSH Access to an EC2 Instance.md",
+                "file": "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 22 - Configuring Secure SSH Access to an EC2 Instance"
+              "title": "Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm"
+            }
+          },
+          {
+            "id": "2611de72374b1253",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 23 - Automating User Data Configuration Using the CLI"
             }
           }
         ],
@@ -211,32 +225,32 @@
   },
   "active": "2c0bc25407d0b716",
   "lastOpenFiles": [
+    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
+    "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
     "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
+    "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
+    "100daysofcloudAZURE/Day 24 - Securing Virtual Machine SSH Access.md",
+    "100daysofcloudAZURE/Day 25 - Expanding and Managing Disk Storage.md",
+    "100daysofcloudAZURE/Day 26 - Deploying Virtual Machines in a Public Virtual Network.md",
+    "100daysofcloudAZURE/Day 27 - Deploying Virtual Machines in a Private Virtual Network.md",
+    "100daysofcloudAWS/Day 22 - Configuring Secure SSH Access to an EC2 Instance.md",
+    "git/level 1/1 Set Up Git Repository on Storage Server.md",
+    "ansible/level 1/ansible level 1.md",
+    "ansible/level 1/5 Create Files on App Servers using Ansible.md",
+    "ansible/level 1/4 Copy Data to App Servers using Ansible.md",
+    "ansible/level 1/3 Configure Default SSH User for Ansible.md",
+    "ansible/level 1/2 Create Ansible Inventory for App Server Testing.md",
+    "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
+    "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
+    "100daysdevops/diamond/diamond.md",
     "linux/Terminal CPU, RAM, MOTHERBOARD.md",
     "linux/Bootear USB.md",
     "linux/learn linux with Kodekloud.md",
     "100daysofcloudAZURE/Conectar desde contenedor.md",
     "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
-    "100daysofcloudAWS/Day 22 - Configuring Secure SSH Access to an EC2 Instance.md",
     "100daysofcloudAWS/Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting.md",
-    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
     "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
     "100daysofcloudAWS/Day 20 - Create IAM Role for EC2 with Policy Attachment.md",
-    "100daysofcloudAWS/Day 19 - Attach IAM Policy to IAM User.md",
-    "100daysofcloudAWS/Day 18 - Create Read-Only IAM Policy for EC2 Console Access.md",
-    "100daysofcloudAWS/Day 17 - Create IAM Group.md",
-    "100daysofcloudAWS/Day 16 - Create IAM User.md",
-    "100daysofcloudAWS/Day 15 - Create Volume Snapshot.md",
-    "100daysofcloudAWS/Day 14 - Terminate EC2 Instance.md",
-    "100daysofcloudAWS/Day 13 - Create AMI from EC2 Instance.md",
-    "100daysofcloudAWS/Day 12 - Attach Volume to EC2 Instance.md",
-    "100daysofcloudAWS/Day 11 - Attach Elastic Network Interface to EC2 Instance.md",
-    "100daysofcloudAWS/Day 10 - Attach Elastic IP to EC2 Instance.md",
-    "100daysofcloudAWS/Day 9 - Enable Termination Protection for EC2 Instance.md",
-    "100daysofcloudAWS/Day 8 - Enable Stop Protection for EC2 Instance.md",
-    "100daysofcloudAWS/Day 7 - Change EC2 Instance Type.md",
-    "100daysofcloudAWS/Day 5 - Create GP3 Volume.md",
-    "100daysofcloudAWS/Day 4 - Enable Versioning for S3 Bucket.md",
     "100daysdevops/diamond",
     "100daysdevops/gold",
     "100daysdevops/silver",
