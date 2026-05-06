@@ -25,11 +25,10 @@ End Time	Tue May 05 16:28:03 UTC 2026
 
 # Variables de entorno
 ```
-APP_SERVICE_NAME=datacenter-learn-python
+APP_SERVICE_NAME=nautilus-learn-python
 SKU=B1
 TAGS="Name=WebAppLearning Environment=Dev"
-           WebAppLearning
-APP_NAME=datacenter-webapp
+APP_NAME=nautilus-webapp
 LOCATION=westus
 RUNTIME="PYTHON:3.10"
 OS_NAME=Linux
@@ -46,7 +45,7 @@ az appservice plan create \
    --resource-group $RG_NAME \
    --sku $SKU \
    --is-linux \
-   --location $LOCATION \
+   --location $LOCATION
 ```
 
 # 3 Crear WebApp
@@ -66,7 +65,7 @@ az webapp create \
 
 Nota: Aqui ocurre un error debido a que ya existe una WebApp con ese nombre por lo que lo cambiamos para poder seguir con el laboratorio. Ejecutar solo si sale error:
 ```
-APP_NAME=datacenter-webapp-pier-8374
+APP_NAME=nautilus-webapp-jon-8374
 ```
 # 4 Ejecutar App
 ```
@@ -108,7 +107,6 @@ sudo apt install zip
 ```
 zip -r deploy.zip .
 ```
-
 # 7 Desplegar
 ```
 az webapp deployment source config-zip \
@@ -124,9 +122,4 @@ az webapp show --name $APP_NAME --resource-group $RG_NAME | grep $APP_NAME
 Colocamos en el navegador:
 ```
 https://datacenter-webapp.azurewebsites.net/api/greet
-```
-
-ERROR:
-```
-WebAppLearning tag is missing.
 ```

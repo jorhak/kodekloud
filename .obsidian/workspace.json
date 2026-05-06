@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
+                "file": "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 87 - Ansible Install Package"
+              "title": "Day 31 - Deploying and Managing a Web Application"
             }
           },
           {
@@ -225,9 +225,9 @@
   },
   "active": "b3a1e26f4e739b03",
   "lastOpenFiles": [
+    "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
     "100daysdevops/diamond/Day 82 - Create Ansible Inventory for App Server Testing.md",
     "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
-    "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
     "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
     "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
     "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
