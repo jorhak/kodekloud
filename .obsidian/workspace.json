@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
+                "file": "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 30 - Create Azure SQL Database"
+              "title": "Day 85 - Create Files on App Servers using Ansible"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
+                "file": "100daysdevops/diamond/Day 82 - Create Ansible Inventory for App Server Testing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 31 - Deploying and Managing a Web Application"
+              "title": "Day 82 - Create Ansible Inventory for App Server Testing"
             }
           },
           {
@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
+                "file": "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm"
+              "title": "Day 87 - Ansible Install Package"
             }
           },
           {
@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -223,13 +223,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "2c0bc25407d0b716",
+  "active": "b3a1e26f4e739b03",
   "lastOpenFiles": [
+    "100daysdevops/diamond/Day 82 - Create Ansible Inventory for App Server Testing.md",
+    "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
+    "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
+    "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
+    "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
+    "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
+    "100daysdevops/diamond/Day 86 - Ansible Ping Module Usage.md",
     "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
     "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
-    "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
     "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
-    "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
     "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
     "100daysofcloudAZURE/Day 24 - Securing Virtual Machine SSH Access.md",
     "100daysofcloudAZURE/Day 25 - Expanding and Managing Disk Storage.md",
@@ -243,14 +248,9 @@
     "ansible/level 1/3 Configure Default SSH User for Ansible.md",
     "ansible/level 1/2 Create Ansible Inventory for App Server Testing.md",
     "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
-    "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
     "100daysdevops/diamond/diamond.md",
     "linux/Terminal CPU, RAM, MOTHERBOARD.md",
     "linux/Bootear USB.md",
-    "linux/learn linux with Kodekloud.md",
-    "100daysofcloudAZURE/Conectar desde contenedor.md",
-    "100daysofcloudAWS/Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting.md",
-    "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
     "100daysdevops/diamond",
     "100daysdevops/gold",
     "100daysdevops/silver",
