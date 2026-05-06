@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
+                "file": "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 6 - Launch EC2 Instance"
+              "title": "Day 30 - Create Azure SQL Database"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
+                "file": "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 26 - Configuring an EC2 Instance as a Web Server with Nginx"
+              "title": "Day 31 - Deploying and Managing a Web Application"
             }
           },
           {
@@ -225,7 +225,9 @@
   },
   "active": "2c0bc25407d0b716",
   "lastOpenFiles": [
+    "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
     "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
+    "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
     "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
     "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
     "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
@@ -247,10 +249,8 @@
     "linux/Bootear USB.md",
     "linux/learn linux with Kodekloud.md",
     "100daysofcloudAZURE/Conectar desde contenedor.md",
-    "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
     "100daysofcloudAWS/Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting.md",
     "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
-    "100daysofcloudAWS/Day 20 - Create IAM Role for EC2 with Policy Attachment.md",
     "100daysdevops/diamond",
     "100daysdevops/gold",
     "100daysdevops/silver",
