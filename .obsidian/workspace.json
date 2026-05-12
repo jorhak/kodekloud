@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/Day 82 - Create Ansible Inventory for App Server Testing.md",
+                "file": "100daysofcloudAWS/Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 82 - Create Ansible Inventory for App Server Testing"
+              "title": "Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting"
             }
           },
           {
@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
+                "file": "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 31 - Deploying and Managing a Web Application"
+              "title": "Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access"
             }
           },
           {
@@ -121,7 +121,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5
+    "width": 348.5
   },
   "right": {
     "id": "95f693744e060715",
@@ -225,32 +225,32 @@
   },
   "active": "b3a1e26f4e739b03",
   "lastOpenFiles": [
-    "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
-    "100daysdevops/diamond/Day 82 - Create Ansible Inventory for App Server Testing.md",
-    "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
-    "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
-    "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
-    "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
-    "100daysdevops/diamond/Day 86 - Ansible Ping Module Usage.md",
-    "100daysofcloudAZURE/Day 30 - Create Azure SQL Database.md",
-    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
     "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
-    "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
-    "100daysofcloudAZURE/Day 24 - Securing Virtual Machine SSH Access.md",
-    "100daysofcloudAZURE/Day 25 - Expanding and Managing Disk Storage.md",
+    "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
+    "100daysofcloudAWS/Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting.md",
     "100daysofcloudAZURE/Day 26 - Deploying Virtual Machines in a Public Virtual Network.md",
-    "100daysofcloudAZURE/Day 27 - Deploying Virtual Machines in a Private Virtual Network.md",
-    "100daysofcloudAWS/Day 22 - Configuring Secure SSH Access to an EC2 Instance.md",
-    "git/level 1/1 Set Up Git Repository on Storage Server.md",
-    "ansible/level 1/ansible level 1.md",
-    "ansible/level 1/5 Create Files on App Servers using Ansible.md",
-    "ansible/level 1/4 Copy Data to App Servers using Ansible.md",
-    "ansible/level 1/3 Configure Default SSH User for Ansible.md",
-    "ansible/level 1/2 Create Ansible Inventory for App Server Testing.md",
-    "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
-    "100daysdevops/diamond/diamond.md",
-    "linux/Terminal CPU, RAM, MOTHERBOARD.md",
-    "linux/Bootear USB.md",
+    "100daysofcloudAZURE/Day 25 - Expanding and Managing Disk Storage.md",
+    "100daysofcloudAZURE/Day 24 - Securing Virtual Machine SSH Access.md",
+    "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
+    "100daysofcloudAZURE/Day 22 - Configuring Instances with User Data.md",
+    "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
+    "100daysofcloudAZURE/Day 20 - Deploy Azure Resources Using ARM Template.md",
+    "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
+    "100daysofcloudAZURE/Day 18 - Copy Data to an Azure Blob Storage Container.md",
+    "100daysofcloudAZURE/Day 17 - Create a Public Azure Blob Storage Container.md",
+    "100daysofcloudAZURE/Day 16 - Create a Private Azure Blob Storage Container.md",
+    "100daysofcloudAZURE/Day 15 - Create and Configure Network Security Group (NSG) in Azure.md",
+    "100daysofcloudAZURE/Day 14 - Create and Attach Managed Disks in Azure.md",
+    "100daysofcloudAZURE/Day 13 - SSH into an Azure Virtual Machine.md",
+    "100daysofcloudAZURE/Day 12 - Add and Manage Tags for Azure Virtual Machines.md",
+    "100daysofcloudAZURE/Day 11 - Change Azure Virtual Machine Size Using Console.md",
+    "100daysofcloudAZURE/Day 10 - Attach Public IP to Azure Virtual Machine.md",
+    "100daysofcloudAZURE/Day 9 - Attach Network Interface Card (NIC) to Azure Virtual Machine.md",
+    "100daysofcloudAZURE/Day 8 - Attach Managed Disk to Azure Virtual Machine.md",
+    "100daysofcloudAZURE/Day 7 - Create a Public IP Address for Azure VM.md",
+    "100daysofcloudAZURE/Day 6 - Create a Subnet in Azure Virtual Network.md",
+    "100daysofcloudAZURE/Day 5 - Create a Virtual Network (IPv4) in Azure.md",
+    "100daysofcloudAZURE/Day 4 - Create a Virtual Network (VNet) in Azure.md",
     "100daysdevops/diamond",
     "100daysdevops/gold",
     "100daysdevops/silver",
