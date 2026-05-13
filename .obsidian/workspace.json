@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
+                "file": "100daysdevops/diamond/Day 88 - Ansible Blockinfile Module.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 19 - Convert Public Azure Blob Container to Private"
+              "title": "Day 88 - Ansible Blockinfile Module"
             }
           },
           {
@@ -27,16 +27,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/Day 32 - Synchronizing Containers Using the CLI.md",
+                "file": "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 32 - Synchronizing Containers Using the CLI"
+              "title": "Day 87 - Ansible Install Package"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -195,10 +194,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "2611de72374b1253",
+  "active": "b3a1e26f4e739b03",
   "lastOpenFiles": [
-    "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
+    "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
+    "100daysdevops/diamond/Day 88 - Ansible Blockinfile Module.md",
     "100daysofcloudAZURE/Day 32 - Synchronizing Containers Using the CLI.md",
+    "100daysdevops/diamond/diamond.md",
+    "100daysdevops/diamond/Day 88 - Ansible Blockinfile ModuleUntitled.md",
+    "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
     "100daysofcloudAZURE/Day 18 - Copy Data to an Azure Blob Storage Container.md",
     "100daysofcloudAZURE/Day 17 - Create a Public Azure Blob Storage Container.md",
     "100daysofcloudAZURE/Day 16 - Create a Private Azure Blob Storage Container.md",
@@ -219,10 +222,6 @@
     "100daysofcloudAZURE/Day 14 - Create and Attach Managed Disks in Azure.md",
     "100daysofcloudAZURE/Day 13 - SSH into an Azure Virtual Machine.md",
     "100daysofcloudAZURE/Day 12 - Add and Manage Tags for Azure Virtual Machines.md",
-    "100daysofcloudAZURE/Day 11 - Change Azure Virtual Machine Size Using Console.md",
-    "100daysofcloudAZURE/Day 10 - Attach Public IP to Azure Virtual Machine.md",
-    "100daysofcloudAZURE/Day 9 - Attach Network Interface Card (NIC) to Azure Virtual Machine.md",
-    "100daysofcloudAZURE/Day 8 - Attach Managed Disk to Azure Virtual Machine.md",
     "100daysdevops/diamond",
     "100daysdevops/gold",
     "100daysdevops/silver",
