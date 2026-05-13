@@ -30,3 +30,5 @@ VAMOS A REALIZAR LOS RETOS DE LA NUVE DE AZURE
 # [[Day 28 - Troubleshooting Public Virtual Network Configurations]]
 # [[Day 29 - Working with Azure Container Registry (ACR)]]
 # [[Day 30 - Create Azure SQL Database]]
+# [[Day 31 - Deploying and Managing a Web Application]]
+# [[Day 32 - Synchronizing Containers Using the CLI]]
