@@ -8,45 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "9b6b6340541594d4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 85 - Create Files on App Servers using Ansible"
-            }
-          },
-          {
-            "id": "2c0bc25407d0b716",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting"
-            }
-          },
-          {
             "id": "b3a1e26f4e739b03",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
+                "file": "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access"
+              "title": "Day 19 - Convert Public Azure Blob Container to Private"
             }
           },
           {
@@ -55,16 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
+                "file": "100daysofcloudAZURE/Day 32 - Synchronizing Containers Using the CLI.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 23 - Automating User Data Configuration Using the CLI"
+              "title": "Day 32 - Synchronizing Containers Using the CLI"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -223,22 +195,26 @@
       "bases:Create new base": false
     }
   },
-  "active": "b3a1e26f4e739b03",
+  "active": "2611de72374b1253",
   "lastOpenFiles": [
-    "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
+    "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
+    "100daysofcloudAZURE/Day 32 - Synchronizing Containers Using the CLI.md",
+    "100daysofcloudAZURE/Day 18 - Copy Data to an Azure Blob Storage Container.md",
+    "100daysofcloudAZURE/Day 17 - Create a Public Azure Blob Storage Container.md",
+    "100daysofcloudAZURE/Day 16 - Create a Private Azure Blob Storage Container.md",
+    "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
+    "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
+    "100daysofcloudAZURE/100 days of cloud AZURE.md",
+    "100daysofcloudAZURE/Day 27 - Deploying Virtual Machines in a Private Virtual Network.md",
     "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
+    "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
     "100daysofcloudAWS/Day 21 - Setting Up an EC2 Instance with an Elastic IP for Application Hosting.md",
     "100daysofcloudAZURE/Day 26 - Deploying Virtual Machines in a Public Virtual Network.md",
     "100daysofcloudAZURE/Day 25 - Expanding and Managing Disk Storage.md",
     "100daysofcloudAZURE/Day 24 - Securing Virtual Machine SSH Access.md",
-    "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
     "100daysofcloudAZURE/Day 22 - Configuring Instances with User Data.md",
     "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
     "100daysofcloudAZURE/Day 20 - Deploy Azure Resources Using ARM Template.md",
-    "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
-    "100daysofcloudAZURE/Day 18 - Copy Data to an Azure Blob Storage Container.md",
-    "100daysofcloudAZURE/Day 17 - Create a Public Azure Blob Storage Container.md",
-    "100daysofcloudAZURE/Day 16 - Create a Private Azure Blob Storage Container.md",
     "100daysofcloudAZURE/Day 15 - Create and Configure Network Security Group (NSG) in Azure.md",
     "100daysofcloudAZURE/Day 14 - Create and Attach Managed Disks in Azure.md",
     "100daysofcloudAZURE/Day 13 - SSH into an Azure Virtual Machine.md",
@@ -247,10 +223,6 @@
     "100daysofcloudAZURE/Day 10 - Attach Public IP to Azure Virtual Machine.md",
     "100daysofcloudAZURE/Day 9 - Attach Network Interface Card (NIC) to Azure Virtual Machine.md",
     "100daysofcloudAZURE/Day 8 - Attach Managed Disk to Azure Virtual Machine.md",
-    "100daysofcloudAZURE/Day 7 - Create a Public IP Address for Azure VM.md",
-    "100daysofcloudAZURE/Day 6 - Create a Subnet in Azure Virtual Network.md",
-    "100daysofcloudAZURE/Day 5 - Create a Virtual Network (IPv4) in Azure.md",
-    "100daysofcloudAZURE/Day 4 - Create a Virtual Network (VNet) in Azure.md",
     "100daysdevops/diamond",
     "100daysdevops/gold",
     "100daysdevops/silver",
