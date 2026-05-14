@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 28 - Creating a Private ECR Repository.md",
+                "file": "100daysdevops/diamond/diamond.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 28 - Creating a Private ECR Repository"
+              "title": "diamond"
+            }
+          },
+          {
+            "id": "8861e4cae2a181e8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysdevops/diamond/Day 89 - Ansible Manage Services.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 89 - Ansible Manage Services"
             }
           },
           {
@@ -27,15 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
+                "file": "100daysdevops/diamond/Day 88 - Ansible Blockinfile Module.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access"
+              "title": "Day 88 - Ansible Blockinfile Module"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -194,9 +209,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "63eddf0e443bd812",
+  "active": "8861e4cae2a181e8",
   "lastOpenFiles": [
+    "100daysdevops/diamond/Day 88 - Ansible Blockinfile Module.md",
+    "100daysdevops/diamond/Day 89 - Ansible Manage Services.md",
     "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
+    "100daysdevops/diamond/diamond.md",
+    "linux/learn linux with Kodekloud.md",
+    "kubernetes/learn k8s with Kodekloud level 1.md",
     "100daysofcloudAWS/Day 28 - Creating a Private ECR Repository.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
@@ -205,8 +225,6 @@
     "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
     "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
     "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
-    "100daysdevops/diamond/Day 88 - Ansible Blockinfile Module.md",
-    "100daysdevops/diamond/diamond.md",
     "100daysdevops/diamond/Day 88 - Ansible Blockinfile ModuleUntitled.md",
     "100daysofcloudAZURE/Day 19 - Convert Public Azure Blob Container to Private.md",
     "100daysofcloudAZURE/Day 18 - Copy Data to an Azure Blob Storage Container.md",
@@ -219,9 +237,6 @@
     "100daysofcloudAZURE/Day 26 - Deploying Virtual Machines in a Public Virtual Network.md",
     "100daysofcloudAZURE/Day 25 - Expanding and Managing Disk Storage.md",
     "100daysofcloudAZURE/Day 24 - Securing Virtual Machine SSH Access.md",
-    "100daysofcloudAZURE/Day 22 - Configuring Instances with User Data.md",
-    "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
-    "100daysofcloudAZURE/Day 20 - Deploy Azure Resources Using ARM Template.md",
     "100daysdevops/diamond",
     "100daysdevops/gold",
     "100daysdevops/silver",
