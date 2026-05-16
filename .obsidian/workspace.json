@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "67a2b242fe05f745",
+        "id": "07975e29d208bd1d",
         "type": "tabs",
         "children": [
           {
-            "id": "e3396af29eecefdc",
+            "id": "ee31d53c4bac4f37",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/Day 90 - Managing ACLs Using Ansible.md",
+                "file": "100daysofcloudAWS/Day 29 - Establishing Secure Communication Between Public and Private VPCs via VPC Peering.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 90 - Managing ACLs Using Ansible"
-            }
-          },
-          {
-            "id": "319b2a458b39b1cc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 85 - Create Files on App Servers using Ansible"
+              "title": "Day 29 - Establishing Secure Communication Between Public and Private VPCs via VPC Peering"
             }
           }
         ]
@@ -194,10 +180,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "e3396af29eecefdc",
+  "active": "ee31d53c4bac4f37",
   "lastOpenFiles": [
-    "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
     "100daysdevops/diamond/Day 90 - Managing ACLs Using Ansible.md",
+    "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
     "100daysdevops/diamond/Day 84 - Copy Data to App Servers using Ansible.md",
     "100daysdevops/diamond/Day 83 - Troubleshoot and Create Ansible Playbook.md",
     "100daysdevops/diamond/Day 82 - Create Ansible Inventory for App Server Testing.md",
