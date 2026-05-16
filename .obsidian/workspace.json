@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 29 - Establishing Secure Communication Between Public and Private VPCs via VPC Peering.md",
+                "file": "100daysofcloudAZURE/Day 33 - Integrating Virtual Machines with Application Load Balancer.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 29 - Establishing Secure Communication Between Public and Private VPCs via VPC Peering"
+              "title": "Day 33 - Integrating Virtual Machines with Application Load Balancer"
             }
           }
         ]
@@ -182,6 +182,7 @@
   },
   "active": "ee31d53c4bac4f37",
   "lastOpenFiles": [
+    "100daysofcloudAWS/Day 29 - Establishing Secure Communication Between Public and Private VPCs via VPC Peering.md",
     "100daysdevops/diamond/Day 90 - Managing ACLs Using Ansible.md",
     "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
     "100daysdevops/diamond/Day 84 - Copy Data to App Servers using Ansible.md",
@@ -190,7 +191,6 @@
     "100daysdevops/diamond/Day 89 - Ansible Manage Services.md",
     "100daysofcloudAZURE/Day 33 - Integrating Virtual Machines with Application Load Balancer.md",
     "diagramas/dia33azure.drawio",
-    "100daysofcloudAWS/Day 29 - Establishing Secure Communication Between Public and Private VPCs via VPC Peering.md",
     "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
     "diagramas/dia29aws.drawio",
