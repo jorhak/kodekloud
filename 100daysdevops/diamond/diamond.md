@@ -23,3 +23,4 @@
 # [[Day 89 - Ansible Manage Services]]
 # [[Day 90 - Managing ACLs Using Ansible]]
 # [[Day 91 - Ansible Lineinfile Module]]
+# [[Day 92 - Managing Jinja2 Templates Using Ansible]]
