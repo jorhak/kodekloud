@@ -33,3 +33,4 @@ VAMOS A REALIZAR LOS RETOS DE LA NUVE DE AZURE
 # [[Day 31 - Deploying and Managing a Web Application]]
 # [[Day 32 - Synchronizing Containers Using the CLI]]
 # [[Day 33 - Integrating Virtual Machines with Application Load Balancer]]
+# [[Day 34 - Enabling Internet Connectivity for Virtual Machines]]
