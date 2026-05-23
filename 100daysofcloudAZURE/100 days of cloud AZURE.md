@@ -35,3 +35,4 @@ VAMOS A REALIZAR LOS RETOS DE LA NUVE DE AZURE
 # [[Day 33 - Integrating Virtual Machines with Application Load Balancer]]
 # [[Day 34 - Enabling Internet Connectivity for Virtual Machines]]
 # [[Day 35 - Configuring Virtual Network Peering]]
+# [[Day 36 - Managing Storage Lifecycle in Azure]]
