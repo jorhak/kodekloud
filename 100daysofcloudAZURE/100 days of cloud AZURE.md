@@ -36,3 +36,4 @@ VAMOS A REALIZAR LOS RETOS DE LA NUVE DE AZURE
 # [[Day 34 - Enabling Internet Connectivity for Virtual Machines]]
 # [[Day 35 - Configuring Virtual Network Peering]]
 # [[Day 36 - Managing Storage Lifecycle in Azure]]
+# [[Day 37 - Setting Up MySQL on a Virtual Machine in Azure]]
