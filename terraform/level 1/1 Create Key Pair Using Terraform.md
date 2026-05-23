@@ -80,7 +80,7 @@ resource "aws_key_pair" "mi_llave_privada" {
 resource "local_file" "llave_pem" {
   content  = tls_private_key.llave_privada.private_key_pem
   filename = "../${path.module}/devops-kp.pem"
-  file_permision = "0600"
+  file_permission = "0600"
 }
 ```
 # Inicializar proyecto
