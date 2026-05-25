@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/Day 97 - Create IAM Policy Using Terraform.md",
+                "file": "ansible/level 1/3 Configure Default SSH User for Ansible.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 97 - Create IAM Policy Using Terraform"
+              "title": "3 Configure Default SSH User for Ansible"
             }
           }
         ],
@@ -237,7 +237,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "beb41c24ac7ac4b0",
+  "active": "35cca74e1ba84840",
   "lastOpenFiles": [
     "100daysdevops/diamond/Day 97 - Create IAM Policy Using Terraform.md",
     "100daysdevops/diamond/diamond.md",
