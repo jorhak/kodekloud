@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/Day 96 - Create EC2 Instance Using Terraform.md",
+                "file": "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 96 - Create EC2 Instance Using Terraform"
+              "title": "1 Troubleshoot and Create Ansible Playbook"
             }
           },
           {
@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/Day 98 - Launch EC2 in Private VPC Subnet Using Terraform.md",
+                "file": "ansible/level 1/4 Copy Data to App Servers using Ansible.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 98 - Launch EC2 in Private VPC Subnet Using Terraform"
+              "title": "4 Copy Data to App Servers using Ansible"
             }
           }
         ],
@@ -211,32 +211,32 @@
   },
   "active": "6c02fea76b7a959c",
   "lastOpenFiles": [
+    "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
+    "ansible/level 1/4 Copy Data to App Servers using Ansible.md",
+    "ansible/level 1/2 Create Ansible Inventory for App Server Testing.md",
+    "ansible/level 1/3 Configure Default SSH User for Ansible.md",
+    "100daysdevops/diamond/Day 96 - Create EC2 Instance Using Terraform.md",
+    "100daysdevops/diamond/Day 98 - Launch EC2 in Private VPC Subnet Using Terraform.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
     "100daysdevops/diamond/diamond.md",
     "100daysofcloudAZURE/Day 22 - Configuring Instances with User Data.md",
-    "100daysdevops/diamond/Day 98 - Launch EC2 in Private VPC Subnet Using Terraform.md",
-    "100daysdevops/diamond/Day 96 - Create EC2 Instance Using Terraform.md",
     "100daysdevops/diamond/Day 97 - Create IAM Policy Using Terraform.md",
     "100daysofcloudAZURE/Day 37 - Setting Up MySQL on a Virtual Machine in Azure.md",
     "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
     "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
     "100daysofcloudAZURE/Day 2 - Create an Azure Virtual Machine.md",
-    "ansible/level 1/3 Configure Default SSH User for Ansible.md",
     "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
     "100daysofcloudAZURE/Day 35 - Configuring Virtual Network Peering.md",
     "100daysofcloudAZURE/Day 36 - Managing Storage Lifecycle in Azure.md",
     "terraform/level 1/2 Create Security Group Using Terraform.md",
     "terraform/level 1/1 Create Key Pair Using Terraform.md",
     "terraform/level 1/terraform level 1.md",
-    "ansible/level 1/2 Create Ansible Inventory for App Server Testing.md",
     "100daysofcloudAZURE/Day 33 - Integrating Virtual Machines with Application Load Balancer.md",
     "100daysofcloudAZURE/Day 32 - Synchronizing Containers Using the CLI.md",
     "100daysofcloudAZURE/Day 31 - Deploying and Managing a Web Application.md",
     "100daysofcloudAZURE/Day 34 - Enabling Internet Connectivity for Virtual Machines.md",
-    "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
     "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
-    "100daysofcloudAWS/Day 28 - Creating a Private ECR Repository.md",
     "waveterm-linux-amd64-0.14.5.deb",
     "terraform/level 1",
     "terraform",
