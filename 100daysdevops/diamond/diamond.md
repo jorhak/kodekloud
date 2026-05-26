@@ -29,3 +29,4 @@
 # [[Day 95 - Create Security Group Using Terraform]]
 # [[Day 96 - Create EC2 Instance Using Terraform]]
 # [[Day 97 - Create IAM Policy Using Terraform]]
+# [[Day 98 - Launch EC2 in Private VPC Subnet Using Terraform]]
