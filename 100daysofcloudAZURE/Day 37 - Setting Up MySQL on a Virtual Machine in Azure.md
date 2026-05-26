@@ -45,28 +45,16 @@ Use the Azure Portal URL and login credentials below:
 ```
 # Variables de entorno
 ```
-VM_MYSQL_NAME=xfusion-mysql-vm
+VM_MYSQL_NAME=datacenter-mysql-vm
 VM_MYSQL_SIZE=Standard_B1s
 VM_MYSQL_STORAGE_SKU=Standard_LRS
 MYSQL_REGION=centralus
-MYSQL_USERNAME=xfusion_admin
-MYSQL_PASSWORD=
+MYSQL_USERNAME=datacenter_admin
+MYSQL_PASSWORD=Namin@123456
 MYSQL_PORT='3306'
-VM_PHP_NAME=xfusion-php-vm
+VM_PHP_NAME=datacenter-php-vm
 REGION=eastus
 ```
-
-```
-Security type: Standard
-Image:Percona Server for MySQL 5.7 on Ubuntu -64 Gen1
-VM architecture: x64
-Size: Standard_D4s_v3 - 4 vcpus, 16 GiB memory ($160)
-Size: Standard_B2s - 2 vcpus, 4 GiB memory ($36.43)
-Username: azureuser
-SSH public key source: Generate new key pair
-SSH Key type: RSA SSH format
-```
-
 # Obtener Resource Group
 ```
 RG_NAME=$(az group list --query [0].name --output tsv)
@@ -94,6 +82,8 @@ az vm image terms accept \
   --urn "jetware-srl:percona_mysql:percona_mysql57-ubuntu-1604:1.0.170503"
 ```
 # 2 Crear VM
+### Opcion 1
+Para crear esta **VM** debemos contar con los permisos necesarios. Nos vamos a ir por la **Opcion 2**.
 ```
 az vm create \
   --resource-group $RG_NAME \
@@ -106,6 +96,64 @@ az vm create \
   --storage-sku $VM_MYSQL_STORAGE_SKU \
   --public-ip-sku Standard \
   --location $MYSQL_REGION
+```
+### Opcion 2
+Ya que no contamos con los permisos necesarios vamos a utilizar otra imagen.
+##### Script de configuracion de DB
+```
+vi install.sh
+```
+
+```
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install -y mysql-server
+sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo systemctl restart mysql
+sudo mkdir -p /jet
+echo -e '#!/bin/bash\nsudo mysql' | sudo tee /jet/enter
+sudo chmod +x /jet/enter
+echo "CREATE DATABASE IF NOT EXISTS datacenter_db;
+CREATE USER IF NOT EXISTS 'datacenter_user'@'%' IDENTIFIED BY 'password123';
+GRANT ALL PRIVILEGES ON datacenter_db.* TO 'datacenter_user'@'%';
+FLUSH PRIVILEGES;" | sudo /jet/enter
+```
+##### Buscar imagen
+```
+az vm image list \
+  --publisher "Canonical" \
+  --offer "0001-com-ubuntu-server-jammy" \
+  --sku "22_04-lts-gen2" \
+  --output table
+```
+#### Crear VM
+```
+az vm create \
+  --resource-group $RG_NAME \
+  --name $VM_MYSQL_NAME \
+  --image "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest" \
+  --admin-username $MYSQL_USERNAME \
+  --admin-password $MYSQL_PASSWORD \
+  --authentication-type password \
+  --size $VM_MYSQL_SIZE \
+  --storage-sku $VM_MYSQL_STORAGE_SKU \
+  --custom-data install.sh \
+  --location $MYSQL_REGION
+```
+
+```
+az vm wait \
+   --name $VM_MYSQL_NAME \
+   --resource-group $RG_NAME \
+   --created
+```
+### Abrir puerto
+```
+az vm open-port \
+  --resource-group $RG_NAME \
+  --name $VM_MYSQL_NAME \
+  --port 3306 \
+  --priority 1001
 ```
 
 ```
@@ -125,22 +173,28 @@ IP_PUBLIC=$(az vm show \
    --query publicIps \
    --output tsv)
 ```
+
+```
+echo -e "\e[33mUsuario::$USER\e[0m \n\e[34mIP Publica::$IP_PUBLIC\e[0m"
+```
 # 3 Crear Base de Datos
 ```
 ssh $USER@$IP_PUBLIC
 ```
-
+#### Opcion 1
+Implementamos solo si tenemos en el **Paso 1>Opcion 1**.
 ```
 sudo /jet/enter mysql
 ```
 
 ```
-CREATE DATABASE xfusion_db;
-CREATE USER 'xfusion_user'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON xfusion_db TO 'xfusion_user'@'localhost';
+CREATE DATABASE datacenter_db;
+CREATE USER 'datacenter_user'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON datacenter_db TO 'datacenter_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
 # 4 Ingresar a VM PHP
+Abrimos otra terminal y ejecutamos **Variables de entorno** y **Obtener Resource Group**.
 ```
 USER_PHP=$(az vm show \
    -n $VM_PHP_NAME \
@@ -158,19 +212,83 @@ IP_PUBLIC_PHP=$(az vm show \
    --query publicIps \
    --output tsv)
 ```
+	
+```
+echo -e "\e[32mUsuario::$USER_PHP\e[0m \n\e[31mIP Publica::$IP_PUBLIC_PHP\e[0m"
+```
 
 ```
 ssh $USER_PHP@$IP_PUBLIC_PHP
 ```
 # Configurar fichero /var/www/html/db_test.php
 ```
-vi /var/www/html/db_test.ph
+sudo vi /var/www/html/db_test.php
 ```
-
+### Before
 ```
+<?php
+    $servername = "<mysql-vm-public-ip>";
+    $username = "nautilus_user";
+    $password = "password123";
+    $dbname = "nautilus_db";
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    echo "Connected successfully";
+?>
+```
+### After
+```
+<?php
+    $servername = "130.131.243.197";
+    $username = "datacenter_user";
+    $password = "password123";
+    $dbname = "datacenter_db";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    echo "Connected successfully";
+?>
+```
+# Configurar 
+```
+sudo vi /etc/apache2/mods-enabled/dir.conf
+```
+#### Before
+```
+<IfModule mod_dir.c>
+    DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+</IfModule>
+```
+#### After
+```
+<IfModule mod_dir.c>
+    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>
+```
+#### Reiniciar servicio
+```
+sudo systemctl restart apache2
+```
+# Cambiar nombre del fichero
+```
+sudo mv /var/www/html/index.php /var/www/html/db_test.php
 ```
 # Verificar
 ```
-curl -i $IP_PUBLIC_PHP
+curl -i $IP_PUBLIC_PHP/db_test.php
+```
+
+```
+Failed to access the PHP test page at 'http://20.172.227.34/db_test.php'.
 ```
