@@ -30,3 +30,4 @@
 # [[Day 96 - Create EC2 Instance Using Terraform]]
 # [[Day 97 - Create IAM Policy Using Terraform]]
 # [[Day 98 - Launch EC2 in Private VPC Subnet Using Terraform]]
+# [[Day 99 - Attach IAM Policy for DynamoDB Access Using Terraform]]

@@ -8,34 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "35cca74e1ba84840",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/100 days of cloud AWS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "100 days of cloud AWS"
-            }
-          },
-          {
-            "id": "ac892400ee41b206",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "1 Troubleshoot and Create Ansible Playbook"
-            }
-          },
-          {
             "id": "6c02fea76b7a959c",
             "type": "leaf",
             "state": {
@@ -50,7 +22,7 @@
             }
           },
           {
-            "id": "8f899a286f901e9a",
+            "id": "2cdb9ba6aa8a2215",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -62,9 +34,37 @@
               "icon": "lucide-file",
               "title": "Day 98 - Launch EC2 in Private VPC Subnet Using Terraform"
             }
+          },
+          {
+            "id": "60845d5851b28959",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysdevops/diamond/Day 99 - Attach IAM Policy for DynamoDB Access Using Terraform.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 99 - Attach IAM Policy for DynamoDB Access Using Terraform"
+            }
+          },
+          {
+            "id": "306de0d867f75fa1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAZURE/Day 36 - Managing Storage Lifecycle in Azure.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 36 - Managing Storage Lifecycle in Azure"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -223,34 +223,34 @@
       "bases:Create new base": false
     }
   },
-  "active": "8f899a286f901e9a",
+  "active": "60845d5851b28959",
   "lastOpenFiles": [
+    "100daysdevops/diamond/Day 98 - Launch EC2 in Private VPC Subnet Using Terraform.md",
+    "100daysofcloudAZURE/Day 36 - Managing Storage Lifecycle in Azure.md",
+    "100daysofcloudAZURE/Day 37 - Setting Up MySQL on a Virtual Machine in Azure.md",
+    "100daysdevops/diamond/Day 99 - Attach IAM Policy for DynamoDB Access Using Terraform.md",
     "100daysdevops/diamond/diamond.md",
+    "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
     "100daysdevops/gold/gold.md",
     "100daysdevops/silver/silver.md",
     "100daysdevops/silver/Day 29 - Manage Git Pull Requests.md",
     "100daysdevops/bronce/bronce.md",
     "ansible/level 1/4 Copy Data to App Servers using Ansible.md",
-    "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
     "ansible/level 1/2 Create Ansible Inventory for App Server Testing.md",
     "ansible/level 1/3 Configure Default SSH User for Ansible.md",
     "100daysdevops/diamond/Day 96 - Create EC2 Instance Using Terraform.md",
-    "100daysdevops/diamond/Day 98 - Launch EC2 in Private VPC Subnet Using Terraform.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
     "100daysofcloudAZURE/Day 22 - Configuring Instances with User Data.md",
     "100daysdevops/diamond/Day 97 - Create IAM Policy Using Terraform.md",
-    "100daysofcloudAZURE/Day 37 - Setting Up MySQL on a Virtual Machine in Azure.md",
     "100daysofcloudAZURE/Day 21 - Assigning Public IP to Virtual Machines.md",
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
     "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
     "100daysofcloudAZURE/Day 2 - Create an Azure Virtual Machine.md",
     "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
     "100daysofcloudAZURE/Day 35 - Configuring Virtual Network Peering.md",
-    "100daysofcloudAZURE/Day 36 - Managing Storage Lifecycle in Azure.md",
     "terraform/level 1/2 Create Security Group Using Terraform.md",
     "terraform/level 1/1 Create Key Pair Using Terraform.md",
     "terraform/level 1/terraform level 1.md",
-    "100daysofcloudAZURE/Day 33 - Integrating Virtual Machines with Application Load Balancer.md",
     "waveterm-linux-amd64-0.14.5.deb",
     "terraform/level 1",
     "terraform",
