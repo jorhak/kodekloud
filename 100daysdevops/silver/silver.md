@@ -3,7 +3,7 @@ Entramos al reto de 100 dias de DevOps, aqui se van a tener los retos de los dia
 # [[Day 26 - Git Manage Remotes]]
 # [[Day 27 - Git Revert Some Changes]]
 # [[Day 28 - Git Cherry Pick]]
-# [[Day 29]]
+# [[Day 29 - Manage Git Pull Requests]]
 # [[Day 30 - Git hard reset]]
 # [[Day 31 - Git Stash]]
 # [[Day 32 - Git Rebase]]
