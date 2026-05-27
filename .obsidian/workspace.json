@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ansible/level 1/5 Create Files on App Servers using Ansible.md",
+                "file": "100daysdevops/diamond/Day 86 - Ansible Ping Module Usage.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5 Create Files on App Servers using Ansible"
+              "title": "Day 86 - Ansible Ping Module Usage"
             }
           },
           {
@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
+                "file": "100daysofcloudAZURE/100 days of cloud AZURE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 85 - Create Files on App Servers using Ansible"
+              "title": "100 days of cloud AZURE"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -194,12 +195,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "f7eddffe4b0e7f44",
+  "active": "95435aa87be49395",
   "lastOpenFiles": [
+    "terraform/level 1/2 Create Security Group Using Terraform.md",
+    "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
     "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
+    "100daysdevops/diamond/Day 86 - Ansible Ping Module Usage.md",
     "ansible/level 1/5 Create Files on App Servers using Ansible.md",
-    "ansible/level 1/4 Copy Data to App Servers using Ansible.md",
     "ansible/level 1/3 Configure Default SSH User for Ansible.md",
+    "ansible/level 1/4 Copy Data to App Servers using Ansible.md",
     "ansible/level 1/2 Create Ansible Inventory for App Server Testing.md",
     "ansible/level 1/1 Troubleshoot and Create Ansible Playbook.md",
     "100daysdevops/diamond/Day 99 - Attach IAM Policy for DynamoDB Access Using Terraform.md",
@@ -219,9 +223,6 @@
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
     "100daysofcloudAZURE/Day 23 - Automating User Data Configuration Using the CLI.md",
     "100daysofcloudAZURE/Day 2 - Create an Azure Virtual Machine.md",
-    "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
-    "100daysofcloudAZURE/Day 35 - Configuring Virtual Network Peering.md",
-    "terraform/level 1/2 Create Security Group Using Terraform.md",
     "waveterm-linux-amd64-0.14.5.deb",
     "terraform/level 1",
     "terraform",
