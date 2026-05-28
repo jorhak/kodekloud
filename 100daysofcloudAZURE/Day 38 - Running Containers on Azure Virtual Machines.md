@@ -49,9 +49,9 @@ Use below given **Azure Credentials:** (You can run the `showcreds` command 
 ```
 VM_NAME=datacenter-vm
 LOCATION=eastus
-SA_NAME=datacenterstor23337
+SA_NAME=datacenterstor22526
 SKU=Standard_LRS
-BC_NAME=datacenter-container23337
+BC_NAME=datacenter-container22526
 ```
 # Obtener Resource Group
 ```
@@ -95,9 +95,7 @@ az storage account create \
    --name $SA_NAME \
    --resource-group $RG_NAME \
    --location $LOCATION \
-   --sku $SKU \
-   --allow-blob-public-access false \
-   --public-network-access Disabled
+   --sku $SKU 
 ```
 ### Obtner Access Key de Storage Account
 ```
@@ -110,23 +108,10 @@ ACCESS_KEY=$(az storage account keys list \
 # 5 Crear Blob Container
 Creamos un contenedor dentro de la cuenta.
 ```
-az storage account show \
-   -n $SA_NAME \
-   --query networkRuleSet
-```
-
-```
-az storage account update \
-   -n $SA_NAME \
-   -g $RG_NAME \
-   --allow-blob-public-access true \
-   --public-network-access Enabled
-```
-
-```
 az storage container create \
    --name $BC_NAME \
    --account-name $SA_NAME \
+   --public-access off \
    --auth-mode login
 ```
 # 6 Subir fichero
@@ -146,81 +131,32 @@ az storage blob list \
    --account-key $ACCESS_KEY \
    --output table
 ```
-
-#### Actualizamos para que vuelva a ser privado
-Si van a continuar con el siguiente paso **Opcional** omitan este comando.
+#### Verificar que Blob Container es privado
+Si la respuesta es vacio o None el contenedor es estrictamente privado.
 ```
-az storage account update \
-   -n $SA_NAME \
-   -g $RG_NAME \
-   --allow-blob-public-access false \
-   --public-network-access Disabled
+az storage container show \
+  --name $BC_NAME \
+  --account-name $SA_NAME \
+  --auth-mode login \
+  --query "properties.publicAccess" \
+  --output tsv
 ```
-# Opcional
-#### Generar acceso temporal
+#### Veriricar que Storage Account bloque el acceso publico anonimo
+Si la respuesta es false significa que tiene terminantemente prohibido crear contenedores publicos.
 ```
-az storage blob generate-sas \
-   --account-name $SA_NAME \
-   --account-key $ACCESS_KEY \
-   --container-name $BC_NAME \
-   --name testfile.txt \
-   --permissions r \
-   --expiry 2026-05-28T00:00:00Z \
-   --full-uri
+az storage account show \
+  --name $SA_NAME \
+  --resource-group $RG_NAME \
+  --query "allowBlobPublicAccess" \
+  --output tsv
 ```
-
-## Prueba
-#### Subir imagen
+#### Verificar reglas de red (Firewall de Storage Account)
+- Deny: Máxima Privacidad. Significa que el firewall está activo. Por defecto, todo el tráfico de internet está bloqueado, excepto las IPs o subnets explícitamente permitidas en las reglas.
+- Allow: La cuenta está expuesta a los endpoints públicos de internet (aunque se sigue requiriendo autenticación por contraseña/llave para entrar a ver los archivos).
 ```
-az storage blob upload \
-   --account-name $SA_NAME \
-   --account-key $ACCESS_KEY \
-   --container-name $BC_NAME \
-   --name image.jpg \
-   --file /home/azureuser/image.jpg
+az storage account show \
+  --name $SA_NAME \
+  --resource-group $RG_NAME \
+  --query "networkRuleSet.defaultAction" \
+  --output tsv
 ```
-#### Generar acceso temporal
-```
-az storage blob generate-sas \
-   --account-name $SA_NAME \
-   --account-key $ACCESS_KEY \
-   --container-name $BC_NAME \
-   --name image.jpg \
-   --permissions r \
-   --expiry 2026-05-28T00:00:00Z \
-   --full-uri
-```
-
-## Dar permiso a Blob Container
-```
-az storage container set-permission \
-   --account-name $SA_NAME \
-   --account-key $ACCESS_KEY \
-   --name $BC_NAME \
-   --public-access blob
-```
-#### Prueba
-```
-https://devopsstor2298.blob.core.windows.net/devops-container2298/image.jpg
-
-https://devopsstor2298.blob.core.windows.net/devops-container2298/testfile.txt
-```
-
-# Quitar permisos
-```
-az storage account update \
-   -n $SA_NAME \
-   -g $RG_NAME \
-   --allow-blob-public-access false \
-   --public-network-access Disabled
-```
-
-```
-az storage container set-permission \
---account-name $SA_NAME \
---account-key $ACCESS_KEY \
---name $BC_NAME \
---public-access off
-```
-
-Failed to list blobs in the container.

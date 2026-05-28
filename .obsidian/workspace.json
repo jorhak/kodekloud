@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/100 days of cloud AZURE.md",
+                "file": "100daysofcloudAZURE/Day 36 - Managing Storage Lifecycle in Azure.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "100 days of cloud AZURE"
+              "title": "Day 36 - Managing Storage Lifecycle in Azure"
             }
           },
           {
@@ -212,11 +212,11 @@
   "active": "8b7c145ca89a5ad3",
   "lastOpenFiles": [
     "100daysofcloudAZURE/Day 36 - Managing Storage Lifecycle in Azure.md",
+    "100daysofcloudAZURE/100 days of cloud AZURE.md",
     "100daysofcloudAZURE/Day 38 - Running Containers on Azure Virtual Machines.md",
     "100daysofcloudAZURE/Day 32 - Synchronizing Containers Using the CLI.md",
     "100daysofcloudAZURE/Day 37 - Setting Up MySQL on a Virtual Machine in Azure.md",
     "100daysdevops/diamond/Day 86 - Ansible Ping Module Usage.md",
-    "100daysofcloudAZURE/100 days of cloud AZURE.md",
     "terraform/level 1/2 Create Security Group Using Terraform.md",
     "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
     "100daysdevops/diamond/Day 85 - Create Files on App Servers using Ansible.md",
