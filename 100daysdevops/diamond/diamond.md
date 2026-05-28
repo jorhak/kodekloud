@@ -31,3 +31,4 @@
 # [[Day 97 - Create IAM Policy Using Terraform]]
 # [[Day 98 - Launch EC2 in Private VPC Subnet Using Terraform]]
 # [[Day 99 - Attach IAM Policy for DynamoDB Access Using Terraform]]
+# [[Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform]]
