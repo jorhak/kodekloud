@@ -36,18 +36,19 @@ Use below given **AWS Credentials:** (You can run the `showcreds` command on
 ```
 # Variables de entorno
 ```
-VPC_PRIVATE_NAME=nautilus-priv-vpc
-SUBNET_PRIVATE_NAME=nautilus-priv-subnet
-INSTANCE_PRIVATE_NAME=nautilus-priv-ec2
-S3_NAME=nautilus-nat-6082
-SUBNET_PUBLIC_NAME=nautilus-pub-subnet
-INSTANCE_NAT_NAME=nautilus-nat-instance
+VPC_PRIVATE_NAME=xfusion-priv-vpc
+SUBNET_PRIVATE_NAME=xfusion-priv-subnet
+INSTANCE_PRIVATE_NAME=xfusion-priv-ec2
+S3_NAME=xfusion-nat-19128
+SUBNET_PUBLIC_NAME=xfusion-pub-subnet
+INSTANCE_NAT_NAME=xfusion-nat-instance
 INSTANCE_TYPE=t2.micro
 REGION=us-east-1
 SG_DESCRIPTION="sg para la instancia nat"
 SG_NAME=nautilus-sg-nat-instance
-RT_PUBLIC_NAME=nautilus-ruta-publica
-IGW_NAME=nautilus-igw
+RT_PUBLIC_NAME=xfusion-ruta-publica
+RT_PRIVATE_NAME=xfusion-ruta-privada
+IGW_NAME=devops-igw
 KEY_NAME=mi-llave-publica
 ```
 # Buscar la imagen Amazon Linux 2023
@@ -120,6 +121,12 @@ SUBNET_PRIVATE_CIDR=$(aws ec2 describe-subnets \
 ```
 echo $SUBNET_PRIVATE_CIDR
 ```
+#### Verificar si tiene VPC cuenta con Internet Gateway
+```
+aws ec2 describe-internet-gateways \
+    --filters "Name=attachment.vpc-id,Values=$VPC_ID"
+```
+Podemos ver que no asignada una Internet Gateway.
 # 2 Crear y adjuntar INTERNET GATEWAY (IGW)
 ```
 IGW_ID=$(aws ec2 create-internet-gateway \
@@ -190,6 +197,10 @@ RT_PUBLIC_ID=$(aws ec2 create-route-table \
     --query "RouteTable.RouteTableId" \
     --output text)
 ```
+
+```
+echo $RT_PUBLIC_ID
+```
 #### Crear ruta hacia Internet
 ```
 aws ec2 create-route \
@@ -232,35 +243,6 @@ aws ec2 authorize-security-group-ingress \
 --protocol -1 \
 --cidr $VPC_CIDR
 ```
-
-#### NO
-```
-aws ec2 authorize-security-group-egress \
---region $REGION \
---group-id $SG_NAT_ID \
---protocol -1 \
---cidr 0.0.0.0/0
-```
-#### (NO) Permitir trafico entrante http, https desde CIDR de la SUNET PRIVATE
-```
-aws ec2 authorize-security-group-ingress \
-  --group-id $SG_NAT_ID \
-  --protocol tcp \
-  --port 80 \
-  --cidr $CIDR_PRIVATE_SUBNET \
-  --region $REGION
-```
-
-```
-aws ec2 authorize-security-group-ingress \
-  --group-id $SG_NAT_ID \
-  --protocol tcp \
-  --port 443 \
-  --cidr $CIDR_PRIVATE_SUBNET \
-  --region $REGION
-```
-
-
 # 7 Crear y configurar instancia NAT
 #### Crear iptable.sh
 ```
@@ -269,46 +251,27 @@ vi iptable.sh
 
 ```
 #!/bin/bash
-# 1. Actualizar e instalar dependencias
 dnf update -y
 dnf install -y iptables-services
-
-# 2. Habilitar IP Forwarding de forma nativa y robusta en AL2023
 echo "net.ipv4.ip_forward = 1" > /etc/sysctl.d/99-nat-forwarding.conf
 sysctl -p /etc/sysctl.d/99-nat-forwarding.conf
-
-# 3. Levantar el servicio limpio para que no pise reglas posteriores
 systemctl start iptables
 systemctl enable iptables
-
-# 4. Aplicar regla de enmascaramiento dinámico
 PRIMARY_INTERFACE=$(ip route | grep default | awk '{print $5}')
 iptables -t nat -A POSTROUTING -o $PRIMARY_INTERFACE -j MASQUERADE
 iptables -A FORWARD -j ACCEPT
-# 5. Guardar las reglas actuales para que sean persistentes
 service iptables save
-
-# 6. Reiniciar el servicio para validar que lee la regla guardada con éxito
 systemctl restart iptables
+```
+#### Crear par de llaves
+```
+ssh-keygen -t rsa -b 4096
 ```
 #### Importar Key Pair
 ```
 aws ec2 import-key-pair \
     --key-name $KEY_NAME \
     --public-key-material fileb:///root/.ssh/id_rsa.pub
-```
-	
-```
-aws ec2 create-key-pair \
-    --key-name $KEY_NAME \
-    --key-type "rsa" \
-    --query "KeyMaterial" \
-    --tag-specifications 'ResourceType=key-pair,Tags=[{Key=Desarrollo,Value=Dev},{Key=PreProduccion,Value=Staging}]' \
-    --output text > mi-primer-llave.pem
-```
-
-```
-chmod 600 mi-primer-llave.pem
 ```
 #### Crear instancia
 ```
@@ -335,13 +298,17 @@ aws ec2 modify-instance-attribute \
     --no-source-dest-check \
     --region $REGION
 ```
-# 5 Enrutar la SUBNET PRIVADA hacia la instancia NAT
+# 9 Enrutar la SUBNET PRIVADA hacia la instancia NAT
 #### Obtener ID de ROUTE TABLE PRIVATE
 ```
 RT_PRIVATE_ID=$(aws ec2 describe-route-tables \
     --filters "Name=association.subnet-id,Values=$SUBNET_PRIVATE_ID" \
     --query "RouteTables[0].RouteTableId" \
     --output text)
+```
+
+```
+echo $RT_PRIVATE_ID
 ```
 #### Crear ruta hacia la instancia NAT
 ```
@@ -364,7 +331,7 @@ USER=ec2-user
 ```
 
 ```
-ssh -i mi-primer-llave.pem $USER@$IP_PUBLIC
+ssh $USER@$IP_PUBLIC
 ```
 
 ```
@@ -375,8 +342,6 @@ aws s3 ls s3://$S3_NAME/ --region $REGION
 aws s3 cp iptable.sh s3://$S3_NAME/iptables.sh 
 ```
 
-subnet-00b8381026ae307ae
-subnet-0030b8bfee63471f3
 
 ```
 aws ec2 terminate-instances \
@@ -391,4 +356,15 @@ aws ec2 wait instance-terminated \
 ```
 aws ec2 describe-route-tables \
     --route-table-ids $RT_PRIVATE_ID
+```
+
+```
+IP_PRIVATE=$(aws ec2 describe-instances \
+    --filters Name=tag:Name,Values=$INSTANCE_PRIVATE_NAME \
+    --query "Reservations[0].Instances[0].{IpPublica:PublicIpAddress,IpPrivada:PrivateIpAddress,Estado:State.Name,Nombre:Tags[0].Value}" \
+    --output table)
+```
+
+```
+ssh user-ec2@$IP_PRIVATE
 ```
