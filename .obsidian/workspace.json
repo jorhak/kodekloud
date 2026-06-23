@@ -8,63 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "bc01490b547a8c1f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAZURE/100 days of cloud AZURE.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "100 days of cloud AZURE"
-            }
-          },
-          {
-            "id": "45ee6f84775ffcba",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/100 days of cloud AWS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "100 days of cloud AWS"
-            }
-          },
-          {
-            "id": "33f6f85a2179e50a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "terraform/level 1/3 Create VPC Using Terraform.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "3 Create VPC Using Terraform"
-            }
-          },
-          {
             "id": "6ed13098c3a4ca2d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "terraform/level 1/terraform level 1.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "terraform level 1"
-            }
-          },
-          {
-            "id": "50be24bafe9d7d8d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,21 +22,49 @@
             }
           },
           {
-            "id": "7c6c9c59de3c4af7",
+            "id": "637fd8ef85d9d7d1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/Day 39 - Deploying a Static Website Using Containers on Azure.md",
+                "file": "terraform/level 1/11 Create Alarm Using Terraform.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 39 - Deploying a Static Website Using Containers on Azure"
+              "title": "11 Create Alarm Using Terraform"
+            }
+          },
+          {
+            "id": "783e55d9387e8839",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "terraform/level 1/12 Create Public S3 Bucket Using Terraform.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "12 Create Public S3 Bucket Using Terraform"
+            }
+          },
+          {
+            "id": "d7060ffbb36babed",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysdevops/diamond/Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -251,40 +223,40 @@
       "bases:Create new base": false
     }
   },
-  "active": "beb41c24ac7ac4b0",
+  "active": "637fd8ef85d9d7d1",
   "lastOpenFiles": [
-    "terraform/level 1/10 Create Snapshot Using Terraform.md",
+    "100daysdevops/diamond/Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform.md",
+    "terraform/level 1/11 Create Alarm Using Terraform.md",
     "terraform/level 1/terraform level 1.md",
+    "terraform/level 1/12 Create Public S3 Bucket Using Terraform.md",
+    "linux/Bootear USB.md",
+    "linux/Terminal CPU, RAM, MOTHERBOARD.md",
+    "linux/Limpiar equipo Windows.md",
+    "100daysofcloudAWS/Day 22 - Configuring Secure SSH Access to an EC2 Instance.md",
+    "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
+    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
+    "terraform/level 1/10 Create Snapshot Using Terraform.md",
     "terraform/level 1/9 Create EBS Volume Using Terraform.md",
     "terraform/level 1/8 Create AMI Using Terraform.md",
-    "terraform/level 1/3 Create VPC Using Terraform.md",
     "terraform/level 1/7 Create EC2 Instance Using Terraform.md",
     "terraform/level 1/6 Create Elastic IP Using Terraform.md",
     "terraform/level 1/5 Create VPC with IPv6 Using Terraform.md",
     "terraform/level 1/4 Create VPC with CIDR Using Terraform.md",
+    "terraform/level 1/3 Create VPC Using Terraform.md",
+    "terraform/level 1/2 Create Security Group Using Terraform.md",
+    "terraform/level 1/1 Create Key Pair Using Terraform.md",
     "100daysofcloudAZURE/Day 39 - Deploying a Static Website Using Containers on Azure.md",
     "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
-    "linux/Limpiar equipo Windows.md",
-    "linux/Bootear USB.md",
     "100daysofcloudAZURE/Day 40 - Managing Secrets with Azure Key Vault.md",
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
     "100daysofcloudAZURE/Day 38 - Running Containers on Azure Virtual Machines.md",
-    "100daysofcloudAWS/Day 29 - Establishing Secure Communication Between Public and Private VPCs via VPC Peering.md",
-    "terraform/level 1/2 Create Security Group Using Terraform.md",
-    "100daysdevops/diamond/Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform.md",
     "KodeKloud_Course_Certificate_100_days_of_devops.pdf",
     "KodeKloud_Course_Certificate_Ansible_1.pdf",
     "KodeKloud_Course_Certificate (1).pdf",
     "Unconfirmed 978342.crdownload",
     "KodeKloud_Course_Certificate.pdf",
     "Unconfirmed 998358.crdownload",
-    "100daysofcloudAWS/Day 14 - Terminate EC2 Instance.md",
-    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
-    "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
-    "100daysdevops/diamond/Day 99 - Attach IAM Policy for DynamoDB Access Using Terraform.md",
-    "100daysofcloudAZURE/Day 37 - Setting Up MySQL on a Virtual Machine in Azure.md",
-    "100daysofcloudAZURE/Day 2 - Create an Azure Virtual Machine.md",
     "waveterm-linux-amd64-0.14.5.deb",
     "terraform/level 1",
     "terraform",
