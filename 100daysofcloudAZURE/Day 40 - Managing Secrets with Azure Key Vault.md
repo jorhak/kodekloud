@@ -48,11 +48,14 @@ Network restrictions or private endpoints are NOT required for this task.
 ```
 # Variables de entorno
 ```
-KV_NAME=nautilus-5442
+KV_NAME=xfusion-7456
 LOCATION=eastus
 SKU=standard
 RETENTION=7
-K_NAME=nautilus-key
+K_NAME=xfusion-key
+ORIGEN_DATA=/root/SensitiveData.txt
+ENCRYPT_DATA=/root/EncryptedData.bin
+DENCRYPT_DATA=/root/DecryptedData.txt
 ```
 # Obtener Resource Group
 ```
@@ -70,8 +73,8 @@ az keyvault create \
    --name $KV_NAME \
    --location $LOCATION \
    --retention-days $RETENTION \
-   --enable-rbac-authorization false \
-   --sku $SKU
+   --sku $SKU \
+   --enable-rbac-authorization false
 ```
 #### Configurar vault
 ```
@@ -90,38 +93,44 @@ az keyvault key create \
 ```
 # 3 Encriptar informacion sensible
 ```
-az keyvault key encrypt \
-   --algorithm RSA-OAEP \
-   --value "$(base64 -w 0 /root/SensitiveData.txt)" \
-   --data-type plaintext \
-   --name $K_NAME \
-   --vault-name $KV_NAME \
-   --query "result" \
-   -o tsv | base64 -d > /root/EncryptedData.bin
+TEXTO_BASE64=$(cat "$ORIGEN_DATA" | base64 | tr -d '\n\r')
 ```
 
 ```
-wc -c /root/EncryptedData.bin
+CHIPERTEXT=$(az keyvault key encrypt \
+    --algorithm RSA-OAEP\
+    --value "$TEXTO_BASE64"\
+    --data-type base64 \
+    --name $K_NAME\
+    --vault-name $KV_NAME\
+    --query "result" \
+    -o tsv)
+```
+
+```
+echo $CHIPERTEXT> $ENCRYPT_DATA
+```
+
+```
+wc -c $ENCRYPT_DATA
 ```
 # Verificar
 ```
-az keyvault key decrypt \
-   --vault-name $KV_NAME \
-   --name $K_NAME \
-   --algorithm RSA-OAEP \
-   --value "$(base64 -w 0 /root/EncryptedData.bin)" \
-   --data-type base64 \
-   --query "result" \
-   -o tsv | base64 -d > /root/DecryptedData.txt
+DESENCRIPTADO_BASE64=$(az keyvault key decrypt \
+    --vault-name $KV_NAME\
+    --name $K_NAME\
+    --algorithm RSA-OAEP\
+    --value $(cat "$ENCRYPT_DATA")\
+    --data-type base64 \
+    --query "result" \
+    -o tsv)
 ```
 
 ```
-echo "$(base64 -d /root/DecryptedData.txt)" > /root/DecryptedData.txt
+echo "$DESENCRIPTADO_BASE64" | base64 --decode > $DENCRYPT_DATA
 ```
 
 ```
-diff /root/SensitiveData.txt /root/DecryptedData.txt && echo "¡Validación Exitosa! Los archivos coinciden perfectamente."
+diff $ORIGEN_DATA $DENCRYPT_DATA && echo "¡Validación Exitosa! Los
+archivos coinciden perfectamente."
 ```
-
-Decrypted data does not match the original data.
-Decrypted data does not match the original data.

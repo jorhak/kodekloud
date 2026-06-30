@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "terraform/level 1/17 Create DynamoDB Table Using Terraform.md",
+                "file": "100daysofcloudAZURE/Day 40 - Managing Secrets with Azure Key Vault.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "17 Create DynamoDB Table Using Terraform"
+              "title": "Day 40 - Managing Secrets with Azure Key Vault"
             }
           }
         ],
@@ -225,13 +225,13 @@
   },
   "active": "d7060ffbb36babed",
   "lastOpenFiles": [
+    "terraform/level 1/17 Create DynamoDB Table Using Terraform.md",
+    "terraform/level 1/11 Create Alarm Using Terraform.md",
     "terraform/level 1/16 Create IAM Policy Using Terraform.md",
     "terraform/level 1/15 Create IAM Group Using Terraform.md",
     "terraform/level 1/12 Create Public S3 Bucket Using Terraform.md",
-    "terraform/level 1/17 Create DynamoDB Table Using Terraform.md",
     "terraform/level 1/9 Create EBS Volume Using Terraform.md",
     "terraform/level 1/10 Create Snapshot Using Terraform.md",
-    "terraform/level 1/11 Create Alarm Using Terraform.md",
     "terraform/level 1/13 Create Private S3 Bucket Using Terraform.md",
     "terraform/level 1/14 Create IAM User Using Terraform.md",
     "terraform/level 1/terraform level 1.md",
