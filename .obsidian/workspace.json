@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAZURE/Day 41 - Working with Azure Table Storage.md",
+                "file": "100daysofcloudAZURE/Day 42 - Backup and Delete Azure Storage Blob Container.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 41 - Working with Azure Table Storage"
+              "title": "Day 42 - Backup and Delete Azure Storage Blob Container"
             }
           }
         ],
@@ -239,8 +239,9 @@
   },
   "active": "beb41c24ac7ac4b0",
   "lastOpenFiles": [
-    "100daysofcloudAZURE/Day 41 - Working with Azure Table Storage.md",
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
+    "100daysofcloudAZURE/Day 42 - Backup and Delete Azure Storage Blob Container.md",
+    "100daysofcloudAZURE/Day 41 - Working with Azure Table Storage.md",
     "100daysofcloudAZURE/Day 40 - Managing Secrets with Azure Key Vault.md",
     "terraform/level 1/17 Create DynamoDB Table Using Terraform.md",
     "terraform/level 1/11 Create Alarm Using Terraform.md",
@@ -264,7 +265,6 @@
     "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
     "100daysofcloudAWS/Day 5 - Create GP3 Volume.md",
     "100daysofcloudAWS/Day 4 - Enable Versioning for S3 Bucket.md",
-    "100daysdevops/diamond/Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform.md",
     "KodeKloud_Course_Certificate_100_days_of_devops.pdf",
     "KodeKloud_Course_Certificate_Ansible_1.pdf",
     "KodeKloud_Course_Certificate (1).pdf",
