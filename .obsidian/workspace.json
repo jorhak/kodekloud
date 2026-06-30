@@ -55,16 +55,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysdevops/diamond/Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform.md",
+                "file": "terraform/level 1/17 Create DynamoDB Table Using Terraform.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform"
+              "title": "17 Create DynamoDB Table Using Terraform"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -223,34 +223,34 @@
       "bases:Create new base": false
     }
   },
-  "active": "637fd8ef85d9d7d1",
+  "active": "d7060ffbb36babed",
   "lastOpenFiles": [
-    "100daysdevops/diamond/Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform.md",
-    "terraform/level 1/11 Create Alarm Using Terraform.md",
-    "terraform/level 1/terraform level 1.md",
+    "terraform/level 1/16 Create IAM Policy Using Terraform.md",
+    "terraform/level 1/15 Create IAM Group Using Terraform.md",
     "terraform/level 1/12 Create Public S3 Bucket Using Terraform.md",
-    "linux/Bootear USB.md",
-    "linux/Terminal CPU, RAM, MOTHERBOARD.md",
-    "linux/Limpiar equipo Windows.md",
-    "100daysofcloudAWS/Day 22 - Configuring Secure SSH Access to an EC2 Instance.md",
-    "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
-    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
-    "terraform/level 1/10 Create Snapshot Using Terraform.md",
+    "terraform/level 1/17 Create DynamoDB Table Using Terraform.md",
     "terraform/level 1/9 Create EBS Volume Using Terraform.md",
-    "terraform/level 1/8 Create AMI Using Terraform.md",
-    "terraform/level 1/7 Create EC2 Instance Using Terraform.md",
-    "terraform/level 1/6 Create Elastic IP Using Terraform.md",
-    "terraform/level 1/5 Create VPC with IPv6 Using Terraform.md",
-    "terraform/level 1/4 Create VPC with CIDR Using Terraform.md",
-    "terraform/level 1/3 Create VPC Using Terraform.md",
-    "terraform/level 1/2 Create Security Group Using Terraform.md",
-    "terraform/level 1/1 Create Key Pair Using Terraform.md",
-    "100daysofcloudAZURE/Day 39 - Deploying a Static Website Using Containers on Azure.md",
-    "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
-    "100daysofcloudAWS/100 days of cloud AWS.md",
-    "100daysofcloudAZURE/Day 40 - Managing Secrets with Azure Key Vault.md",
-    "100daysofcloudAZURE/100 days of cloud AZURE.md",
-    "100daysofcloudAZURE/Day 38 - Running Containers on Azure Virtual Machines.md",
+    "terraform/level 1/10 Create Snapshot Using Terraform.md",
+    "terraform/level 1/11 Create Alarm Using Terraform.md",
+    "terraform/level 1/13 Create Private S3 Bucket Using Terraform.md",
+    "terraform/level 1/14 Create IAM User Using Terraform.md",
+    "terraform/level 1/terraform level 1.md",
+    "100daysofcloudAWS/Day 23 - Data Migration Between S3 Buckets Using AWS CLI.md",
+    "100daysofcloudAWS/Day 15 - Create Volume Snapshot.md",
+    "100daysofcloudAWS/Day 14 - Terminate EC2 Instance.md",
+    "100daysofcloudAWS/Day 13 - Create AMI from EC2 Instance.md",
+    "100daysofcloudAWS/Day 11 - Attach Elastic Network Interface to EC2 Instance.md",
+    "100daysofcloudAWS/Day 10 - Attach Elastic IP to EC2 Instance.md",
+    "100daysofcloudAWS/Day 9 - Enable Termination Protection for EC2 Instance.md",
+    "100daysofcloudAWS/Day 8 - Enable Stop Protection for EC2 Instance.md",
+    "100daysofcloudAWS/Day 7 - Change EC2 Instance Type.md",
+    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
+    "100daysofcloudAWS/Day 5 - Create GP3 Volume.md",
+    "100daysofcloudAWS/Day 4 - Enable Versioning for S3 Bucket.md",
+    "100daysdevops/diamond/Day 100 - Create and Configure Alarm Using CloudWatch Using Terraform.md",
+    "100daysdevops/diamond/Day 99 - Attach IAM Policy for DynamoDB Access Using Terraform.md",
+    "100daysdevops/diamond/Day 98 - Launch EC2 in Private VPC Subnet Using Terraform.md",
+    "100daysdevops/diamond/Day 97 - Create IAM Policy Using Terraform.md",
     "KodeKloud_Course_Certificate_100_days_of_devops.pdf",
     "KodeKloud_Course_Certificate_Ansible_1.pdf",
     "KodeKloud_Course_Certificate (1).pdf",

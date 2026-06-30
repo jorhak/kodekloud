@@ -1,21 +1,11 @@
 ```
-The Nautilus DevOps team is setting up monitoring in their AWS account. As part of this, they need to create a CloudWatch alarm.
+The yousuf DevOps team has been creating a couple of services on AWS cloud. They have been breaking down the migration into smaller tasks, allowing for better control, risk mitigation, and optimization of resources throughout the migration process. Recently they came up with requirements mentioned below.
 
-Using `Terraform`, perform the following:
+Create an IAM group named iamgroup_yousuf using terraform. 
 
-### Task Details:
+The Terraform working directory is /home/bob/terraform. Create the main.tf file (do not create a different .tf file) to accomplish this task.
 
-1. Create a **CloudWatch alarm** named `nautilus-alarm`.
-2. The alarm should monitor **CPU utilization** of an EC2 instance.
-3. Trigger the alarm when **CPU utilization exceeds 80%**.
-4. Set the **evaluation period** to **5 minutes**.
-5. Use a **single evaluation period**.
-
-Ensure that the entire configuration is implemented using `Terraform`. 
-
-The Terraform working directory is `/home/bob/terraform`. Create the `main.tf` file (do not create a different `.tf` file) to accomplish this task.
-
-`Note:` Right-click under the `EXPLORER` section in `VS Code` and select `Open in Integrated Terminal` to launch the terminal.
+Note: Right-click under the EXPLORER section in VS Code and select Open in Integrated Terminal to launch the terminal.
 ```
 # 1 Ver provider.tf
 ```
@@ -63,23 +53,15 @@ endpoints {
   }
 }
 ```
+
 # 2 Crear main.tf
 ```
 vi main.tf
 ```
 
 ```
-resource "aws_cloudwatch_metric_alarm" "foobar" {
-  alarm_name                = "xfusion-alarm"
-  comparison_operator       = "GreaterThanOrEqualToThreshold"
-  evaluation_periods        = 1
-  metric_name               = "CPUUtilization"
-  namespace                 = "AWS/EC2"
-  period                    = 300
-  statistic                 = "Average"
-  threshold                 = 80
-  alarm_description         = "This metric monitors ec2 cpu utilization"
-  insufficient_data_actions = []
+resource "aws_iam_group" "primergrupo" {
+  name = "iamgroup_yousuf"
 }
 ```
 # 3 Inicializar proyecto
@@ -87,6 +69,10 @@ resource "aws_cloudwatch_metric_alarm" "foobar" {
 terraform init
 ```
 # 4 Validar codigo
+```
+terraform fmt
+```
+
 ```
 terraform validate
 ```
@@ -97,10 +83,10 @@ terraform plan
 ```
 #### Aplicar plan
 ```
-terraform apply
+terraform plan
 ```
 # 6 Verificar
 ```
-aws cloudwatch describe-alarms \
-    --alarm-names xfusion-alarm
+aws iam get-group \
+    --group-name "iamgroup_yousuf"
 ```
