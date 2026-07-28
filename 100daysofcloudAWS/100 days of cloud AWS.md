@@ -30,3 +30,8 @@ Vamos a realizar el reto de 100 dias de nube.
 # [[Day 28 - Creating a Private ECR Repository]]
 # [[Day 29 - Establishing Secure Communication Between Public and Private VPCs via VPC Peering]]
 # [[Day 30 - Enable Internet Access for Private EC2 using NAT Instance]]
+# [[Day 31 - Configuring a Private RDS Instance for Application Development]]
+# [[Day 32 - Snapshot and Restoration of an RDS Instance]]
+# [[Day 33 - Create a Lambda Function]]
+# [[Day 34 - Create a Lambda Function Using CLI]]
+# [[Day 35 - Deploying and Managing Applications on AWS]]
