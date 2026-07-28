@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 31 - Configuring a Private RDS Instance for Application Development.md",
+                "file": "100daysofcloudAWS/Day 32 - Snapshot and Restoration of an RDS Instance.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 31 - Configuring a Private RDS Instance for Application Development"
+              "title": "Day 32 - Snapshot and Restoration of an RDS Instance"
             }
           },
           {
@@ -239,12 +239,12 @@
   },
   "active": "6fbcf9c03716a14a",
   "lastOpenFiles": [
+    "100daysofcloudAWS/Day 31 - Configuring a Private RDS Instance for Application Development.md",
     "100daysofcloudAWS/Day 35 - Deploying and Managing Applications on AWS.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
     "100daysofcloudAWS/Day 34 - Create a Lambda Function Using CLI.md",
     "100daysofcloudAWS/Day 33 - Create a Lambda Function.md",
     "100daysofcloudAWS/Day 32 - Snapshot and Restoration of an RDS Instance.md",
-    "100daysofcloudAWS/Day 31 - Configuring a Private RDS Instance for Application Development.md",
     "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
     "terraform/level 1/terraform level 1.md",
     "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
