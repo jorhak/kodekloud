@@ -4,53 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "e8027809b435ff79",
+        "id": "dc26005aacf7fc96",
         "type": "tabs",
         "children": [
           {
-            "id": "8d675b01391a9e0b",
+            "id": "0fc1df0a0b104246",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "terraform/level 1/terraform level 1.md",
+                "file": "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "terraform level 1"
-            }
-          },
-          {
-            "id": "c3d1e70dc42603b9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "terraform/level 1/terraform level 1.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "terraform level 1"
-            }
-          },
-          {
-            "id": "90032279ab0607c3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "40 Policy Variable Setup Using Terraform"
+              "title": "Day 30 - Enable Internet Access for Private EC2 using NAT Instance"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -209,13 +180,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "c3d1e70dc42603b9",
+  "active": "0fc1df0a0b104246",
   "lastOpenFiles": [
+    "terraform/level 1/terraform level 1.md",
+    "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
     "terraform/level 1/33 Delete VPC Using Terraform.md",
     "terraform/level 1/32 Delete IAM Role Using Terraform.md",
     "terraform/level 1/31 Delete IAM Group Using Terraform.md",
-    "terraform/level 1/terraform level 1.md",
-    "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
     "terraform/level 1/30 Delete EC2 Instance Using Terraform.md",
     "terraform/level 1/29 Delete Backup from S3 Using Terraform.md",
     "terraform/level 1/28 Enable S3 Versioning Using Terraform.md",

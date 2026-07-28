@@ -36,19 +36,20 @@ Use below given **AWS Credentials:** (You can run the `showcreds` command on
 ```
 # Variables de entorno
 ```
-VPC_PRIVATE_NAME=xfusion-priv-vpc
-SUBNET_PRIVATE_NAME=xfusion-priv-subnet
-INSTANCE_PRIVATE_NAME=xfusion-priv-ec2
-S3_NAME=xfusion-nat-19128
-SUBNET_PUBLIC_NAME=xfusion-pub-subnet
-INSTANCE_NAT_NAME=xfusion-nat-instance
-INSTANCE_TYPE=t2.micro
+PREFIX=nautilus
+VPC_PRIVATE_NAME=$PREFIX-priv-vpc
+SUBNET_PRIVATE_NAME=$PREFIX-priv-subnet
+INSTANCE_PRIVATE_NAME=$PREFIX-priv-ec2
+S3_NAME=$PREFIX-nat-1665
+SUBNET_PUBLIC_NAME=$PREFIX-pub-subnet
+INSTANCE_NAT_NAME=$PREFIX-nat-instance
+INSTANCE_TYPE=t3.micro
 REGION=us-east-1
 SG_DESCRIPTION="sg para la instancia nat"
-SG_NAME=nautilus-sg-nat-instance
-RT_PUBLIC_NAME=xfusion-ruta-publica
-RT_PRIVATE_NAME=xfusion-ruta-privada
-IGW_NAME=devops-igw
+SG_NAME=$PREFIX-sg-nat-instance
+RT_PUBLIC_NAME=$PREFIX-ruta-publica
+RT_PRIVATE_NAME=$PREFIX-ruta-privada
+IGW_NAME=$PREFIX-igw
 KEY_NAME=mi-llave-publica
 ```
 # Buscar la imagen Amazon Linux 2023
@@ -67,103 +68,77 @@ IMAGE_ID=$(aws ssm get-parameter \
     --output text)
 ```
 
-```
-echo $IMAGE_ID
-```
 El atributo --name debe ser reemplazado por el valor de la lista del comando previo.
-# 1 Obtener ID, CIDR de VPC y CIDR de SUBNET PRIVATE
-El **CIDR** para evitar colisiones, y el VPC_ID para asociarlo a los objetos que se van a crear mas adelante.
-#### Obtener id de VPC
-```
-VPC_ID=$(aws ec2 describe-vpcs \
-    --filters Name=tag:Name,Values=$VPC_PRIVATE_NAME \
-    --region $REGION \
-    --query "Vpcs[0].VpcId" \
-    --output text)
-```
+# 1 Verificar VPC Private
 
 ```
-echo $VPC_ID
+aws ec2 describe-vpcs \
+    --filters Name=tag:Name,Values=$VPC_PRIVATE_NAME \
+    --query "Vpcs[0].{CIDR:CidrBlockAssociationSet[0].CidrBlock,NOMBRE:Tags[?Key=='Name'].Value | [0],ESTADO:State}" \
+    --output table
 ```
-#### Obtener cidr de VPC
+#### CIDR de VPC Private
 ```
 VPC_CIDR=$(aws ec2 describe-vpcs \
---region $REGION \
---vpc-ids $VPC_ID \
---query "Vpcs[0].CidrBlock" \
---output text)
+    --filters Name=tag:Name,Values=$VPC_PRIVATE_NAME \
+    --query "Vpcs[0].CidrBlockAssociationSet[0].CidrBlock" \
+    --output text)
+```
+#### ID de VPC PRIVATE
+```
+VPC_ID=$(aws ec2 describe-vpcs \
+    --filters Name=tag:Name,Values=$VPC_PRIVATE_NAME \
+    --region $REGION \
+    --query "Vpcs[0].VpcId" \
+    --output text)
 ```
 
+# 2 Verificar Subnet Private
 ```
-echo $VPC_CIDR
+aws ec2 describe-subnets \
+    --filters Name=tag:Name,Values=$SUBNET_PRIVATE_NAME \
+    --query "Subnets[0].{NOMBRE:Tags[?Key=='Name'].Value | [0],ESTADO:State,CIDR:CidrBlock}" \
+    --output table
 ```
-#### Obtener ID de SUBNET PRIVATE
+#### ID de Subnet Private
 ```
 SUBNET_PRIVATE_ID=$(aws ec2 describe-subnets \
-    --filters "Name=tag:Name,Values=$SUBNET_PRIVATE_NAME" \
-    --region $REGION \
-    --query "Subnets[0].SubnetId" \
-    --output text)
+    --filters Name=tag:Name,Values=$SUBNET_PRIVATE_NAME \
+    --region $REGION \
+    --query "Subnets[0].SubnetId" \
+    --output text)
 ```
-
-```
-echo $SUBNET_PRIVATE_ID
-```
-#### Obtener cidr de SUBNET PRIVATE
-```
-SUBNET_PRIVATE_CIDR=$(aws ec2 describe-subnets \
-    --filters "Name=tag:Name,Values=$SUBNET_PRIVATE_NAME" \
-    --region $REGION \
-    --query "Subnets[0].CidrBlock" \
-    --output text)
-```
-
-```
-echo $SUBNET_PRIVATE_CIDR
-```
-#### Verificar si tiene VPC cuenta con Internet Gateway
+# 3 Verificar si la VPC cuenta con Internet Gateway
 ```
 aws ec2 describe-internet-gateways \
-    --filters "Name=attachment.vpc-id,Values=$VPC_ID"
+    --filters "Name=attachment.vpc-id,Values=$VPC_ID" \
+    --query "InternetGateways[0].{ID_IGW:InternetGatewayId}" \
+    --output table
 ```
-Podemos ver que no asignada una Internet Gateway.
-# 2 Crear y adjuntar INTERNET GATEWAY (IGW)
+# 4 Crear y adjuntar Internet Gateway a la VPC Private
+#### Crear Internet Gateway
 ```
 IGW_ID=$(aws ec2 create-internet-gateway \
-    --tag-specifications "ResourceType=internet-gateway,Tags=[{Key=Name,Value=$IGW_NAME}]" \
-    --region $REGION \
-    --query 'InternetGateway.InternetGatewayId' \
-    --output text)
+    --tag-specifications "ResourceType=internet-gateway,Tags=[{Key=Name,Value=$IGW_NAME}]" \
+    --region $REGION \
+    --query 'InternetGateway.InternetGatewayId' \
+    --output text)
 ```
-
-```
-echo $IGW_ID
-```
-#### Adjuntar IGW a VPC
+#### Adjuntar IGW a VPC Private
 ```
 aws ec2 attach-internet-gateway \
-    --vpc-id $VPC_ID \
-    --internet-gateway-id $IGW_ID \
-    --region $REGION
+    --vpc-id $VPC_ID \
+    --internet-gateway-id $IGW_ID \
+    --region $REGION
 ```
-#### Verificar que nuestra VPC PRIVATE esta asociada a IGW
-```
-aws ec2 describe-internet-gateways \
-    --filters "Name=attachment.vpc-id,Values=$VPC_ID" \
-    --query "InternetGateways[0].{ID_IGW:InternetGatewayId}" \
-    --output table
-```
-# 3 Crear SUBNET PUBLIC
+**Volvemos a ejecutar el comando del paso tres.**
+# 5 Crear SUBNET PUBLIC
 ```
 AZ=$(aws ec2 describe-subnets \
 --region $REGION \
 --subnet-ids $SUBNET_PRIVATE_ID \
 --query "Subnets[0].AvailabilityZone" \
 --output text)
-```
-
-```
-echo $AZ
 ```
 
 ```
@@ -176,11 +151,7 @@ SUBNET_PUBLIC_ID=$(aws ec2 create-subnet \
     --query "Subnet.SubnetId" \
     --output text)
 ```
-
-```
-echo $SUBNET_PUBLIC_ID
-```
-# 4 Habilitar asignacion de IP Publica
+#### Habilitar asignacion IP Publica
 ```
 aws ec2 modify-subnet-attribute \
     --subnet-id $SUBNET_PUBLIC_ID \
@@ -188,7 +159,7 @@ aws ec2 modify-subnet-attribute \
     --region $REGION
 ```
 
-# 5 Crear ROUTE TABLE PUBLIC y asociarla
+# 5 Crear ROUTE TABLE PUBLIC y asociarla a VPC Private
 ```
 RT_PUBLIC_ID=$(aws ec2 create-route-table \
     --tag-specifications "ResourceType=route-table,Tags=[{Key=Name,Value=$RT_PUBLIC_NAME}]" \
@@ -196,10 +167,6 @@ RT_PUBLIC_ID=$(aws ec2 create-route-table \
     --region $REGION \
     --query "RouteTable.RouteTableId" \
     --output text)
-```
-
-```
-echo $RT_PUBLIC_ID
 ```
 #### Crear ruta hacia Internet
 ```
@@ -216,7 +183,8 @@ aws ec2 associate-route-table \
     --route-table-id $RT_PUBLIC_ID \
     --region $REGION
 ```
-# 6 Crear Security Group de la instancia NAT
+# 7 Crear Security Group para la instancia NAT
+#### Security Group
 ```
 SG_NAT_ID=$(aws ec2 create-security-group \
     --description "$SG_DESCRIPTION" \
@@ -226,7 +194,7 @@ SG_NAT_ID=$(aws ec2 create-security-group \
     --query "GroupId" \
     --output text)
 ```
-
+#### Habilitar puerto SSH
 ```
 aws ec2 authorize-security-group-ingress \
 --region $REGION \
@@ -235,7 +203,7 @@ aws ec2 authorize-security-group-ingress \
 --port 22 \
 --cidr 0.0.0.0/0
 ```
-
+#### Permitir conexion en la VPC
 ```
 aws ec2 authorize-security-group-ingress \
 --region $REGION \
@@ -243,22 +211,45 @@ aws ec2 authorize-security-group-ingress \
 --protocol -1 \
 --cidr $VPC_CIDR
 ```
-# 7 Crear y configurar instancia NAT
-#### Crear iptable.sh
+# 8 Crear y configurar VM NAT
+#### Obtener IP Private
+Obtenemos la IP privada de la instancia que esta en la subnet privada.
 ```
-vi iptable.sh
+aws ec2 describe-instances \
+    --filters Name=tag:Name,Values=$INSTANCE_PRIVATE_NAME \
+    --query "Reservations[].Instances[].{Nombre:Tags[?Key=='Name'].Value |[0],Estado:State.Name,Tipo:InstanceType,IPPrivada:PrivateIpAddress}" \
+    --output table
+```
+#### Obtener Subnet Private
+Obtenemos la Subnet privada para comparala con la de nuestra IP Private que debe estar en el rango.
+```
+aws ec2 describe-subnets \
+    --filters Name=tag:Name,Values=$SUBNET_PRIVATE_NAME \
+    --query "Subnets[0].{NOMBRE:Tags[?Key=='Name'].Value | [0],ESTADO:State,CIDR:CidrBlock}" \
+    --output table
+```
+#### Script de instalacion
+Con la comprobacion que hicimos previamente, en nuestro script vamos a colocar el CIDR de la Subnet Private.
+```
+vi install.sh
 ```
 
 ```
 #!/bin/bash
+#Filename: install.sh
+#Description: Configuracion para servidor Nat
+IP_PRIVATE=10.1.1.0/24
 dnf update -y
 dnf install -y iptables-services
+dnf install -y conntrack-tools
 echo "net.ipv4.ip_forward = 1" > /etc/sysctl.d/99-nat-forwarding.conf
 sysctl -p /etc/sysctl.d/99-nat-forwarding.conf
 systemctl start iptables
 systemctl enable iptables
 PRIMARY_INTERFACE=$(ip route | grep default | awk '{print $5}')
-iptables -t nat -A POSTROUTING -o $PRIMARY_INTERFACE -j MASQUERADE
+iptables -t nat -A POSTROUTING -s $IP_PRIVATE -o $PRIMARY_INTERFACE -j MASQUERADE
+iptables -I FORWARD 1 -s $IP_PRIVATE -j ACCEPT
+iptables -I FORWARD 2 -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -j ACCEPT
 service iptables save
 systemctl restart iptables
@@ -276,20 +267,30 @@ aws ec2 import-key-pair \
 #### Crear instancia
 ```
 INSTANCE_NAT_ID=$(aws ec2 run-instances \
-    --image-id $IMAGE_ID \
-    --instance-type $INSTANCE_TYPE \
-    --security-group-ids $SG_NAT_ID \
-    --subnet-id $SUBNET_PUBLIC_ID \
-    --user-data file://iptable.sh \
-    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$INSTANCE_NAT_NAME}]" \
-    --region $REGION \
-    --key-name $KEY_NAME \
-    --query "Instances[0].InstanceId" \
-    --output text)
+    --image-id $IMAGE_ID \
+    --instance-type $INSTANCE_TYPE \
+    --security-group-ids $SG_NAT_ID \
+    --subnet-id $SUBNET_PUBLIC_ID \
+    --user-data file://install.sh \
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$INSTANCE_NAT_NAME}]" \
+    --region $REGION \
+    --key-name $KEY_NAME \
+    --query "Instances[0].InstanceId" \
+    --output text)
 ```
 
 ```
-aws ec2 wait instance-running --instance-ids $INSTANCE_NAT_ID --region $REGION
+aws ec2 wait instance-running \
+    --instance-ids $INSTANCE_NAT_ID \
+    --region $REGION
+```
+
+#### (Opcional) Otra forma de capturar ID de la instancia
+```
+INSTANCE_NAT_ID=$(aws ec2 describe-instances \
+    --filters Name=tag:Name,Values=$INSTANCE_NAT_NAME \
+    --query "Reservations[].Instances[].InstanceId" \
+    --output text)
 ```
 #### Deshabilitar la verificacion de Origin/Destino
 ```
@@ -299,18 +300,15 @@ aws ec2 modify-instance-attribute \
     --region $REGION
 ```
 # 9 Enrutar la SUBNET PRIVADA hacia la instancia NAT
-#### Obtener ID de ROUTE TABLE PRIVATE
+#### Obtener ID de ROUTE TABLE de SUBNET PRIVATE
 ```
 RT_PRIVATE_ID=$(aws ec2 describe-route-tables \
     --filters "Name=association.subnet-id,Values=$SUBNET_PRIVATE_ID" \
     --query "RouteTables[0].RouteTableId" \
     --output text)
 ```
-
-```
-echo $RT_PRIVATE_ID
-```
-#### Crear ruta hacia la instancia NAT
+#### Crear ruta hacia NAT
+Antes de ejecutar este comando abrimos otra terminal, inicializamos las variables de entorno, caputramos el INSTANCE_NAT_ID y luego pasamos a paso 10.
 ```
 aws ec2 create-route \
     --route-table-id $RT_PRIVATE_ID \
@@ -318,53 +316,37 @@ aws ec2 create-route \
     --instance-id $INSTANCE_NAT_ID \
     --region $REGION
 ```
-# Verificar
+# 10 Ingresar al servidor NAT
+#### Obtener IP Publica
 ```
 IP_PUBLIC=$(aws ec2 describe-instances \
     --instance-ids $INSTANCE_NAT_ID \
     --query "Reservations[0].Instances[0].PublicIpAddress" \
     --output text)
-```
-
-```
 USER=ec2-user
 ```
-
+#### Ingresar a la instancia NAT
 ```
 ssh $USER@$IP_PUBLIC
 ```
 
+# 11 Verificar
+Abrimos otra terminal, inicializamos las variables de entorno
 ```
 aws s3 ls s3://$S3_NAME/ --region $REGION
 ```
-
+Volvemos a la terminal donde ingresamos al servidor NAT.
+Este comando nos permite ver los permisos que le hemos dado al servidor NAT
 ```
-aws s3 cp iptable.sh s3://$S3_NAME/iptables.sh 
+sudo iptables -L FORWARD -n --line-numbers
 ```
-
-
+Este comando nos permite ver la conexion entre el servidor privado y internet
 ```
-aws ec2 terminate-instances \
-    --instance-ids $INSTANCE_NAT_ID
+sudo conntrack -L --src <IP_PRIVATE>
 ```
-
+Nos permite ver la entrada y salida que tiene nuestro servidor privado a traves del servidor NAT.
 ```
-aws ec2 wait instance-terminated \
-    --instance-ids $INSTANCE_NAT_ID
+sudo tcpdump -n -i any host <IP_PRIVATE>
 ```
 
-```
-aws ec2 describe-route-tables \
-    --route-table-ids $RT_PRIVATE_ID
-```
-
-```
-IP_PRIVATE=$(aws ec2 describe-instances \
-    --filters Name=tag:Name,Values=$INSTANCE_PRIVATE_NAME \
-    --query "Reservations[0].Instances[0].{IpPublica:PublicIpAddress,IpPrivada:PrivateIpAddress,Estado:State.Name,Nombre:Tags[0].Value}" \
-    --output table)
-```
-
-```
-ssh user-ec2@$IP_PRIVATE
-```
+Ejecutamos el comando que dejamos a la espera en el paso 9 **Crear ruta hacia NAT** Vamos a ver que el trafico ya esta permitido.
