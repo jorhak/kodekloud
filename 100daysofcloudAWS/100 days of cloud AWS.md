@@ -35,3 +35,8 @@ Vamos a realizar el reto de 100 dias de nube.
 # [[Day 33 - Create a Lambda Function]]
 # [[Day 34 - Create a Lambda Function Using CLI]]
 # [[Day 35 - Deploying and Managing Applications on AWS]]
+# [[Day 36 - Load Balancing EC2 Instances with Application Load Balancer]]
+# [[Day 37 - Managing EC2 Access with S3 Role-based Permissions]]
+# [[Day 38 - Deploying Containerized Applications with Amazon ECS]]
+# [[Day 39 - Hosting a Static Website on AWS S3]]
+# [[Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application]]

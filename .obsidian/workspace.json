@@ -36,21 +36,63 @@
             }
           },
           {
+            "id": "8586a2efc079b475",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 23 - Data Migration Between S3 Buckets Using AWS CLI.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 23 - Data Migration Between S3 Buckets Using AWS CLI"
+            }
+          },
+          {
             "id": "a2bb41955f4095ac",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 37 - Managing EC2 Access with S3 Role-based Permissions.md",
+                "file": "100daysofcloudAWS/100 days of cloud AWS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 37 - Managing EC2 Access with S3 Role-based Permissions"
+              "title": "100 days of cloud AWS"
+            }
+          },
+          {
+            "id": "7437f5e63ab7f764",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 39 - Hosting a Static Website on AWS S3.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 39 - Hosting a Static Website on AWS S3"
+            }
+          },
+          {
+            "id": "792dc000339271de",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 38 - Deploying Containerized Applications with Amazon ECS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 38 - Deploying Containerized Applications with Amazon ECS"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -211,11 +253,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "a2bb41955f4095ac",
+  "active": "7437f5e63ab7f764",
   "lastOpenFiles": [
-    "100daysofcloudAWS/Day 36 - Load Balancing EC2 Instances with Application Load Balancer.md",
+    "100daysofcloudAWS/Day 38 - Deploying Containerized Applications with Amazon ECS.md",
+    "linux/Descargar.md",
+    "100daysofcloudAWS/Day 39 - Hosting a Static Website on AWS S3.md",
     "100daysofcloudAWS/Day 37 - Managing EC2 Access with S3 Role-based Permissions.md",
+    "100daysofcloudAWS/Day 23 - Data Migration Between S3 Buckets Using AWS CLI.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
+    "100daysofcloudAWS/Day 36 - Load Balancing EC2 Instances with Application Load Balancer.md",
     "terraform/level 1/terraform level 1.md",
     "terraform/level 1/35 VPC Variable Setup Using Terraform.md",
     "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
@@ -235,10 +281,6 @@
     "100daysofcloudAZURE/Day 45 - Azure Kubernetes Service (AKS) Setup and Management.md",
     "100daysofcloudAZURE/Day 44 - Integrating Azure Event Hub with Virtual Machines.md",
     "100daysofMLOps/bronze/Day 6 - Fix a Broken Ruff and Black Configuration.md",
-    "100daysofMLOps/bronze/Day 1 - Create a Python Virtual Environment for ML.md",
-    "100daysofMLOps/bronze/Day 5 - Fix a Broken ML Workflow Makefile.md",
-    "100daysofMLOps/bronze/Day 4 - Add a .gitignore and Untrack Committed Artifacts.md",
-    "100daysofMLOps/bronze/Day 3 - Fix a Broken uv Lockfile Specification.md",
     "100daysofMLOps/bronze",
     "100daysofMLOps",
     "KodeKloud_Course_Certificate_100_days_of_devops.pdf",
