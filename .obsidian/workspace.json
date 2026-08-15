@@ -8,48 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c23240872130ab91",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/100 days of cloud AWS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "100 days of cloud AWS"
-            }
-          },
-          {
-            "id": "78e7914430bca7c5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/Day 37 - Managing EC2 Access with S3 Role-based Permissions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 37 - Managing EC2 Access with S3 Role-based Permissions"
-            }
-          },
-          {
-            "id": "8586a2efc079b475",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/Day 23 - Data Migration Between S3 Buckets Using AWS CLI.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 23 - Data Migration Between S3 Buckets Using AWS CLI"
-            }
-          },
-          {
             "id": "a2bb41955f4095ac",
             "type": "leaf",
             "state": {
@@ -64,35 +22,21 @@
             }
           },
           {
-            "id": "7437f5e63ab7f764",
+            "id": "e0701424cb74cd2e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 39 - Hosting a Static Website on AWS S3.md",
+                "file": "100daysofcloudAWS/Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 39 - Hosting a Static Website on AWS S3"
-            }
-          },
-          {
-            "id": "792dc000339271de",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/Day 38 - Deploying Containerized Applications with Amazon ECS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 38 - Deploying Containerized Applications with Amazon ECS"
+              "title": "Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -151,7 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 356.5
+    "width": 362.5
   },
   "right": {
     "id": "95f693744e060715",
@@ -253,24 +197,27 @@
       "bases:Create new base": false
     }
   },
-  "active": "7437f5e63ab7f764",
+  "active": "beb41c24ac7ac4b0",
   "lastOpenFiles": [
-    "100daysofcloudAWS/Day 38 - Deploying Containerized Applications with Amazon ECS.md",
-    "linux/Descargar.md",
-    "100daysofcloudAWS/Day 39 - Hosting a Static Website on AWS S3.md",
+    "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
+    "100daysofcloudAWS/Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application.md",
     "100daysofcloudAWS/Day 37 - Managing EC2 Access with S3 Role-based Permissions.md",
-    "100daysofcloudAWS/Day 23 - Data Migration Between S3 Buckets Using AWS CLI.md",
+    "100daysofcloudAWS/Day 35 - Deploying and Managing Applications on AWS.md",
+    "100daysofcloudAWS/Day 38 - Deploying Containerized Applications with Amazon ECS.md",
+    "100daysofcloudAWS/Day 39 - Hosting a Static Website on AWS S3.md",
+    "100daysofcloudAWS/Day 10 - Attach Elastic IP to EC2 Instance.md",
+    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
     "100daysofcloudAWS/100 days of cloud AWS.md",
+    "linux/Descargar.md",
+    "100daysofcloudAWS/Day 23 - Data Migration Between S3 Buckets Using AWS CLI.md",
     "100daysofcloudAWS/Day 36 - Load Balancing EC2 Instances with Application Load Balancer.md",
     "terraform/level 1/terraform level 1.md",
     "terraform/level 1/35 VPC Variable Setup Using Terraform.md",
     "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
     "terraform/level 1/34 Copy Data to S3 Using Terraform.md",
-    "100daysofcloudAWS/Day 35 - Deploying and Managing Applications on AWS.md",
     "100daysdevops/bronce/Day 20 - Configure Nginx + PHP-FPM Using Unix Sock.md",
     "100daysofcloudAWS/Day 31 - Configuring a Private RDS Instance for Application Development.md",
     "100daysdevops/bronce/bronce.md",
-    "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
     "100daysofcloudAWS/Day 34 - Create a Lambda Function Using CLI.md",
     "100daysofcloudAZURE/100 days of cloud AZURE.md",
     "100daysofcloudAZURE/Day 50 - VM Setup and Configuration for Azure Application Gateway.md",
@@ -278,9 +225,6 @@
     "100daysofcloudAZURE/Day 48 - VM and ACR Integration for Storage.md",
     "100daysofcloudAZURE/Day 47 - SQL Database Migration and Setup.md",
     "100daysofcloudAZURE/Day 46 - EventHub to Blob Storage Integration Setup.md",
-    "100daysofcloudAZURE/Day 45 - Azure Kubernetes Service (AKS) Setup and Management.md",
-    "100daysofcloudAZURE/Day 44 - Integrating Azure Event Hub with Virtual Machines.md",
-    "100daysofMLOps/bronze/Day 6 - Fix a Broken Ruff and Black Configuration.md",
     "100daysofMLOps/bronze",
     "100daysofMLOps",
     "KodeKloud_Course_Certificate_100_days_of_devops.pdf",
