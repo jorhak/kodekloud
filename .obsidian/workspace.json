@@ -4,25 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "dc26005aacf7fc96",
+        "id": "69d1b1c7ffdc9cc6",
         "type": "tabs",
         "children": [
           {
-            "id": "a2bb41955f4095ac",
+            "id": "96a1b1b0887a0b71",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/100 days of cloud AWS.md",
+                "file": "100daysofcloudAWS/Day 45 - Configure NAT Gateway for Internet Access in a Private VPC.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "100 days of cloud AWS"
+              "title": "Day 45 - Configure NAT Gateway for Internet Access in a Private VPC"
             }
           },
           {
-            "id": "4e175481c4824caf",
+            "id": "6fa50dc484f75ffc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 44 - Implementing Auto Scaling for High Availability in AWS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 44 - Implementing Auto Scaling for High Availability in AWS"
+            }
+          },
+          {
+            "id": "c039e0540fd05eb3",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -34,9 +48,50 @@
               "icon": "lucide-file",
               "title": "Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS"
             }
+          },
+          {
+            "id": "5ac8b90aca589b97",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 42 - Building and Managing NoSQL Databases with AWS DynamoDB.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 42 - Building and Managing NoSQL Databases with AWS DynamoDB"
+            }
+          },
+          {
+            "id": "0d9512c07fffe243",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 41 - Securing Data with AWS KMS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 41 - Securing Data with AWS KMS"
+            }
+          },
+          {
+            "id": "14de1c13e02bb586",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application"
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -200,34 +255,34 @@
       "bases:Create new base": false
     }
   },
-  "active": "4e175481c4824caf",
+  "active": "96a1b1b0887a0b71",
   "lastOpenFiles": [
-    "100daysofcloudAWS/100 days of cloud AWS.md",
-    "100daysofcloudAWS/Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS.md",
-    "100daysofMLOps/bronze/bronze.md",
-    "100daysofMLOps/bronze/Day 7 - Test and Package the Fraud-Detection Module.md",
-    "100daysofcloudAWS/Day 42 - Building and Managing NoSQL Databases with AWS DynamoDB.md",
-    "100daysofcloudAWS/Day 38 - Deploying Containerized Applications with Amazon ECS.md",
-    "100daysofcloudAWS/Day 39 - Hosting a Static Website on AWS S3.md",
-    "100daysofcloudAWS/Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application.md",
+    "100daysofcloudAWS/Day 44 - Implementing Auto Scaling for High Availability in AWS.md",
+    "100daysofcloudAWS/Day 45 - Configure NAT Gateway for Internet Access in a Private VPC.md",
     "100daysofcloudAWS/Day 41 - Securing Data with AWS KMS.md",
-    "Day 45 -.md",
-    "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
-    "100daysofcloudAWS/Day 37 - Managing EC2 Access with S3 Role-based Permissions.md",
-    "100daysofcloudAWS/Day 35 - Deploying and Managing Applications on AWS.md",
-    "100daysofcloudAWS/Day 10 - Attach Elastic IP to EC2 Instance.md",
-    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
-    "linux/Descargar.md",
-    "100daysofcloudAWS/Day 23 - Data Migration Between S3 Buckets Using AWS CLI.md",
-    "100daysofcloudAWS/Day 36 - Load Balancing EC2 Instances with Application Load Balancer.md",
+    "100daysofcloudAWS/Day 42 - Building and Managing NoSQL Databases with AWS DynamoDB.md",
+    "100daysofcloudAWS/Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application.md",
+    "100daysofcloudAWS/Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS.md",
+    "100daysofcloudAWS/100 days of cloud AWS.md",
+    "kubernetes/learn k8s with Kodekloud level 1.md",
+    "terraform/level 1/5 Create VPC with IPv6 Using Terraform.md",
     "terraform/level 1/terraform level 1.md",
+    "terraform/level 1/3 Create VPC Using Terraform.md",
+    "terraform/level 1/12 Create Public S3 Bucket Using Terraform.md",
+    "terraform/level 1/17 Create DynamoDB Table Using Terraform.md",
+    "terraform/level 1/24 Secrets Manager Setup Using Terraform.md",
     "terraform/level 1/35 VPC Variable Setup Using Terraform.md",
-    "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
-    "terraform/level 1/34 Copy Data to S3 Using Terraform.md",
-    "100daysdevops/bronce/Day 20 - Configure Nginx + PHP-FPM Using Unix Sock.md",
-    "100daysofcloudAWS/Day 31 - Configuring a Private RDS Instance for Application Development.md",
-    "100daysdevops/bronce/bronce.md",
-    "100daysofcloudAWS/Day 34 - Create a Lambda Function Using CLI.md",
+    "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
+    "100daysofcloudAWS/Day 36 - Load Balancing EC2 Instances with Application Load Balancer.md",
+    "100daysofcloudAWS/Day 35 - Deploying and Managing Applications on AWS.md",
+    "100daysofcloudAWS/Day 39 - Hosting a Static Website on AWS S3.md",
+    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
+    "100daysofcloudAWS/Day 1 - Create Key Pair.md",
+    "100daysofcloudAWS/Day 3 - Create Subnet.md",
+    "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
+    "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
+    "100daysofcloudAWS/Day 2 - Create Security Group.md",
+    "100daysofMLOps/bronze/Day 7 - Test and Package the Fraud-Detection Module.md",
     "100daysofMLOps/bronze",
     "100daysofMLOps",
     "KodeKloud_Course_Certificate_100_days_of_devops.pdf",
