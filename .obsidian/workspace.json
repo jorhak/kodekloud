@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "terraform/level 1/terraform level 1.md",
+                "file": "terraform/level 1/38 User Variable Setup Using Terraform.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "terraform level 1"
+              "title": "38 User Variable Setup Using Terraform"
             }
           },
           {
@@ -34,37 +34,8 @@
               "icon": "lucide-file",
               "title": "40 Policy Variable Setup Using Terraform"
             }
-          },
-          {
-            "id": "5456195fb18b9c2a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "terraform/level 1/37 Elastic IP Variable Setup Using Terraform.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "37 Elastic IP Variable Setup Using Terraform"
-            }
-          },
-          {
-            "id": "4539b770bd072f8e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "terraform/level 1/36 Security Group Variable Setup Using Terraform.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "36 Security Group Variable Setup Using Terraform"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -228,12 +199,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "5456195fb18b9c2a",
+  "active": "beb41c24ac7ac4b0",
   "lastOpenFiles": [
+    "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
+    "terraform/level 1/38 User Variable Setup Using Terraform.md",
+    "terraform/level 1/terraform level 1.md",
     "terraform/level 1/36 Security Group Variable Setup Using Terraform.md",
     "terraform/level 1/37 Elastic IP Variable Setup Using Terraform.md",
-    "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
-    "terraform/level 1/terraform level 1.md",
     "terraform/level 1/35 VPC Variable Setup Using Terraform.md",
     "100daysofcloudAWS/Day 46 - Event-Driven Processing with Amazon S3 and Lambda.md",
     "100daysofcloudAWS/Day 45 - Configure NAT Gateway for Internet Access in a Private VPC.md",
@@ -255,7 +227,6 @@
     "terraform/level 1/24 Secrets Manager Setup Using Terraform.md",
     "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
     "100daysofcloudAWS/Day 36 - Load Balancing EC2 Instances with Application Load Balancer.md",
-    "100daysofcloudAWS/Day 35 - Deploying and Managing Applications on AWS.md",
     "100daysofMLOps/bronze",
     "100daysofMLOps",
     "KodeKloud_Course_Certificate_100_days_of_devops.pdf",
