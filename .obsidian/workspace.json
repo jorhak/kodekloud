@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "terraform/level 1/39 Role Variable Setup Using Terraform.md",
+                "file": "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "39 Role Variable Setup Using Terraform"
+              "title": "40 Policy Variable Setup Using Terraform"
             }
           },
           {
@@ -199,10 +199,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "beb41c24ac7ac4b0",
+  "active": "c3040fffb51b507d",
   "lastOpenFiles": [
-    "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
     "terraform/level 1/39 Role Variable Setup Using Terraform.md",
+    "terraform/level 1/40 Policy Variable Setup Using Terraform.md",
     "terraform/level 1/terraform level 1.md",
     "terraform/level 1/38 User Variable Setup Using Terraform.md",
     "terraform/level 1/36 Security Group Variable Setup Using Terraform.md",
