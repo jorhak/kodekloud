@@ -8,7 +8,21 @@
         "type": "tabs",
         "children": [
           {
-            "id": "96a1b1b0887a0b71",
+            "id": "c3040fffb51b507d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 46 - Event-Driven Processing with Amazon S3 and Lambda.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 46 - Event-Driven Processing with Amazon S3 and Lambda"
+            }
+          },
+          {
+            "id": "70aaaaa4cc005760",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,76 +33,6 @@
               },
               "icon": "lucide-file",
               "title": "Day 45 - Configure NAT Gateway for Internet Access in a Private VPC"
-            }
-          },
-          {
-            "id": "6fa50dc484f75ffc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/Day 44 - Implementing Auto Scaling for High Availability in AWS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 44 - Implementing Auto Scaling for High Availability in AWS"
-            }
-          },
-          {
-            "id": "c039e0540fd05eb3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS"
-            }
-          },
-          {
-            "id": "5ac8b90aca589b97",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/Day 42 - Building and Managing NoSQL Databases with AWS DynamoDB.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 42 - Building and Managing NoSQL Databases with AWS DynamoDB"
-            }
-          },
-          {
-            "id": "0d9512c07fffe243",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/Day 41 - Securing Data with AWS KMS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 41 - Securing Data with AWS KMS"
-            }
-          },
-          {
-            "id": "14de1c13e02bb586",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofcloudAWS/Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application"
             }
           }
         ]
@@ -255,15 +199,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "96a1b1b0887a0b71",
+  "active": "c3040fffb51b507d",
   "lastOpenFiles": [
-    "100daysofcloudAWS/Day 44 - Implementing Auto Scaling for High Availability in AWS.md",
     "100daysofcloudAWS/Day 45 - Configure NAT Gateway for Internet Access in a Private VPC.md",
-    "100daysofcloudAWS/Day 41 - Securing Data with AWS KMS.md",
+    "100daysofcloudAWS/Day 46 - Event-Driven Processing with Amazon S3 and Lambda.md",
+    "100daysofcloudAWS/Day 23 - Data Migration Between S3 Buckets Using AWS CLI.md",
+    "100daysofcloudAWS/Day 37 - Managing EC2 Access with S3 Role-based Permissions.md",
+    "100daysofcloudAWS/Day 34 - Create a Lambda Function Using CLI.md",
+    "100daysofcloudAWS/Day 33 - Create a Lambda Function.md",
     "100daysofcloudAWS/Day 42 - Building and Managing NoSQL Databases with AWS DynamoDB.md",
+    "100daysofcloudAWS/100 days of cloud AWS.md",
+    "100daysofcloudAWS/Day 44 - Implementing Auto Scaling for High Availability in AWS.md",
+    "100daysofcloudAWS/Day 41 - Securing Data with AWS KMS.md",
     "100daysofcloudAWS/Day 40 - Troubleshooting Internet Accessibility for an EC2-Hosted Application.md",
     "100daysofcloudAWS/Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS.md",
-    "100daysofcloudAWS/100 days of cloud AWS.md",
     "kubernetes/learn k8s with Kodekloud level 1.md",
     "terraform/level 1/5 Create VPC with IPv6 Using Terraform.md",
     "terraform/level 1/terraform level 1.md",
@@ -278,11 +227,6 @@
     "100daysofcloudAWS/Day 39 - Hosting a Static Website on AWS S3.md",
     "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
     "100daysofcloudAWS/Day 1 - Create Key Pair.md",
-    "100daysofcloudAWS/Day 3 - Create Subnet.md",
-    "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
-    "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
-    "100daysofcloudAWS/Day 2 - Create Security Group.md",
-    "100daysofMLOps/bronze/Day 7 - Test and Package the Fraud-Detection Module.md",
     "100daysofMLOps/bronze",
     "100daysofMLOps",
     "KodeKloud_Course_Certificate_100_days_of_devops.pdf",
