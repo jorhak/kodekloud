@@ -1,15 +1,14 @@
 ```bash
-The Nautilus DevOps team is enhancing infrastructure automation and needs to provision a Security Group using Terraform with specific configurations.
+The Nautilus DevOps team is strategizing the migration of a portion of their infrastructure to the AWS cloud. As part of this phased migration approach, they need to allocate an Elastic IP address to support external access for specific workloads.
 
-For this task, create an AWS Security Group using Terraform with the following requirements:
+For this task, create an AWS Elastic IP using Terraform with the following requirement:
 
-The Security Group name nautilus-sg should be stored in a variable named KKE_sg.
+The Elastic IP name nautilus-eip should be stored in a variable named KKE_eip. The Terraform working directory is /home/bob/terraform.
 
 Note:
-1. The configuration values should be stored in a variables.tf file.
-2. The Terraform script should be structured with a main.tf file referencing variables.tf.
+The configuration values should be stored in a variables.tf file.
 
-The Terraform working directory is /home/bob/terraform.
+The Terraform script should be structured with a main.tf file referencing variables.tf.
 
 Right-click under the EXPLORER section in VS Code and select Open in Integrated Terminal to launch the terminal.
 ```
@@ -60,39 +59,39 @@ endpoints {
 }
 ```
 
-# 2 Variables
+# 2 Crear variables.tf
+
 ```bash
 cat << EOF > variables.tf
-variable "KKE_sg" {
-  description = "Nombre de Security Group"
+variable "KKE_eip" {
+  description = "Elastic IP"
   type        = string
-  default     = "nautilus-sg" 
+  default     = "nautilus-eip" 
 }
 EOF
 ```
 # 3 Crear main.tf
 ```bash
 cat << EOF > main.tf
-resource "aws_security_group" "allow_tls" {
-  name        = var.KKE_sg
-  description = "Security group para mi instancia EC2"
+resource "aws_eip" "ipam-ip" {
+  domain       = "vpc"
+  
   tags = {
-    Name = "IT"
-    Env = "DEV"
+    Name = var.KKE_eip
   }
 }
 EOF
 ```
-# 4 Inicializar proyecto
+# 3 Inicializar proyecto
 ```bash
 terraform init
 ```
-# 5 Validar codigo
+# 4 Validar codigo
 ```bash
 terraform fmt
 terraform validate
 ```
-# 6 Ejecutar
+# 5 Ejecutar
 #### Crear plan
 ```bash
 terraform plan
@@ -102,13 +101,14 @@ terraform plan
 terraform apply
 ```
 
-# 7 Verificar
+# 6 Verificar
 ```bash
-aws ec2 describe-security-groups \
-    --filters Name=tag:Env,Values=DEV
+aws ec2 describe-addresses \
+    --filters Name=tag:Name,Values=nautilus-eip
 ```
-
+#### Crear EIP (No Ejecutar)
 ```bash
-aws ec2 describe-security-groups \
-    --group-names nautilus-sg
+aws ec2 allocate-address \
+    --domain vpc \
+    --tag-specifications "ResourceType=elastic-ip,Tags=[{Key=Name,Value=devops-eip}]"
 ```
