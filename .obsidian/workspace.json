@@ -13,6 +13,48 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "100daysofcloudAWS/100 days of cloud AWS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "100 days of cloud AWS"
+            }
+          },
+          {
+            "id": "1276e7624e493475",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 34 - Create a Lambda Function Using CLI.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 34 - Create a Lambda Function Using CLI"
+            }
+          },
+          {
+            "id": "0a894fb58d1ca361",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "100daysofcloudAWS/Day 48 - Automating Infrastructure Deployment with AWS CloudFormation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 48 - Automating Infrastructure Deployment with AWS CloudFormation"
+            }
+          },
+          {
+            "id": "409e363546cdeb32",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "100daysofcloudAWS/Day 47 - Integrating AWS SQS and SNS for Reliable Messaging.md",
                 "mode": "source",
                 "source": false
@@ -22,20 +64,21 @@
             }
           },
           {
-            "id": "409e363546cdeb32",
+            "id": "21eda152a2ef0bee",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofcloudAWS/Day 44 - Implementing Auto Scaling for High Availability in AWS.md",
+                "file": "100daysofcloudAWS/Day 34 - Create a Lambda Function Using CLI.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 44 - Implementing Auto Scaling for High Availability in AWS"
+              "title": "Day 34 - Create a Lambda Function Using CLI"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -199,11 +242,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "6e695281f16947ff",
+  "active": "0a894fb58d1ca361",
   "lastOpenFiles": [
-    "100daysofcloudAWS/Day 44 - Implementing Auto Scaling for High Availability in AWS.md",
-    "100daysofcloudAWS/Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS.md",
     "100daysofcloudAWS/Day 47 - Integrating AWS SQS and SNS for Reliable Messaging.md",
+    "100daysofcloudAWS/Day 48 - Automating Infrastructure Deployment with AWS CloudFormation.md",
+    "100daysofcloudAWS/Day 34 - Create a Lambda Function Using CLI.md",
+    "100daysofcloudAWS/Day 33 - Create a Lambda Function.md",
+    "100daysofMLOps/bronze/Day 7 - Test and Package the Fraud-Detection Module.md",
+    "100daysofMLOps/bronze/Day 8 - Fix a Broken pre-commit Configuration.md",
+    "100daysofcloudAWS/Day 44 - Implementing Auto Scaling for High Availability in AWS.md",
+    "100daysofcloudAWS/100 days of cloud AWS.md",
+    "100daysofcloudAWS/Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS.md",
     "100daysofcloudAWS/Day 45 - Configure NAT Gateway for Internet Access in a Private VPC.md",
     "100daysofcloudAWS/Day 46 - Event-Driven Processing with Amazon S3 and Lambda.md",
     "kubernetes/13 Expose Application Using NodePort Service in Kubernetes.md",
@@ -221,12 +270,6 @@
     "terraform/level 1/27 Attach Policy Using Terraform.md",
     "terraform/level 1/3 Create VPC Using Terraform.md",
     "terraform/level 1/terraform level 1.md",
-    "terraform/level 1/12 Create Public S3 Bucket Using Terraform.md",
-    "terraform/level 1/13 Create Private S3 Bucket Using Terraform.md",
-    "terraform/level 1/17 Create DynamoDB Table Using Terraform.md",
-    "terraform/level 1/24 Secrets Manager Setup Using Terraform.md",
-    "terraform/level 1/16 Create IAM Policy Using Terraform.md",
-    "terraform/level 1/14 Create IAM User Using Terraform.md",
     "100daysofMLOps/bronze",
     "100daysofMLOps",
     "KodeKloud_Course_Certificate_100_days_of_devops.pdf",
