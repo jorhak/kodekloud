@@ -202,6 +202,9 @@
   },
   "active": "05bed12d556b098e",
   "lastOpenFiles": [
+    "100daysofMLOps/bronze/Day 7 - Test and Package the Fraud-Detection Module.md",
+    "100daysofMLOps/bronze/Day 8 - Fix a Broken pre-commit Configuration.md",
+    "100daysofMLOps/bronze/bronze.md",
     "docker/level 2/1 - Pull Docker Image.md",
     "100daysofcloudAWS/Day 49 - Centralized Audit Logging with VPC Peering.md",
     "docker/level 2",
@@ -234,9 +237,6 @@
     "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
     "100daysofcloudAWS/Day 7 - Change EC2 Instance Type.md",
     "100daysofcloudAWS/Day 48 - Automating Infrastructure Deployment with AWS CloudFormation.md",
-    "100daysofcloudAWS/Day 2 - Create Security Group.md",
-    "100daysofcloudAWS/Day 34 - Create a Lambda Function Using CLI.md",
-    "100daysofcloudAWS/Day 33 - Create a Lambda Function.md",
-    "100daysofMLOps/bronze/Day 7 - Test and Package the Fraud-Detection Module.md"
+    "100daysofcloudAWS/Day 2 - Create Security Group.md"
   ]
 }

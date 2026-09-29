@@ -4,3 +4,5 @@
 # [[Day 4 - Add a .gitignore and Untrack Committed Artifacts]]
 # [[Day 5 - Fix a Broken ML Workflow Makefile]]
 # [[Day 6 - Fix a Broken Ruff and Black Configuration]]
+# [[Day 7 - Test and Package the Fraud-Detection Module]]
+# [[Day 8 - Fix a Broken pre-commit Configuration]]
