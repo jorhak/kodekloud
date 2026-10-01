@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofMLOps/bronze/Day 9 - Fix a Broken Cookiecutter Template for ML Projects.md",
+                "file": "docker/level 2/3 - Create a Docker Image From Container.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 9 - Fix a Broken Cookiecutter Template for ML Projects"
+              "title": "3 - Create a Docker Image From Container"
             }
           }
         ],
@@ -217,6 +217,7 @@
   "active": "2422b5553391a438",
   "lastOpenFiles": [
     "100daysofMLOps/bronze/Day 9 - Fix a Broken Cookiecutter Template for ML Projects.md",
+    "docker/level 2/3 - Create a Docker Image From Container.md",
     "100daysofMLOps/bronze/bronze.md",
     "docker/level 2/2 - Docker Update Permissions.md",
     "docker/level 2/1 - Pull Docker Image.md",
@@ -250,7 +251,6 @@
     "100daysofcloudAWS/Day 46 - Event-Driven Processing with Amazon S3 and Lambda.md",
     "100daysofcloudAWS/Day 47 - Integrating AWS SQS and SNS for Reliable Messaging.md",
     "100daysofcloudAWS/Day 30 - Enable Internet Access for Private EC2 using NAT Instance.md",
-    "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
-    "100daysofcloudAWS/Day 7 - Change EC2 Instance Type.md"
+    "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md"
   ]
 }
