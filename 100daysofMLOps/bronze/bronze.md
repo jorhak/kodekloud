@@ -6,3 +6,5 @@
 # [[Day 6 - Fix a Broken Ruff and Black Configuration]]
 # [[Day 7 - Test and Package the Fraud-Detection Module]]
 # [[Day 8 - Fix a Broken pre-commit Configuration]]
+# [[Day 9 - Fix a Broken Cookiecutter Template for ML Projects]]
+# [[Day 10 - Initialize DVC in an Existing Git Repository]]
