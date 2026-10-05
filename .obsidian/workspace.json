@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofMLOps/bronze/Day 11 - Track a Dataset with DVC.md",
+                "file": "docker/level 2/5 - Write a Docker File.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 11 - Track a Dataset with DVC"
+              "title": "5 - Write a Docker File"
             }
           }
         ],
@@ -200,8 +200,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "beb41c24ac7ac4b0",
+  "active": "629191d296a36478",
   "lastOpenFiles": [
+    "git/level 2/1 - Git Install and Create Repository.md",
     "100daysofMLOps/bronze/Day 11 - Track a Dataset with DVC.md",
     "100daysofMLOps/bronze/bronze.md",
     "docker/level 2/5 - Write a Docker File.md",
@@ -236,7 +237,6 @@
     "100daysofcloudAWS/Day 23 - Data Migration Between S3 Buckets Using AWS CLI.md",
     "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
     "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
-    "100daysofcloudAWS/Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS.md",
-    "100daysofcloudAWS/Day 20 - Create IAM Role for EC2 with Policy Attachment.md"
+    "100daysofcloudAWS/Day 43 - Scaling and Managing Kubernetes Clusters with Amazon EKS.md"
   ]
 }
