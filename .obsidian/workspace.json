@@ -8,77 +8,34 @@
         "type": "tabs",
         "children": [
           {
-            "id": "81502a4fb951896f",
+            "id": "a3bd4f3cfe37a18e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ansible/level 2/ansible level 2.md",
+                "file": "ansible/level 2/5 Ansible Blockinfile Module.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ansible level 2"
+              "title": "5 Ansible Blockinfile Module"
             }
           },
           {
-            "id": "56b6b2faae495c97",
+            "id": "8057cc0e95ac509e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ansible/level 2/ansible level 2.md",
+                "file": "ansible/level 2/4 Ansible Unarchive Module.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ansible level 2"
-            }
-          },
-          {
-            "id": "1df0e094afb7fb17",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ansible/level 2/3 Ansible Archive Module.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "3 Ansible Archive Module"
-            }
-          },
-          {
-            "id": "76aa9ae93698663e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ansible/level 2/2 Ansible Install Package.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2 Ansible Install Package"
-            }
-          },
-          {
-            "id": "e4d389c886d9b526",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ansible/level 2/1 Ansible Ping Module Usage.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "1 Ansible Ping Module Usage"
+              "title": "4 Ansible Unarchive Module"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -137,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 301.5
+    "width": 364.5
   },
   "right": {
     "id": "95f693744e060715",
@@ -242,13 +199,22 @@
       "bases:Create new base": false
     }
   },
-  "active": "56b6b2faae495c97",
+  "active": "a3bd4f3cfe37a18e",
   "lastOpenFiles": [
     "ansible/level 2/4 Ansible Unarchive Module.md",
+    "ansible/level 2/5 Ansible Blockinfile Module.md",
     "ansible/level 2/ansible level 2.md",
-    "ansible/level 2/3 Ansible Archive Module.md",
-    "ansible/level 2/2 Ansible Install Package.md",
+    "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
+    "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
+    "100daysofcloudAWS/Day 3 - Create Subnet.md",
+    "100daysofcloudAWS/Day 26 - Configuring an EC2 Instance as a Web Server with Nginx.md",
+    "100daysofcloudAWS/Day 25 - Setting Up an EC2 Instance and CloudWatch Alarm.md",
+    "100daysdevops/diamond/Day 96 - Create EC2 Instance Using Terraform.md",
+    "100daysofcloudAWS/Day 1 - Create Key Pair.md",
     "ansible/level 2/1 Ansible Ping Module Usage.md",
+    "ansible/level 2/2 Ansible Install Package.md",
+    "ansible/level 2/3 Ansible Archive Module.md",
+    "100daysdevops/diamond/Day 94 - Create VPC Using Terraform.md",
     "100daysdevops/diamond/Day 87 - Ansible Install Package.md",
     "100daysdevops/diamond/Day 86 - Ansible Ping Module Usage.md",
     "ansible/level 1/ansible level 1.md",
@@ -263,15 +229,6 @@
     "git/level 1/2 Clone Git Repository on Storage Server.md",
     "git/level 1/1 Set Up Git Repository on Storage Server.md",
     "100daysofMLOps/bronze/Day 12 - Fix a Broken DVC Remote and Push to SeaweedFS.md",
-    "100daysofMLOps/bronze/bronze.md",
-    "git/level 2/2 - Git Create Branches.md",
-    "docker/level 2/5 - Write a Docker File.md",
-    "100daysofMLOps/bronze/Day 11 - Track a Dataset with DVC.md",
-    "docker/level 2/4 - Docker EXEC Operations.md",
-    "100daysofMLOps/bronze/Day 10 - Initialize DVC in an Existing Git Repository.md",
-    "100daysofMLOps/bronze/Day 9 - Fix a Broken Cookiecutter Template for ML Projects.md",
-    "docker/level 2/3 - Create a Docker Image From Container.md",
-    "docker/level 2/2 - Docker Update Permissions.md",
     "docker/level 2",
     "docker",
     "KodeKloud_100_Days_of_cloud_Azure.pdf",
