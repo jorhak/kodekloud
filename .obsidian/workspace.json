@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ansible/level 2/5 Ansible Blockinfile Module.md",
+                "file": "100daysofMLOps/bronze/Day 12 - Fix a Broken DVC Remote and Push to SeaweedFS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5 Ansible Blockinfile Module"
+              "title": "Day 12 - Fix a Broken DVC Remote and Push to SeaweedFS"
             }
           },
           {
@@ -201,8 +201,9 @@
   },
   "active": "a3bd4f3cfe37a18e",
   "lastOpenFiles": [
-    "ansible/level 2/4 Ansible Unarchive Module.md",
+    "100daysofMLOps/bronze/Day 11 - Track a Dataset with DVC.md",
     "ansible/level 2/5 Ansible Blockinfile Module.md",
+    "ansible/level 2/4 Ansible Unarchive Module.md",
     "ansible/level 2/ansible level 2.md",
     "100daysofcloudAWS/Day 27 - Configuring a Public VPC with an EC2 Instance for Internet Access.md",
     "100daysofcloudAWS/Day 6 - Launch EC2 Instance.md",
@@ -228,7 +229,6 @@
     "git/level 1/3 Fork a Git Repository.md",
     "git/level 1/2 Clone Git Repository on Storage Server.md",
     "git/level 1/1 Set Up Git Repository on Storage Server.md",
-    "100daysofMLOps/bronze/Day 12 - Fix a Broken DVC Remote and Push to SeaweedFS.md",
     "docker/level 2",
     "docker",
     "KodeKloud_100_Days_of_cloud_Azure.pdf",
