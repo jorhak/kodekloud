@@ -4,53 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "1980cecda33cc7df",
+        "id": "dade9cc2ef7cce23",
         "type": "tabs",
         "children": [
           {
-            "id": "a57adf5f53ca32c1",
+            "id": "3e4b8282fbfc8e84",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/kodekloud linux/level 1/level 1.md",
+                "file": "100daysofMLOps/bronze/bronze.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "level 1"
+              "title": "bronze"
             }
           },
           {
-            "id": "8e6446ca7f13b586",
+            "id": "3f003b747f911c0f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/kodekloud linux/level 1/18 - SElinux Installation and Configuration.md",
+                "file": "100daysofMLOps/bronze/Day 14 - Create a DVC Pipeline for Data Processing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "18 - SElinux Installation and Configuration"
-            }
-          },
-          {
-            "id": "e21180e6803275bc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "linux/linux.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "linux"
+              "title": "Day 14 - Create a DVC Pipeline for Data Processing"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -214,10 +200,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "e21180e6803275bc",
+  "active": "beb41c24ac7ac4b0",
   "lastOpenFiles": [
-    "linux/montar toshiba.md",
+    "100daysofMLOps/bronze/Day 14 - Create a DVC Pipeline for Data Processing.md",
+    "100daysofMLOps/bronze/bronze.md",
+    "100daysofMLOps/daimond/daimond.md",
+    "100daysofMLOps/gold/gold.md",
+    "100daysofMLOps/silver/silver.md",
+    "Day 60 -.md",
+    "100daysofMLOps/gold",
+    "100daysofMLOps/daimond",
+    "100daysofMLOps/silver",
+    "100daysofMLOps/bronze/Day 13 - Pull DVC-Tracked Data from Remote.md",
     "linux/linux.md",
+    "linux/montar toshiba.md",
     "linux/kodekloud linux/level 1/18 - SElinux Installation and Configuration.md",
     "linux/Bootear USB.md",
     "linux/kodekloud linux/level 1/level 1.md",
@@ -235,22 +231,12 @@
     "linux/kodekloud linux/level 1/6 - Linux User Data Transfer.md",
     "linux/kodekloud linux/level 1/5 - Temporary User Setup with Expiry.md",
     "linux/kodekloud linux/level 1/4 - Service User Creation without Home Directory.md",
-    "linux/kodekloud linux/level 1/3 - Linux User Setup with Non-Interactive Shell.md",
-    "linux/kodekloud linux/level 1/2 - Group Creation and User Assignment.md",
-    "100daysofMLOps/bronze/bronze.md",
-    "ansible/level 2/4 Ansible Unarchive Module.md",
     "linux/kodekloud linux/level 1",
     "linux/kodekloud linux",
-    "linux/Untitled.md",
-    "linux/Limpiar equipo Windows.md",
-    "linux/Terminal CPU, RAM, MOTHERBOARD.md",
     "ansible/level 2",
     "Untitled.base",
     "docker/level 2",
     "docker",
-    "KodeKloud_100_Days_of_cloud_Azure.pdf",
-    "git/level 2",
-    "KodeKloud_Course_Certificate_Docker_Level_1.pdf",
-    "Unconfirmed 172682.crdownload"
+    "KodeKloud_100_Days_of_cloud_Azure.pdf"
   ]
 }

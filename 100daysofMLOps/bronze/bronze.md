@@ -12,4 +12,15 @@
 # [[ Day 12 - Fix a Broken DVC Remote and Push to SeaweedFS]]
 # [[Day 13 - Pull DVC-Tracked Data from Remote]]
 
-
+# [[Day 14 - Create a DVC Pipeline for Data Processing]]
+# [[Day 15 - Parameterize a DVC Pipeline]]
+# [[Day 16 - Track ML Metrics with DVC]]
+# [[Day 17 - Run and Compare DVC Experiments]]
+# [[Day 18 - Version Datasets and Models Across Git Branches]]
+# [[Day 19 - Complete a Production DVC Pipeline with SeaweedFS Remote]]
+# [[Day 20 - Start the MLflow Tracking Server]]
+# [[Day 21 - Log an ML Experiment to MLflow]]
+# [[Day 22 - Create and Organize MLflow Experiments]]
+# [[Day 23 - Search, Compare, and Triage MLflow Runs]]
+# [[Day 24 - Enable MLflow Autologging]]
+# [[Day 25 - Register, Version, and Manage Model Lifecycle]]
