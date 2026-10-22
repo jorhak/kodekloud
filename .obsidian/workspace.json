@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "kubernetes/level 2/1 Kubernetes Shared Volumes.md",
+                "file": "kubernetes/level 1/4 Set Resource Limits in Kubernetes Pods.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1 Kubernetes Shared Volumes"
+              "title": "4 Set Resource Limits in Kubernetes Pods"
             }
           },
           {
@@ -123,8 +123,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 364.5,
-    "collapsed": true
+    "width": 364.5
   },
   "right": {
     "id": "95f693744e060715",
@@ -231,8 +230,8 @@
   },
   "active": "84ba519649998512",
   "lastOpenFiles": [
-    "kubernetes/level 2/level 2.md",
     "kubernetes/level 2/1 Kubernetes Shared Volumes.md",
+    "kubernetes/level 2/level 2.md",
     "linux/kodekloud linux/level 2/level 2.md",
     "kubernetes/level 2",
     "kubernetes/level 1",
