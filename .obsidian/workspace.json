@@ -8,63 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ed527848225c0154",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "kubernetes/level 2/level 2.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "level 2"
-            }
-          },
-          {
-            "id": "d75acb25ff179fb9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "kubernetes/level 2/5 Rolling Updates And Rolling Back Deployments in Kubernetes.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "5 Rolling Updates And Rolling Back Deployments in Kubernetes"
-            }
-          },
-          {
             "id": "a3cdf574030c2762",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofMLOps/bronze/Day 17 - Run and Compare DVC Experiments.md",
+                "file": "100daysofMLOps/bronze/bronze.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 17 - Run and Compare DVC Experiments"
+              "title": "bronze"
             }
           },
           {
-            "id": "f03d966f6d7c4aa5",
+            "id": "2043d3672c21a94e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "kubernetes/level 2/4 Print Environment Variables.md",
+                "file": "100daysofMLOps/bronze/Day 18 - Version Datasets and Models Across Git Branches.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4 Print Environment Variables"
+              "title": "Day 18 - Version Datasets and Models Across Git Branches"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -228,14 +200,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "a3cdf574030c2762",
+  "active": "beb41c24ac7ac4b0",
   "lastOpenFiles": [
+    "100daysofMLOps/bronze/Day 18 - Version Datasets and Models Across Git Branches.md",
     "100daysofMLOps/bronze/bronze.md",
+    "100daysofMLOps/bronze/Day 17 - Run and Compare DVC Experiments.md",
     "kubernetes/level 2/6 Deploy Jenkins on Kubernetes.md",
     "kubernetes/level 2/4 Print Environment Variables.md",
     "kubernetes/level 2/5 Rolling Updates And Rolling Back Deployments in Kubernetes.md",
     "kubernetes/level 2/level 2.md",
-    "100daysofMLOps/bronze/Day 17 - Run and Compare DVC Experiments.md",
     "100daysofMLOps/bronze/Day 16 - Track ML Metrics with DVC.md",
     "100daysofMLOps/bronze/Day 13 - Pull DVC-Tracked Data from Remote.md",
     "100daysofMLOps/bronze/Day 14 - Create a DVC Pipeline for Data Processing.md",
@@ -261,7 +234,6 @@
     "100daysofMLOps/silver",
     "linux/montar toshiba.md",
     "linux/kodekloud linux/level 1/18 - SElinux Installation and Configuration.md",
-    "linux/Bootear USB.md",
     "linux/kodekloud linux/level 1",
     "linux/kodekloud linux",
     "ansible/level 2",
