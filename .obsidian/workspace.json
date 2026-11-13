@@ -8,31 +8,31 @@
         "type": "tabs",
         "children": [
           {
-            "id": "05702cea14b30a61",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "100daysofMLOps/bronze/bronze.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "bronze"
-            }
-          },
-          {
             "id": "9dc7b9af2eea412b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofMLOps/bronze/Day 23 - Search, Compare, and Triage MLflow Runs.md",
+                "file": "linux/kodekloud linux/level 2/level 2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 23 - Search, Compare, and Triage MLflow Runs"
+              "title": "level 2"
+            }
+          },
+          {
+            "id": "5b01877398bf0b08",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "linux/kodekloud linux/level 2/7 Install a package.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "7 Install a package"
             }
           }
         ],
@@ -203,14 +203,14 @@
   },
   "active": "beb41c24ac7ac4b0",
   "lastOpenFiles": [
-    "100daysofMLOps/bronze/bronze.md",
-    "100daysofMLOps/bronze/Day 23 - Search, Compare, and Triage MLflow Runs.md",
-    "linux/kodekloud linux/level 2/6 Linux Find Command.md",
+    "linux/kodekloud linux/level 2/7 Install a package.md",
     "linux/kodekloud linux/level 2/level 2.md",
+    "100daysofMLOps/bronze/Day 23 - Search, Compare, and Triage MLflow Runs.md",
+    "100daysofMLOps/bronze/bronze.md",
+    "linux/kodekloud linux/level 2/6 Linux Find Command.md",
     "linux/kodekloud linux/level 2/5 Linux SSH Authentication.md",
     "linux/kodekloud linux/level 2/4 Linux String Substitute (sed).md",
     "linux/kodekloud linux/level 2/3 Linux Collaborative Directories.md",
-    "100daysofMLOps/bronze/Day 23 - Search, Compare, and Triage MLflow Runs.md",
     "linux/kodekloud linux/level 2/2 Linux Banner.md",
     "100daysofMLOps/bronze/Day 22 - Create and Organize MLflow Experiments.md",
     "linux/kodekloud linux/level 2/1 Create a Cron Job.md",
