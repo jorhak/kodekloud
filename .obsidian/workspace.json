@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/kodekloud linux/level 2/level 2.md",
+                "file": "linux/kodekloud linux/level 2/8 Install Ansible.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "level 2"
+              "title": "8 Install Ansible"
             }
           },
           {
@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "100daysofMLOps/bronze/Day 24 - Enable MLflow Autologging.md",
+                "file": "100daysdevops/bronce/Day 8 - Install Ansible.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Day 24 - Enable MLflow Autologging"
+              "title": "Day 8 - Install Ansible"
             }
           }
         ],
@@ -215,12 +215,14 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "beb41c24ac7ac4b0",
+  "active": "c290bb0f4e7a0d2f",
   "lastOpenFiles": [
+    "linux/kodekloud linux/level 2/8 Install Ansible.md",
+    "100daysdevops/bronce/Day 8 - Install Ansible.md",
+    "linux/kodekloud linux/level 2/level 2.md",
     "100daysofMLOps/bronze/Day 24 - Enable MLflow Autologging.md",
     "100daysofMLOps/bronze/bronze.md",
     "linux/kodekloud linux/level 2/7 Install a package.md",
-    "linux/kodekloud linux/level 2/level 2.md",
     "100daysofMLOps/bronze/Day 23 - Search, Compare, and Triage MLflow Runs.md",
     "linux/kodekloud linux/level 2/6 Linux Find Command.md",
     "linux/kodekloud linux/level 2/5 Linux SSH Authentication.md",
@@ -241,8 +243,6 @@
     "kubernetes/level 2/3 Deploy Nginx Web Server on Kubernetes Cluster.md",
     "kubernetes/level 2/2 Kubernetes Sidecar Containers.md",
     "100daysofMLOps/bronze/Day 20 - Start the MLflow Tracking Server.md",
-    "kubernetes/level 2/7 Deploy Grafana on Kubernetes Cluster.md",
-    "kubernetes/level 2/6 Deploy Jenkins on Kubernetes.md",
     "kubernetes/level 2",
     "kubernetes/level 1",
     "linux/kodekloud linux/level 2",
