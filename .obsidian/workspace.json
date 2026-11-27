@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/kodekloud linux/level 2/12 DNS Troubleshooting.md",
+                "file": "linux/kodekloud linux/level 2/11 Linux Configure sudo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "12 DNS Troubleshooting"
+              "title": "11 Linux Configure sudo"
             }
           }
         ],
@@ -215,7 +215,7 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "beb41c24ac7ac4b0",
+  "active": "95f095f590955da0",
   "lastOpenFiles": [
     "linux/kodekloud linux/level 2/12 DNS Troubleshooting.md",
     "linux/kodekloud linux/level 2/level 2.md",
