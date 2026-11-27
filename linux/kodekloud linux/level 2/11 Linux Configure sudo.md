@@ -28,3 +28,4 @@ mariyam ALL=(ALL) NOPASSWD:ALL
 sudo su - mariyam
 sudo whoami
 ```
+
